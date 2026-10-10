@@ -156,6 +156,35 @@
       letter-spacing: 0.06em;
     }
 
+    .size-media {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      border: 1px solid #E2E8F0;
+      background-color: #F1F5F9;
+      aspect-ratio: 16 / 10;
+      margin-bottom: 0.25rem;
+    }
+    .dark .size-media { border-color: #1F2937; background-color: #0F172A; }
+    .size-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 2;
+    }
+    .size-media .blur-bg {
+      position: absolute;
+      inset: -10%;
+      width: 120%;
+      height: 120%;
+      object-fit: cover;
+      filter: blur(18px) saturate(1.1) brightness(0.95);
+      opacity: 0.85;
+      z-index: 1;
+    }
+
     .wa-float {
       position: fixed;
       right: 1rem;
@@ -397,9 +426,10 @@
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
         <div class="card-clean p-5 space-y-3 flex flex-col">
-            <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 mb-1">
-              <img src="/images/gapura/gapura-2-5m-c05.webp" alt="Gapura 2,5 meter bata expose dua pilar gerbang gang warga" class="w-full h-40 sm:h-44 object-cover object-center" loading="lazy" width="1447" height="1033"/>
-            </div>
+            <div class="size-media">
+            <img class="blur-bg" src="/images/gapura/gapura-2-5m.webp" alt="" aria-hidden="true" loading="lazy"/>
+            <img src="/images/gapura/gapura-2-5m.webp" alt="Gapura 2,5 meter bata expose gerbang gang warga" loading="lazy" width="1440" height="900"/>
+          </div>
           <span class="pill-badge bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 w-max">LEBAR BERSIH: 2,5 METER</span>
           <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">Gapura 2,5 Meter</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed flex-1">Cocok untuk gang warga atau gerbang masuk perumahan asri.</p>
@@ -415,9 +445,10 @@
 
         <div class="card-clean p-5 space-y-3 flex flex-col border-2 border-amber-400 relative">
           <span class="absolute -top-3 left-5 pill-badge bg-amber-500 text-navy">PALING SERING DIPILIH</span>
-            <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 mb-1">
-              <img src="/images/gapura/gapura-pilar-bata-ekspos.webp" alt="Gapura 3 meter bata expose dua pilar kanopi" class="w-full h-40 sm:h-44 object-cover object-top" loading="lazy" width="1086" height="1448"/>
-            </div>
+            <div class="size-media">
+            <img class="blur-bg" src="/images/gapura/gapura-3m.webp" alt="" aria-hidden="true" loading="lazy"/>
+            <img src="/images/gapura/gapura-3m.webp" alt="Gapura 3 meter bata expose dua pilar" loading="lazy" width="1440" height="900"/>
+          </div>
           <span class="pill-badge bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 w-max mt-2">LEBAR BERSIH: 3,0 METER</span>
           <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">Gapura 3 Meter</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed flex-1">Ukuran standar paling ideal, pas untuk jalan desa utama maupun gerbang komplek.</p>
@@ -432,9 +463,10 @@
         </div>
 
         <div class="card-clean p-5 space-y-3 flex flex-col">
-            <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 mb-1">
-              <img src="/images/gapura/gapura-jalan-masuk.webp" alt="Gapura 4 meter candi bentar jalan masuk" class="w-full h-40 sm:h-44 object-cover object-center" loading="lazy" width="1086" height="1448"/>
-            </div>
+            <div class="size-media">
+            <img class="blur-bg" src="/images/gapura/gapura-4m.webp" alt="" aria-hidden="true" loading="lazy"/>
+            <img src="/images/gapura/gapura-4m.webp" alt="Gapura 4 meter candi bentar jalan masuk" loading="lazy" width="1440" height="900"/>
+          </div>
           <span class="pill-badge bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 w-max">LEBAR BERSIH: 4,0 METER</span>
           <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">Gapura 4 Meter</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed flex-1">Tampilan lebih megah dan berwibawa, sangat cocok untuk gerbang utama balai desa.</p>
@@ -449,9 +481,10 @@
         </div>
 
         <div class="card-clean p-5 space-y-3 flex flex-col">
-            <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 mb-1">
-              <img src="/images/gapura/pilar-gapura-berdiri.webp" alt="Pilar gapura 5 meter bata merah berdiri" class="w-full h-40 sm:h-44 object-cover object-top" loading="lazy" width="851" height="1849"/>
-            </div>
+            <div class="size-media">
+            <img class="blur-bg" src="/images/gapura/gapura-5m.webp" alt="" aria-hidden="true" loading="lazy"/>
+            <img src="/images/gapura/gapura-5m.webp" alt="Gapura 5 meter bata merah dua pilar" loading="lazy" width="1440" height="900"/>
+          </div>
           <span class="pill-badge bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 w-max">LEBAR BERSIH: 5,0 METER</span>
           <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">Gapura 5 Meter</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed flex-1">Skala besar nan agung, menjadi ikon landmark kawasan atau batas antar desa resmi.</p>
@@ -466,9 +499,10 @@
         </div>
 
         <div class="card-dark p-5 space-y-3 flex flex-col sm:col-span-2 lg:col-span-2">
-            <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 mb-1">
-              <img src="/images/gapura/progres-pengerjaan-gapura.webp" alt="Gapura 6 meter skala besar dalam pengerjaan" class="w-full h-40 sm:h-44 object-cover object-center" loading="lazy" width="1500" height="844"/>
-            </div>
+            <div class="size-media">
+            <img class="blur-bg" src="/images/gapura/gapura-6m.webp" alt="" aria-hidden="true" loading="lazy"/>
+            <img src="/images/gapura/gapura-6m.webp" alt="Gapura 6 meter skala besar" loading="lazy" width="1440" height="900"/>
+          </div>
           <span class="pill-badge bg-white/15 text-amber-200 w-max">LEBAR BEBAS: 6,0 METER+ (CUSTOM)</span>
           <h3 class="text-lg font-extrabold">Gapura 6 Meter &mdash; Skala Besar</h3>
           <p class="text-xs text-slate-200 leading-relaxed flex-1">Dirancang khusus untuk lalu lintas kendaraan besar, bus pariwisata, atau gerbang terpadu perumahan besar. Struktur pondasi cakar ayam ekstra dalam dan penulangan bertingkat.</p>
@@ -618,7 +652,7 @@
 
         <div class="card-clean overflow-hidden group border border-slate-200 dark:border-slate-800">
           <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 dark:bg-slate-800">
-            <img src="/images/gapura/gapura-halaman-kantor.webp" alt="Gapura halaman kantor desa bata expose" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" width="1086" height="1448"/>
+            <img src="/images/gapura/gapura-halaman-kantor.webp" alt="Gapura halaman kantor desa bata expose" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" width="1440" height="900"/>
           </div>
           <div class="p-4 space-y-1">
             <div class="text-[11px] font-bold text-electric uppercase tracking-wider">Gapura Halaman Kantor</div>
