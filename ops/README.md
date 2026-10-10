@@ -66,3 +66,29 @@ sudo rclone lsf fkr2enc:VM-24-173-ubuntu/ --dirs-only   # generasi di R2
 ```
 
 Exit code 0 bukan bukti backup benar. Bukti = restore drill: tarik satu snapshot dari remote, bandingkan checksum.
+## fk-vps1-backup.sh (VPS1)
+
+Offsite backup VPS1 1x/hari (cron 20:30 UTC / 03:30 WIB).
+
+- Snapshot berisi: MySQL all-DB dump, PostgreSQL (`villa_prod`, `kaizenbyte`),
+  nginx vhost + SSL cert, panel db, hosts, root crontab, Hermes Agent state,
+  `labs-firkaizen` + `firkaizen-hub` + `/opt/explore-tawangmangu`.
+- **Tarball hanya berisi kode. Media upload user TIDAK ada di sini** — media villa
+  hidup di bucket R2 `villa` (lihat `fk-villa-mirror.sh`).
+- Retensi berbasis **jumlah file** (`KEEP_TARBALLS=5`, ±246 MB per file ±1,2 GB),
+  BUKAN `--min-age`. Alasan: `rclone delete --min-age` bersifat rekursif dan pernah
+  ikut menghapus `media-exploretawangmangu/` lalu upload ulang tiap run — bocor
+  ~542 MB/run dan tarball menumpuk sampai 1,9 GB.
+- Kredensial MySQL dibaca dari `/root/.fk-mysql.cnf` (mode 600), BUKAN inline di script.
+
+## fk-villa-mirror.sh (TENCENT)
+
+Mirror bucket R2 `villa` (`media.firkaizen.id`) ke GDrive `fkbackup:villa-mirror/`
+1x/hari (cron 21:45 UTC). Jalan di TENCENT karena remote `fkbackup` hanya
+terkonfigurasi di sana.
+
+- Media villa = 1.370 file / 880 MB dan **tidak ada di tarball VPS1**. Tanpa job ini
+  media hanya punya satu salinan (bucket R2 sendiri).
+- Verifikasi: `rclone check --size-only --one-way`.
+  Catatan: GDrive tidak mendukung hash sama sekali (`Hashes: []`), jadi `rclone md5sum`
+  di sana selalu gagal dan `rclone check` tanpa `--size-only` memakai ukuran saja.
