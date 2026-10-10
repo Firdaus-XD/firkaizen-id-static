@@ -1,0 +1,15 @@
+# Runtime / data sensitif — JANGAN commit
+data/
+*.sqlite
+*.sqlite3
+*.db
+
+# ACME challenge & file sementara
+.well-known/
+*.bak-*
+*.tmp
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
