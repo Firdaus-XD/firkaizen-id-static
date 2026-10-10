@@ -104,3 +104,20 @@ terkonfigurasi di sana.
 - `make-og.py` — render 4 OG image 1200x630 (`images/og/*.webp`) dari foto proyek.
   Pakai panel gelap di belakang teks supaya kontras tidak bergantung kecerahan foto
   (terukur 7,4–8,3x, lolos WCAG AAA).
+
+## Artikel firkaizen.id
+
+Sumber tiap artikel = satu file markdown di `content/artikel/<slug>.md`
+(frontmatter `---` lalu isi markdown). Generator:
+
+```bash
+python3 ops/make-artikel.py    # -> artikel/index.html + artikel/<slug>/index.html
+python3 ops/make-sitemap.py    # daftarkan artikel baru ke sitemap.xml
+```
+
+Menambah artikel = tambah satu `.md`, jalankan dua perintah itu, deploy folder `artikel/`
++ `sitemap.xml`. Tidak ada nav/footer/head yang disalin manual, jadi tidak bisa
+jadi tidak sinkron.
+
+Frontmatter yang dibaca: `slug`, `title` (<=60 char), `description` (<=160),
+`date`, `tag`, `og_image`.
