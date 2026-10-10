@@ -1,0 +1,145 @@
+#!/usr/bin/env bash
+#
+# Cadangkan DATA PELANGGAN — volume agent tiap tenant, bukan cuma host.
+#
+# Kenapa script ini ada: fk-backup mencadangkan dashboard, dump DB, dan /opt/*. Semua itu TIDAK
+# memuat data pelanggan. Data pelanggan hidup di volume docker (`hermes-data-<id>` -> /opt/data) di
+# host tempat containernya jalan — agent, riwayat percakapan, memori, SOUL.md, skill, kredensial
+# kanal. Kalau volume itu hilang, yang balik dari backup host cuma dashboard-nya: pelanggan terdaftar
+# dengan bot yang tidak punya apa-apa. Itulah bedanya "backup jalan" dan "pelanggan bisa dipulihkan".
+#
+# Kenapa jalan dari TENCENT, bukan dari host: cuma TENCENT yang punya rclone + remote terenkripsi.
+# Menaruh kredensial R2 di setiap host berarti menaruh kunci cadangan di mesin yang justru sedang
+# dicadangkan. Host hanya perlu kunci publik backup ini untuk SSH masuk.
+#
+# Kenapa `/opt/data` SAJA: sisanya bisa dibangun ulang. Terukur di container nyata — `bin` (38M) satu
+# binary, `cache`/`lazy-packages` turunan, `image_cache`/`audio_cache` sementara. Home + db + config
+# justru yang tidak bisa dibuat ulang, dan itu bagian kecilnya.
+#
+# Gagal pada satu pelanggan TIDAK membatalkan yang lain: satu container yang tidak mau di-tar tidak
+# boleh membuat sisa pelanggan tidak tercadangkan.
+set -euo pipefail
+
+WORK="${FK_TENANT_WORK:-/var/lib/fk-tenant-backup}"
+REMOTE="${FK_TENANT_REMOTE:-fkr2enc:tenants}"
+LOG="$WORK/backup.log"
+STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
+
+# host:port — sshd tiap host memakai port sendiri (jangan pernah diubah; lihat catatan DAHONO).
+HOSTS=(
+  "dahono:103.164.173.6:35522"
+  "digicore:104.207.77.206:22022"
+)
+
+SSH_OPTS=(
+  -o BatchMode=yes
+  -o StrictHostKeyChecking=accept-new
+  -o ConnectTimeout=15
+  -o ServerAliveInterval=15
+)
+
+mkdir -p "$WORK"
+log() { echo "$(date -u +%Y-%m-%dT%H:%M:%SZ)  $*" | tee -a "$LOG"; }
+
+: > "$WORK/state.json.part"
+echo "{" >> "$WORK/state.json.part"
+printf '  "startedAt": "%s",\n' "$STAMP" >> "$WORK/state.json.part"
+printf '  "tenants": [\n' >> "$WORK/state.json.part"
+
+pertama=1
+total=0
+gagal=0
+
+for entry in "${HOSTS[@]}"; do
+  nama="${entry%%:*}"
+  sisa="${entry#*:}"
+  ip="${sisa%%:*}"
+  port="${sisa#*:}"
+
+  # Daftar VOLUME tenant, bukan container. Volume tetap ada saat containernya mati, dan itulah
+  # keadaan yang paling perlu dipulihkan — backup yang cuma mencakup container yang hidup akan
+  # melewatkan pelanggan yang justru sedang bermasalah. Volume stack kita sendiri tidak ikut:
+  # polanya spesifik `hermes-data-*`.
+  VOLDIR=/var/lib/docker/volumes
+  if ! volumes=$(ssh "${SSH_OPTS[@]}" -p "$port" "root@$ip" \
+        "docker volume ls --format '{{.Name}}' | grep '^hermes-data-' || true" 2>>"$LOG"); then
+    log "GAGAL: tidak bisa SSH ke $nama ($ip:$port)"
+    gagal=$((gagal + 1))
+    continue
+  fi
+
+  if [ -z "$volumes" ]; then
+    log "SKIP: $nama tidak punya volume hermes-data-*"
+    continue
+  fi
+
+  for vol in $volumes; do
+    # `hermes-data-<id>` -> `<id>` supaya nama berkasnya sama dengan nama instance, bukan volume.
+    c="${vol#hermes-data-}"
+    arsip="$WORK/${nama}__${c}.tgz"
+    tujuan="$REMOTE/$nama/${c}.tgz"
+
+    # Streaming dari sisi HOST: tar membaca direktori volume langsung, jadi tidak perlu container
+    # hidup dan tidak perlu `docker exec`. Tidak singgah di disk host sebagai salinan penuh —
+    # arsipnya mengalir ke berkas di sini lalu diunggah.
+    #
+    # Kode keluar tar 1 = "berkas berubah saat dibaca", dan itu NORMAL: volume milik agent yang
+    # hidup (state.db-wal, log, sock). Kode 1 berarti arsipnya dibuat dengan peringatan, bukan gagal
+    # — menolaknya membuat backup pelanggan tidak pernah bisa jalan. Yang menentukan sah atau
+    # tidaknya arsip adalah pemeriksaan `tar tzf` di bawah.
+    if ! ssh "${SSH_OPTS[@]}" -p "$port" "root@$ip" \
+          "tar czf - --warning=no-file-changed -C '$VOLDIR/$vol/_data' \
+             --exclude=./bin --exclude=./cache --exclude=./logs --exclude=./home/.cache \
+             --exclude=./image_cache --exclude=./audio_cache \
+             --exclude=./models_dev_cache.json --exclude=./models_dev_cache.etag \
+             --exclude=*.sock --exclude=*.lock --exclude=*.pid . ; test \$? -le 1" > "$arsip" 2>>"$LOG"; then
+      log "GAGAL: tar $nama/$c"
+      rm -f "$arsip"
+      gagal=$((gagal + 1))
+      continue
+    fi
+
+    # Kosong = tar gagal separuh jalan tapi ssh keluar sukses. Mempercayai kode keluar saja akan
+    # mengunggah arsip kosong yang terlihat seperti backup sah.
+    ukuran=$(stat -c %s "$arsip" 2>/dev/null || echo 0)
+    if [ "$ukuran" -lt 1024 ] || ! tar tzf "$arsip" >/dev/null 2>&1; then
+      log "GAGAL: arsip $nama/$c tidak sah (${ukuran}B)"
+      rm -f "$arsip"
+      gagal=$((gagal + 1))
+      continue
+    fi
+
+    if ! rclone copyto "$arsip" "$tujuan" >>"$LOG" 2>&1; then
+      log "GAGAL: unggah $nama/$c"
+      rm -f "$arsip"
+      gagal=$((gagal + 1))
+      continue
+    fi
+
+    log "ok $nama/$c ($(numfmt --to=iec "$ukuran")) -> $tujuan"
+    rm -f "$arsip"
+    total=$((total + 1))
+
+    if [ "$pertama" -eq 1 ]; then pertama=0; else printf ',\n' >> "$WORK/state.json.part"; fi
+    printf '    {"host": "%s", "container": "%s", "size": %s}' "$nama" "$c" "$ukuran" >> "$WORK/state.json.part"
+
+    # ponytail: satu arsip TERBARU per host/pelanggan, sengaja. Nama tujuan tetap
+    # `<customerId>.tgz`, jadi `rclone copyto` menimpa versi sebelumnya. Sebelumnya skrip mengaku
+    # menyimpan 7 versi lewat FK_TENANT_KEEP, padahal tidak ada stempel waktu di nama dan blok prune
+    # tidak pernah punya lebih dari satu berkas untuk dipangkas. Retensi palsu lebih berbahaya dari
+    # satu versi yang jujur: operator mengira bisa kembali ke kemarin saat sebenarnya tidak bisa.
+    # Tambah versi hanya bersama perubahan format nama + pemilih snapshot restore yang benar.
+
+  done
+done
+
+printf '\n  ],\n' >> "$WORK/state.json.part"
+printf '  "ok": %s,\n  "gagal": %s\n}\n' "$total" "$gagal" >> "$WORK/state.json.part"
+mv "$WORK/state.json.part" "$WORK/state.json"
+
+log "selesai: $total pelanggan tercadangkan, $gagal gagal"
+
+# Semua host tetap diproses saat satu tenant gagal, tetapi cron WAJIB menerima status gagal.
+# Keluar 0 pada kegagalan parsial membuat malam dengan pelanggan tak tercadangkan terlihat sehat.
+[ "$total" -gt 0 ] && [ "$gagal" -eq 0 ] || exit 1
+exit 0

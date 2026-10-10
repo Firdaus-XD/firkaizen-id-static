@@ -1,0 +1,391 @@
+#!/usr/bin/env bash
+#
+# FirKaizen server backup — one script for any of the FirKaizen hosts.
+#
+# Everything is DISCOVERED, not hardcoded: which databases exist, which app
+# directories exist, which PM2 processes run. A hardcoded list silently backs up
+# nothing on the host where a path is absent, which is the failure mode that
+# looks like success.
+#
+# What is included, and why:
+#   * DB dumps via pg_dump/mysqldump — the only data a repo cannot rebuild.
+#     Dumped through the client tools so the output is a restorable SQL file,
+#     not live data files that would be inconsistent.
+#   * App source + config — /opt/* minus node_modules/build output (~832 MB
+#     instead of ~3 GB), plus .env files, nginx vhosts, certs, PM2 dumps.
+#     .env files are gitignored, so a clone does not bring them back.
+#   * Web roots and the MariaDB datadir (belt-and-braces next to the dump).
+#   * Docker image list as a TEXT manifest — images are re-pulled, not shipped
+#     (public bytes, ~1.1 GB, no recovery value in re-uploading).
+#
+# Excluded on purpose: node_modules, .next/.output/.nuxt, docker images, OS
+# packages. Multiply the transfer without helping recovery.
+#
+# Exit codes: 0 ok, 1 a dump/archive failed, 2 upload failed.
+set -euo pipefail
+
+STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
+WORK="${FK_BACKUP_WORK:-/var/lib/fk-backup}"
+SNAP="${WORK}/snap-${STAMP}"
+KEEP_LOCAL="${FK_KEEP_LOCAL:-3}"
+KEEP_REMOTE="${FK_KEEP_REMOTE:-14}"
+# 0 = simpan semua tanpa batas (arsip). Dipakai untuk remote berkapasitas besar.
+KEEP_REMOTE_ALT="${FK_KEEP_REMOTE_ALT:-0}"
+REMOTE="${FK_BACKUP_REMOTE:-fkr2enc:}"
+# Remote kedua (cadangan). Sengaja penyedia/akun BEDA dari REMOTE supaya satu
+# kegagalan (kredensial dicabut, tagihan, region mati) tidak menghabisi keduanya.
+# Kosongkan untuk mematikan.
+REMOTE_ALT="${FK_BACKUP_REMOTE_ALT:-fkbackup:}"
+LOG="${WORK}/backup.log"
+STATE="${WORK}/state.json"
+# Trigger label comes from argv, not the environment: the dashboard invokes this
+# through `sudo -n`, and sudo resets the environment, so FK_BACKUP_TRIGGER set by
+# the caller never arrived and every admin-triggered run was recorded as "cron".
+TRIGGER="${FK_BACKUP_TRIGGER:-cron}"
+for fk_arg in "$@"; do
+    case "$fk_arg" in
+        --trigger=*) TRIGGER="${fk_arg#--trigger=}" ;;
+    esac
+done
+
+EXIT_CODE=0
+PHASE="init"
+FAILED_AT=""
+
+log() { printf '%s  %s\n' "$(date -u +%FT%TZ)" "$*" | tee -a "$LOG"; }
+warn() { log "WARN: $*"; }
+
+# Dashboard-readable status. Runs on EVERY exit path via the trap, including a
+# die() half-way through, so the UI never shows a stale "running". A failure to
+# write state is not fatal: a backup that succeeded must not be reported failed
+# because a status file could not be written.
+write_state() {
+    local status="$1" size="" remote_status="local-only"
+    [ -d "$SNAP" ] && size="$(du -s -B1 "$SNAP" 2>/dev/null | cut -f1)"
+    rclone listremotes 2>/dev/null | grep -q "^${REMOTE%%:*}:" && remote_status="configured"
+    SNAP="$SNAP" SIZE="$size" STATUS="$status" PHASE="$PHASE" CODE="$EXIT_CODE" \
+    REMOTE_STATUS="$remote_status" REMOTE="$REMOTE" WORK="$WORK" LOG="$LOG" \
+    REMOTE_BYTES="${REMOTE_BYTES:-}" REMOTE_SNAPS="${REMOTE_SNAPS:-}" \
+    REMOTE_ALT="${REMOTE_ALT:-}" REMOTE_ALT_BYTES="${REMOTE_ALT_BYTES:-}" \
+    REMOTE_ALT_SNAPS="${REMOTE_ALT_SNAPS:-}" \
+    REMOTE_QUOTA="${REMOTE_QUOTA:-}" REMOTE_ALT_QUOTA="${REMOTE_ALT_QUOTA:-}" \
+    STAMP="$STAMP" TRIGGER="$TRIGGER" FAILED_AT="$FAILED_AT" \
+    python3 - > "${STATE}.tmp" 2>/dev/null <<'PY' || true
+import json, os, glob, datetime
+
+snaps = []
+for d in sorted(glob.glob(os.path.join(os.environ['WORK'], 'snap-*')), reverse=True)[:10]:
+    total = 0
+    for root, _dirs, files in os.walk(d):
+        for f in files:
+            try:
+                total += os.path.getsize(os.path.join(root, f))
+            except OSError:
+                pass
+    snaps.append({
+        'name': os.path.basename(d),
+        'createdAt': datetime.datetime.utcfromtimestamp(os.path.getmtime(d)).isoformat() + 'Z',
+        'sizeBytes': total,
+    })
+
+print(json.dumps({
+    'status': os.environ['STATUS'],
+    'phase': os.environ['PHASE'],
+    'exitCode': int(os.environ['CODE']),
+    'trigger': os.environ['TRIGGER'],
+    'startedAt': os.environ['STAMP'],
+    'finishedAt': datetime.datetime.utcnow().isoformat() + 'Z',
+    'sizeBytes': int(os.environ['SIZE']) if os.environ['SIZE'] else None,
+    'remote': os.environ['REMOTE'],
+    'remoteStatus': os.environ['REMOTE_STATUS'],
+    'failedAt': os.environ['FAILED_AT'] or None,
+    'workDir': os.environ['WORK'],
+    'logPath': os.environ['LOG'],
+    'snapshots': snaps,
+    'remoteBytes': int(os.environ['REMOTE_BYTES']) if os.environ.get('REMOTE_BYTES') else None,
+    'remoteSnapshots': int(os.environ['REMOTE_SNAPS']) if os.environ.get('REMOTE_SNAPS') else None,
+    'remoteAlt': os.environ.get('REMOTE_ALT') or None,
+    'remoteAltBytes': int(os.environ['REMOTE_ALT_BYTES']) if os.environ.get('REMOTE_ALT_BYTES') else None,
+    'remoteAltSnapshots': int(os.environ['REMOTE_ALT_SNAPS']) if os.environ.get('REMOTE_ALT_SNAPS') else None,
+    'remoteAltStatus': 'configured' if (os.environ.get('REMOTE_ALT') and os.environ.get('REMOTE_ALT_BYTES')) else None,
+    'remoteQuotaBytes': int(os.environ['REMOTE_QUOTA']) if os.environ.get('REMOTE_QUOTA') else None,
+    'remoteAltQuotaBytes': int(os.environ['REMOTE_ALT_QUOTA']) if os.environ.get('REMOTE_ALT_QUOTA') else None,
+}, indent=2))
+PY
+    # Move into place last so a dashboard read never catches a partial file.
+    [ -s "${STATE}.tmp" ] && mv "${STATE}.tmp" "$STATE"
+    return 0
+}
+
+on_exit() {
+    local code=$?
+    # die() already recorded a specific code; a non-zero exit that did NOT come
+    # through die() (SIGPIPE, a killed process, a bare `set -e` trip) still has to
+    # land in the state file. Without this the file read "failed" next to
+    # "exitCode: 0", which is a contradiction the admin cannot act on.
+    if [ "$code" != 0 ] && [ "$EXIT_CODE" = 0 ]; then
+        EXIT_CODE="$code"
+        FAILED_AT="${FAILED_AT:-script exited with code ${code} during phase '${PHASE}'}"
+    fi
+    [ "$code" = 0 ] && write_state "success" || write_state "failed"
+}
+die() { EXIT_CODE="${2:-1}"; FAILED_AT="$*"; log "FATAL: $*"; exit "$EXIT_CODE"; }
+trap on_exit EXIT
+
+[ "$(id -u)" = 0 ] || die "must run as root"
+mkdir -p "$WORK"
+mkdir -p "$SNAP"/{databases,config,opt,www}
+
+# ------------------------------------------------------- discover what exists
+DOCKER_APP_DIRS=()
+for d in /opt/hermes-dashboard /opt/firkaizen-solutions /opt/9router /opt/play-firkaizen /opt/firkaizen-ai; do
+    [ -d "$d" ] && DOCKER_APP_DIRS+=("${d#/}")
+done
+[ ${#DOCKER_APP_DIRS[@]} -gt 0 ] || die "no /opt app directories found — refusing to write an empty snapshot"
+
+# ------------------------------------------------------------------ 1. postgres
+PHASE="postgres"
+# Dumped as the `postgres` superuser, not with an application's credentials.
+# Each database here has a DIFFERENT owner (firkaizen_solutions_prod -> fsolutions,
+# hermes_dashboard -> hermes_dash), so scraping one app's .env reaches only one of
+# them and the run dies half-way through — which is exactly what happened the first
+# time this script ran. The superuser reads all of them and no password is stored.
+if command -v pg_dump >/dev/null 2>&1; then
+    if sudo -u postgres psql -tAc 'select 1' >/dev/null 2>&1; then
+        PG_OK=1
+        log "postgres: dumping as superuser"
+        DBS="$(sudo -u postgres psql -tAc "select datname from pg_database where not datistemplate and datname <> 'postgres';" 2>/dev/null)"
+        [ -n "$DBS" ] || warn "no user databases found in postgres"
+        while read -r db; do
+            [ -z "$db" ] && continue
+            if sudo -u postgres pg_dump -d "$db" --no-owner --no-acl -Fc \
+                 > "$SNAP/databases/${db}.dump" 2>>"$LOG"; then
+                log "  ok ${db} ($(du -h "$SNAP/databases/${db}.dump" | cut -f1))"
+            else
+                die "pg_dump failed for ${db}"
+            fi
+        done <<< "$DBS"
+    else
+        warn "cannot reach postgres as superuser — trying peer auth failed, skipping"
+    fi
+else
+    warn "pg_dump not installed — skipping postgres"
+fi
+
+# ------------------------------------------------------------------- 2. mariadb
+PHASE="mariadb"
+if command -v mysqldump >/dev/null 2>&1; then
+    MYARG=()
+    [ -f /root/.my.cnf ] && MYARG=(--defaults-extra-file=/root/.my.cnf)
+    if mysql "${MYARG[@]}" -e 'select 1;' >/dev/null 2>&1; then
+        log "mariadb: dumping"
+        # `|| true` di luar subshell: kalau tidak ada DB user (grep tidak menemukan
+        # apa pun -> exit 1), pipefail + set -e membatalkan SELURUH backup diam-diam.
+        DBS="$(mysql "${MYARG[@]}" -N -B -e 'show databases;' 2>/dev/null \
+               | grep -vE '^(information_schema|performance_schema|mysql|sys)$' || true)"
+        [ -n "$DBS" ] || warn "no user databases found in mariadb"
+        while read -r db; do
+            [ -z "$db" ] && continue
+            if mysqldump "${MYARG[@]}" --single-transaction --quick --routines --triggers "$db" 2>>"$LOG" \
+                 | gzip -1 > "$SNAP/databases/${db}.sql.gz"; then
+                log "  ok ${db} ($(du -h "$SNAP/databases/${db}.sql.gz" | cut -f1))"
+            else
+                die "mysqldump failed for ${db}"
+            fi
+        done <<< "$DBS"
+    else
+        warn "mariadb not reachable (no working credentials) — skipping"
+    fi
+else
+    warn "mysqldump not installed — skipping mariadb"
+fi
+
+# -------------------------------------------------------------------- 3. config
+PHASE="config"
+log "config: collecting secrets and host config"
+CONFIG_PATHS=()
+# Sertifikat TLS, konfigurasi nginx, dan .env aplikasi ikut dicadangkan.
+#
+# rclone.conf SENGAJA TIDAK IKUT. Isinya password crypt yang membuka arsip di R2 dan Google Drive —
+# kalau ikut tercadangkan, kuncinya cuma ada di dalam kotak yang dia buka:
+#
+#   TENCENT terbakar -> arsip di R2 aman -> password crypt hilang bersama server
+#   -> arsipnya jadi bit yang tidak bisa dibuka. Backup yang tidak bisa dipulihkan bukan backup.
+#
+# Kunci itu hidup di KIT PEMULIHAN yang disimpan di luar server (password manager / cetakan fisik).
+# Rincian: deploy/RECOVERY.md.
+for p in /opt/hermes-dashboard/.env /opt/firkaizen-solutions/.env \
+         /opt/9router/docker-compose.yaml /etc/letsencrypt \
+         /www/server/panel/vhost/nginx /etc/msmtprc \
+         /root/.my.cnf /root/.pm2/dump.pm2 /home/ubuntu/.pm2/dump.pm2; do
+    [ -e "$p" ] && CONFIG_PATHS+=("$p")
+done
+tar czf "$SNAP/config/config.tar.gz" --ignore-failed-read "${CONFIG_PATHS[@]}" 2>>"$LOG" \
+    || warn "some config paths were unreadable"
+chmod 600 "$SNAP/config/config.tar.gz"
+
+docker images --format '{{.Repository}}:{{.Tag}}' > "$SNAP/config/docker-images.txt" 2>/dev/null || true
+pm2 list > "$SNAP/config/pm2-list.txt" 2>/dev/null || true
+pm2 jlist > "$SNAP/config/pm2-raw.json" 2>/dev/null || true
+crontab -l > "$SNAP/config/root-crontab.txt" 2>/dev/null || true
+sudo -u ubuntu crontab -l > "$SNAP/config/ubuntu-crontab.txt" 2>/dev/null || true
+dpkg --get-selections > "$SNAP/config/packages.txt" 2>/dev/null || true
+nginx -T > "$SNAP/config/nginx-full.conf" 2>/dev/null || true
+
+# ---------------------------------------------------------------- 4. app source
+PHASE="source"
+log "source: archiving ${DOCKER_APP_DIRS[*]} (node_modules + build output excluded)"
+tar czf "$SNAP/opt/opt.tar.gz" \
+    --exclude='node_modules' --exclude='.next' --exclude='.output' \
+    --exclude='.nuxt' --exclude='*.log' --exclude='data.bak-*' \
+    --ignore-failed-read \
+    -C / "${DOCKER_APP_DIRS[@]}" 2>>"$LOG" || warn "some /opt paths were unreadable"
+
+# ----------------------------------------------------------------- 5. web roots
+PHASE="web"
+log "web: archiving web roots"
+WWW_PATHS=()
+for p in /www/wwwroot /www/server/data /var/www; do
+    [ -d "$p" ] && WWW_PATHS+=("${p#/}")
+done
+[ ${#WWW_PATHS[@]} -gt 0 ] && tar czf "$SNAP/www/www.tar.gz" --ignore-failed-read \
+    -C / "${WWW_PATHS[@]}" 2>>"$LOG" || warn "no www paths found"
+
+# ------------------------------------------------------------------ 6. restore
+PHASE="manifest"
+HOSTNAME_FQDN="$(hostname -f 2>/dev/null)"
+[[ "$HOSTNAME_FQDN" == *localhost* || -z "$HOSTNAME_FQDN" ]] && HOSTNAME_FQDN="$(hostname)"
+cat > "$SNAP/RESTORE.md" <<EOF
+# FirKaizen restore — snapshot ${STAMP}
+
+Taken from: ${HOSTNAME_FQDN}
+Contents: databases/, config/, opt/, www/
+
+## 1. Base system
+    apt update
+    cat config/packages.txt | dpkg --set-selections && apt-get dselect-upgrade
+Then reinstall the pieces dpkg cannot express: aaPanel, Node (NodeSource),
+PM2, PostgreSQL, MariaDB, Docker.
+
+## 2. Files and secrets
+    tar xzf opt/opt.tar.gz -C /
+    tar xzf config/config.tar.gz -C /
+    [ -f www/www.tar.gz ] && tar xzf www/www.tar.gz -C /
+config.tar.gz holds the .env files, nginx vhosts, Let's Encrypt certs and
+rclone config — restore it BEFORE npm install, the apps need their .env.
+
+## 3. Databases
+PostgreSQL dumps are custom-format (-Fc), so they need pg_restore:
+    createdb <db> && pg_restore -d <db> --no-owner --no-acl databases/<db>.dump
+MariaDB dumps are plain SQL:
+    zcat databases/<db>.sql.gz | mysql <db>
+
+## 4. Applications
+    cd /opt/firkaizen-solutions && npm install && npm run build
+    pm2 resurrect          # from config/dump.pm2 if it was present
+If resurrect is not available, read config/pm2-list.txt for the exact args.
+Two are load-bearing and easy to lose:
+    firkaizen-solutions  needs --node-args=--env-file=/opt/firkaizen-solutions/.env
+    hermes-dashboard     needs -p 3001
+
+## 5. Docker
+    xargs -n1 docker pull < config/docker-images.txt
+
+## 6. DNS
+Repoint the A records. Cloudflare proxies the origin and the Let's Encrypt
+certs came across in config/, so no certificate work is needed.
+EOF
+
+# ------------------------------------------------------------------- 7. upload
+PHASE="upload"
+du -sh "$SNAP" > "$SNAP/size.txt"
+log "snapshot ready: $(cat "$SNAP/size.txt" | cut -f1) at ${SNAP}"
+
+UPLOAD_TARGETS=("$REMOTE")
+if [ -n "$REMOTE_ALT" ]; then UPLOAD_TARGETS+=("$REMOTE_ALT"); fi
+UPLOAD_OK_PRIMARY=0
+for T in "${UPLOAD_TARGETS[@]}"; do
+    if rclone listremotes 2>/dev/null | grep -q "^${T%%:*}:"; then
+        log "uploading to ${T}"
+        if rclone copy "$SNAP" "${T}${HOSTNAME_FQDN}/${STAMP}" \
+             --transfers 4 --checkers 8 --retries 3 --log-level INFO --log-file "$LOG"; then
+            log "upload ok -> ${T}"
+            if [ "$T" = "$REMOTE" ]; then UPLOAD_OK_PRIMARY=1; fi
+        else
+            if [ "$T" = "$REMOTE" ]; then
+                die "upload FAILED ke remote utama ${T} — snapshot lokal disimpan di ${SNAP}" 2
+            else
+                warn "upload gagal ke remote cadangan ${T} — backup utama tetap sukses"
+            fi
+        fi
+    else
+        warn "remote '${T%%:}:' belum dikonfigurasi — dilewati"
+    fi
+done
+[ "$UPLOAD_OK_PRIMARY" = 0 ] && warn "remote utama tidak dikonfigurasi — snapshot hanya LOKAL"
+true
+
+# -------------------------------------------------------------- 8. prune local
+PHASE="prune"
+mapfile -t old < <(ls -1dt "${WORK}"/snap-* 2>/dev/null | tail -n +$((KEEP_LOCAL + 1)))
+for d in "${old[@]:-}"; do
+    [ -n "$d" ] && rm -rf "$d" && log "pruned local $(basename "$d")"
+done
+
+# ------------------------------------------------------- 9. prune remote (offsite)
+# keep=0 berarti arsip: tidak ada yang dihapus.
+prune_remote() {
+    local r="$1" keep="$2" n
+    rclone listremotes 2>/dev/null | grep -q "^${r%%:*}:" || return 0
+    local -a snaps
+    mapfile -t snaps < <(rclone lsf "${r}${HOSTNAME_FQDN}/" --dirs-only 2>/dev/null | sed 's:/$::' | sort -r)
+    n=${#snaps[@]}
+    if (( keep <= 0 )); then
+        log "retensi ${r} = arsip, ${n} snapshot disimpan"
+        return 0
+    fi
+    if (( n > keep )); then
+        for d in "${snaps[@]:keep}"; do
+            rclone purge "${r}${HOSTNAME_FQDN}/${d}" 2>/dev/null \
+                && log "pruned ${r}${d}" || warn "gagal prune ${r}${d}"
+        done
+    fi
+}
+prune_remote "$REMOTE" "$KEEP_REMOTE"
+if [ -n "$REMOTE_ALT" ]; then prune_remote "$REMOTE_ALT" "$KEEP_REMOTE_ALT"; fi
+true
+
+# Ukur isi remote supaya dashboard bisa menampilkan kapasitas terpakai offsite.
+REMOTE_BYTES=""
+REMOTE_SNAPS=""
+if rclone listremotes 2>/dev/null | grep -q "^${REMOTE%%:*}:"; then
+    REMOTE_SNAPS=$(rclone lsf "${REMOTE}${HOSTNAME_FQDN}/" --dirs-only 2>/dev/null | grep -c . || echo 0)
+    REMOTE_BYTES=$(rclone size "${REMOTE}${HOSTNAME_FQDN}/" --json 2>/dev/null \
+        | python3 -c "import json,sys; print(json.load(sys.stdin).get('bytes',''))" 2>/dev/null || echo "")
+fi
+REMOTE_ALT_BYTES=""
+REMOTE_ALT_SNAPS=""
+if [ -n "$REMOTE_ALT" ] && rclone listremotes 2>/dev/null | grep -q "^${REMOTE_ALT%%:*}:"; then
+    REMOTE_ALT_SNAPS=$(rclone lsf "${REMOTE_ALT}${HOSTNAME_FQDN}/" --dirs-only 2>/dev/null | grep -c . || echo 0)
+    REMOTE_ALT_BYTES=$(rclone size "${REMOTE_ALT}${HOSTNAME_FQDN}/" --json 2>/dev/null \
+        | python3 -c "import json,sys; print(json.load(sys.stdin).get('bytes',''))" 2>/dev/null || echo "")
+fi
+# Kuota (kalau dilaporkan penyedia). crypt tidak mendukung 'about', jadi
+# ditanyakan ke remote dasar dari konfigurasi crypt-nya.
+quota_of() {
+    local r="$1" parent
+    parent=$(rclone config show "${r%%:}" 2>/dev/null | sed -n 's/^remote = \([^:]*\):.*/\1/p' | head -1)
+    [ -z "$parent" ] && parent="${r%%:}"
+    rclone about "${parent}:" --json 2>/dev/null \
+        | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('total',''))" 2>/dev/null || true
+}
+REMOTE_QUOTA=""
+REMOTE_ALT_QUOTA=""
+if rclone listremotes 2>/dev/null | grep -q "^${REMOTE%%:*}:"; then REMOTE_QUOTA=$(quota_of "$REMOTE"); fi
+if [ -n "$REMOTE_ALT" ] && rclone listremotes 2>/dev/null | grep -q "^${REMOTE_ALT%%:*}:"; then
+    REMOTE_ALT_QUOTA=$(quota_of "$REMOTE_ALT")
+fi
+export REMOTE_BYTES REMOTE_SNAPS REMOTE_ALT_BYTES REMOTE_ALT_SNAPS REMOTE_QUOTA REMOTE_ALT_QUOTA
+
+PHASE="done"
+log "done"

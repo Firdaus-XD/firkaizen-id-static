@@ -1,0 +1,13 @@
+# Cadangan DATA PELANGGAN (volume agent) tiap hari 21:00 UTC = 04:00 WIB.
+#
+# Satu jam setelah fk-backup (20:00 UTC) supaya keduanya tidak berebut bandwidth upload — dan
+# urutannya disengaja: kalau mesin ini bermasalah, cadangan host selesai lebih dulu.
+#
+# Kenapa terpisah dari fk-backup: fk-backup mencadangkan dashboard + dump DB, TIDAK memuat volume
+# pelanggan. Dua script, dua kegagalan yang bisa dibedakan.
+#
+# Dijalankan sebagai ubuntu (bukan root) — sama seperti job lain; sudoers hanya mengizinkan script
+# INI, tanpa wildcard.
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 21 * * * ubuntu sudo /usr/local/sbin/fk-tenant-backup >> /home/ubuntu/fk-tenant-backup.log 2>&1

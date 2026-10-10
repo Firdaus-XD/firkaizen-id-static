@@ -1,0 +1,5 @@
+# FirKaizen host backup. 20:00 UTC = 03:00 WIB — the quiet window, and it runs
+# before the morning traffic so a failed run is visible before customers are.
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 20 * * * root /usr/local/sbin/fk-backup >> /var/lib/fk-backup/cron.log 2>&1

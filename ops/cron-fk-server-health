@@ -1,0 +1,5 @@
+# Cek kesehatan server tiap jam + laporan Telegram.
+# 0 menit tiap jam; 5 menit setelah backup (20:00 UTC) bukan jam ini, jadi tidak bertumpuk.
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 * * * * root /usr/local/sbin/fk-server-health >> /var/log/fk-server-health.log 2>&1

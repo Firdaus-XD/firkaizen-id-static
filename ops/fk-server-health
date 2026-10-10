@@ -1,0 +1,18 @@
+#!/bin/bash
+# Cek kesehatan server tiap jam + laporan ke Telegram.
+#
+# Kenapa per jam, padahal kodenya dirancang utk ~2 menit:
+#   * deteksi mati: 1 jam paling lambat (diminta operator)
+#   * laporan: 1 pesan per jam, bukan 30 -> tidak jadi spam grup
+#   * ambang gagal 3x berarti ~3 jam sebelum dianggap UNREACHABLE
+# Terlalu lambat? ubah jadwal jadi "*/15 * * * *" dan turunkan
+# SERVER_HEALTH_FAILURE_THRESHOLD agar tidak menunggu 3 jam.
+set -u
+cd /opt/hermes-dashboard || exit 1
+CRON_SECRET="$(grep -m1 '^CRON_SECRET=' .env | cut -d= -f2- | tr -d '"')"
+[ -z "$CRON_SECRET" ] && { echo "CRON_SECRET tidak ada di .env"; exit 1; }
+
+curl -sS -m 120 --retry 2 --retry-delay 5 \
+  -H "x-cron-secret: $CRON_SECRET" \
+  "http://127.0.0.1:3001/api/cron/server-health"
+echo
