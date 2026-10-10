@@ -92,3 +92,15 @@ terkonfigurasi di sana.
 - Verifikasi: `rclone check --size-only --one-way`.
   Catatan: GDrive tidak mendukung hash sama sekali (`Hashes: []`), jadi `rclone md5sum`
   di sana selalu gagal dan `rclone check` tanpa `--size-only` memakai ukuran saja.
+
+## SEO firkaizen.id
+
+- `seo-fix.py` — patch title/desc/OG/Twitter/JSON-LD/canonical/robots ke semua halaman.
+  Idempoten: blok ditandai `<!-- FK-SEO:START -->`…`<!-- FK-SEO:END -->` dan diganti,
+  bukan ditumpuk. Jalankan ulang setelah mengubah teks halaman.
+- `make-sitemap.py` — generate `sitemap.xml` dari folder yang punya `index.html`.
+  Otomatis mengecualikan halaman `noindex` + folder privat (`admin/`, `api/`, `links/`).
+  Jalankan ulang setiap menambah halaman.
+- `make-og.py` — render 4 OG image 1200x630 (`images/og/*.webp`) dari foto proyek.
+  Pakai panel gelap di belakang teks supaya kontras tidak bergantung kecerahan foto
+  (terukur 7,4–8,3x, lolos WCAG AAA).

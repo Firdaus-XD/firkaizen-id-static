@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /link/
+
+Sitemap: https://firkaizen.id/sitemap.xml
