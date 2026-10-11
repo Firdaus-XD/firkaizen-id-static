@@ -63,7 +63,7 @@ Yang **tidak** termasuk dan biasanya disiapkan pemilik: tanah urug kalau lokasi 
 
 **1. Konsultasi dan hitung awal.** Kirim lokasi dan perkiraan ukuran. Kami beri kisaran biaya dan pilihan desain.
 
-**2. Survei lokasi.** Gratis untuk area Solo Raya dan sekitarnya. Yang diperiksa: daya dukung tanah, akses truk material, posisi saluran air, dan batas tanah.
+**2. Survei lokasi.** Yang diperiksa: daya dukung tanah, akses truk material, posisi saluran air, dan batas tanah.
 
 **3. Desain dan penawaran final.** Setelah survei, angka yang keluar sudah final — bukan lagi kisaran. Penawaran mencantumkan ukuran, spesifikasi material, dan jadwal.
 
