@@ -15,12 +15,12 @@ Karena itu, artikel ini merinci harga mulai dari tiap ukuran, apa yang membedaka
 
 Lebar bersih adalah jarak antara dua pilar di bagian dalam gapura. Ukuran inilah yang menentukan apa yang bisa lewat.
 
-| Lebar bersih | Biaya all-in mulai | Umumnya dipilih untuk |
-|---|---|---|
-| 2,5 meter | Rp 33 juta | gang warga, gerbang perumahan |
-| 3,0 meter | Rp 38 juta | ukuran yang paling sering dipilih |
-| 4,0 meter | Rp 65 juta | gerbang balai desa |
-| 5,0 meter | Rp 80 juta | landmark kawasan, batas antar desa |
+| Lebar bersih | Biaya all-in mulai | Umumnya dipilih untuk | Lihat contoh |
+|---|---|---|---|
+| 2,5 meter | Rp 33 juta | gang warga, gerbang perumahan | | [Halaman gapura](/gapura/) |
+| 3,0 meter | Rp 38 juta | ukuran yang paling sering dipilih | | [Halaman gapura](/gapura/) |
+| 4,0 meter | Rp 65 juta | gerbang balai desa | | [Halaman gapura](/gapura/) |
+| 5,0 meter | Rp 80 juta | landmark kawasan, batas antar desa | | [Halaman gapura](/gapura/) |
 
 Angka di tabel adalah harga mulai dari dengan sistem all-in. Harga akhir tiap proyek ditentukan setelah survei lokasi, sehingga angka ini sebaiknya dibaca sebagai titik awal perhitungan, bukan penawaran final.
 
