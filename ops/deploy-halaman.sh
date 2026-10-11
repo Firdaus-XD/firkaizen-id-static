@@ -32,8 +32,23 @@ echo
 echo "=== 1. kirim ==="
 rm -rf /tmp/fkhsend
 mkdir -p /tmp/fkhsend
-for d in "${DIRS[@]}"; do cp -r "$d" /tmp/fkhsend/; done
+for d in "${DIRS[@]}"; do
+  # 'cp -r images/gapura /tmp/fkhsend/' membuang level 'images/', sehingga
+  # kiriman mendarat di /tmp/fkhsend/gapura sementara server mengharapkan
+  # /tmp/fkhsend/images/gapura -> cp gagal, pemasangan batal diam-diam.
+  ibu=$(dirname "$d")
+  [ "$ibu" = "." ] || mkdir -p "/tmp/fkhsend/$ibu"
+  cp -r "$d" "/tmp/fkhsend/$ibu/"
+done
+jumlah=$(find /tmp/fkhsend -type f | wc -l)
+echo "  berkas terkumpul: $jumlah"
+# sisa kiriman lama di server bikin scp MENGGABUNG, bukan menimpa -> hitungan
+# jadi tidak cocok dan berkas basi ikut terpasang.
+$SSH $HOST "rm -rf /tmp/fkhsend" >/dev/null 2>&1 || true
 $SCP -r /tmp/fkhsend $HOST:/tmp/ >/dev/null
+kirim=$($SSH $HOST "find /tmp/fkhsend -type f | wc -l" 2>/dev/null)
+echo "  berkas di server: $kirim"
+[ "$jumlah" = "$kirim" ] || { echo "  KIRIMAN TIDAK UTUH -- batal"; exit 1; }
 
 echo
 echo "=== 2. pasang (backup dulu) ==="
@@ -43,25 +58,32 @@ echo "#!/bin/bash" >> "$PASANG"
 echo "set -e" >> "$PASANG"
 STAMP=$(date +%Y%m%d-%H%M%S)
 for d in "${DIRS[@]}"; do
+  # $W/.images/ belum ada -> cp cadangan gagal -> set -e membatalkan seluruh
+  # pemasangan tanpa pesan. Sediakan dulu induk direktori cadangannya.
+  ibu=$(dirname "$d"); [ "$ibu" = "." ] && ibu=""
+  echo "mkdir -p $W/.$ibu" >> "$PASANG"
   echo "cp -r $W/$d $W/.$d.bak-$STAMP" >> "$PASANG"
   echo "cp -r /tmp/fkhsend/$d/. $W/$d/" >> "$PASANG"
   echo "chown -R www:www $W/$d" >> "$PASANG"
 done
 echo "rm -rf /tmp/fkhsend" >> "$PASANG"
 $SCP "$PASANG" $HOST:/tmp/ >/dev/null
-$SSH $HOST "sudo bash $PASANG; rm -f $PASANG"
+$SSH $HOST "sudo bash $PASANG && rm -f $PASANG || echo '  GAGAL pasang -- skrip disimpan: $PASANG'"
 
 echo
 echo "=== 3. checksum lokal vs server ==="
 beda=0
 for d in "${DIRS[@]}"; do
-  while IFS= read -r p; do
-    L=$(md5sum "$d/$p" | cut -c1-32)
-    R=$($SSH $HOST "sudo md5sum $W/$d/$p 2>/dev/null | cut -c1-32" || true)
-    if [ "$L" != "$R" ]; then echo "  BEDA $d/$p"; beda=$((beda+1)); fi
-  done < <(cd "$d" && find . -type f | sed 's|^\./||' | sort)
+  # satu panggilan SSH per direktori; loop per-berkas bikin nggantung kalau
+  # berkasnya ratusan (galeri foto).
+  (cd "$d" && find . -type f -exec md5sum {} + | sed 's| \./| |' | sort -k2) > /tmp/fk-md5-lokal.txt
+  $SSH $HOST "cd $W/$d && sudo find . -type f -exec md5sum {} + | sed 's| \\./| |' | sort -k2" > /tmp/fk-md5-server.txt 2>/dev/null || true
+  # hanya berkas LOKAL yang diperiksa: berkas lama yang sengaja dibiarkan di
+  # server (supaya HTML lama di cache browser tidak 404) tidak dihitung beda.
+  n=$(awk 'NR==FNR { s[$2]=$1; next } { if (s[$2] != $1) print "  BEDA " $2 }' /tmp/fk-md5-server.txt /tmp/fk-md5-lokal.txt | tee /dev/stderr | grep -c BEDA || true)
+  echo "  $d: beda=$n"
+  beda=$((beda + n))
 done
-echo "  beda: $beda"
 
 echo
 echo "=== 4. URL live ==="

@@ -245,6 +245,67 @@
     }
     details.faq-item > summary::-webkit-details-marker { display: none; }
     details.faq-item[open] .faq-chev { transform: rotate(180deg); }
+  /* ---- Galeri portofolio: grid, chip ukuran, lightbox ---- */
+    .gal-card { position: relative; }
+    .gal-btn {
+      display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in;
+      border-radius: 0.9rem; overflow: hidden; background: #E2E8F0;
+      position: relative; aspect-ratio: 4 / 3;
+    }
+    .gal-btn img { width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .35s ease; }
+    .gal-btn:hover img { transform: scale(1.06); }
+    .gal-badge {
+      position: absolute; left: .5rem; bottom: .5rem; padding: .12rem .45rem;
+      border-radius: .45rem; background: rgba(8,12,22,.78); color: #fff;
+      font-size: .68rem; font-weight: 800; letter-spacing: .02em;
+    }
+    .dark .gal-btn { background: #1E293B; }
+    .gal-chip {
+      padding: .42rem .85rem; border-radius: .7rem; cursor: pointer; font-size: .74rem;
+      font-weight: 800; border: 1px solid #E2E8F0; background: #fff; color: #334155;
+      transition: background .18s ease, color .18s ease, border-color .18s ease;
+    }
+    .gal-chip:hover { border-color: #2563EB; color: #2563EB; }
+    .gal-chip.is-on { background: #2563EB; border-color: #2563EB; color: #fff; }
+    .gal-chip .gal-n { opacity: .7; font-weight: 700; }
+    .dark .gal-chip { background: #0F172A; border-color: #334155; color: #CBD5E1; }
+    .dark .gal-chip.is-on { background: #2563EB; border-color: #2563EB; color: #fff; }
+    .gal-card.is-hide { display: none; }
+
+    #galBox {
+      position: fixed; inset: 0; z-index: 90; display: none;
+      background: rgba(4,7,14,.92); padding: 1rem;
+      align-items: center; justify-content: center;
+    }
+    #galBox.is-open { display: flex; }
+    #galBox img {
+      max-width: min(96vw, 1200px); max-height: 84vh; width: auto; height: auto;
+      border-radius: .8rem; box-shadow: 0 24px 60px rgba(0,0,0,.55); display: block;
+    }
+    .gal-x {
+      position: absolute; top: .9rem; right: 1rem; width: 2.4rem; height: 2.4rem;
+      border-radius: 999px; border: 1px solid rgba(255,255,255,.35); cursor: pointer;
+      background: rgba(255,255,255,.12); color: #fff; font-size: 1.15rem; font-weight: 800;
+      display: grid; place-items: center; line-height: 1;
+    }
+    .gal-x:hover { background: rgba(255,255,255,.25); }
+    .gal-nav {
+      position: absolute; top: 50%; transform: translateY(-50%); width: 2.6rem; height: 3.2rem;
+      border-radius: .7rem; border: 1px solid rgba(255,255,255,.3); cursor: pointer;
+      background: rgba(255,255,255,.12); color: #fff; font-size: 1.4rem; font-weight: 800;
+      display: grid; place-items: center; line-height: 1;
+    }
+    .gal-nav:hover { background: rgba(255,255,255,.25); }
+    .gal-prev { left: .7rem; }  .gal-next { right: .7rem; }
+    .gal-cap {
+      position: absolute; left: 0; right: 0; bottom: .8rem; text-align: center;
+      color: #E2E8F0; font-size: .78rem; font-weight: 700; padding: 0 3.5rem;
+    }
+    @media (max-width: 640px) {
+      .gal-nav { width: 2.2rem; height: 2.6rem; font-size: 1.15rem; }
+      .gal-prev { left: .3rem; } .gal-next { right: .3rem; }
+    }
   </style>
 </head>
 <body class="font-sans antialiased">
@@ -312,11 +373,11 @@
 
             <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug">
               Jasa Pembuatan Gapura Majapahit<br/>
-              <span class="text-electric">Berkualitas &amp; Bergaransi</span>
+              <span class="text-electric">Bata Expose &amp; Ukiran Relief</span>
             </h1>
 
             <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-              Gapura bata expose dengan ukiran relief klasik Majapahit. Dikerjakan tukang spesialis bata merah:
+              Gapura bata expose dengan ukiran relief klasik Majapahit, dikerjakan tim mitra pengrajin di Ponorogo:
               <strong>pondasi cor bertulang, ornamen ukir, dan coating anti-lumut</strong>. Untuk gang warga,
               batas desa, balai kampung, maupun gerbang perumahan.
             </p>
@@ -325,14 +386,14 @@
               <img src="/images/gapura/hero-gapura-majapahit.webp" alt="Gapura Majapahit bata expose ukiran relief" class="w-full h-52 object-cover" loading="eager" width="1448" height="1086"/>
               <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-3 text-white">
                 <span class="inline-block px-2 py-0.5 rounded bg-amber-500 text-navy font-black text-[10px] uppercase w-max mb-0.5">HASIL PENGERJAAN</span>
-                <div class="font-bold text-xs leading-tight">Gapura bata expose ukiran relief, dikerjakan tangan pengrajin</div>
+                <div class="font-bold text-xs leading-tight">Gapura bata expose ukiran relief, dikerjakan tim mitra pengrajin</div>
               </div>
             </div>
 
             <div class="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-3.5 sm:p-4 border border-slate-200/80 dark:border-slate-700/80 space-y-2 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">
               <div class="flex items-center gap-2">
                 <span class="h-4 w-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-[10px] shrink-0">&#10003;</span>
-                <span><strong>Gratis Survey Lokasi</strong> &mdash; Tim ukur lebar jalan &amp; daya dukung tanah</span>
+                <span><strong>Material Bata Expose MRH</strong> &mdash; Bata ekspos Mojokerto, dari mitra pengrajin</span>
               </div>
               <div class="flex items-center gap-2">
                 <span class="h-4 w-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-[10px] shrink-0">&#10003;</span>
@@ -340,11 +401,11 @@
               </div>
               <div class="flex items-center gap-2">
                 <span class="h-4 w-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-[10px] shrink-0">&#10003;</span>
-                <span><strong>Bata Pilihan Bebas Lumut</strong> &mdash; Pembakaran padat, tahan cuaca tropis</span>
+                <span><strong>Ukiran Relief Manual</strong> &mdash; Motif disesuaikan desain pilihan Anda</span>
               </div>
               <div class="flex items-center gap-2">
                 <span class="h-4 w-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-[10px] shrink-0">&#10003;</span>
-                <span><strong>Garansi Struktur</strong> &mdash; Surat garansi konstruksi saat serah terima</span>
+                <span><strong>Pembayaran Bertahap</strong> &mdash; DP tanda jadi, tengah, pelunasan saat serah terima</span>
               </div>
             </div>
 
@@ -426,8 +487,8 @@
             <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
           </span>
           <h3 class="text-sm font-extrabold text-slate-900 dark:text-white">Proses Cepat &amp; Terpercaya</h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Pengerjaan mengikuti SPK tertulis, ditangani mandor dan tukang yang biasa mengerjakan gapura bata expose.</p>
-          <span class="inline-block text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded">GARANSI SPK</span>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Pengerjaan mengikuti SPK tertulis, dikerjakan tim mitra pengrajin bata expose.</p>
+          <span class="inline-block text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded">SPK TERTULIS</span>
         </div>
       </div>
     </section>
@@ -437,7 +498,7 @@
       <div class="text-center max-w-2xl mx-auto space-y-1.5">
         <span class="text-xs font-extrabold text-electric uppercase tracking-wider">PAKET PEMBANGUNAN LENGKAP</span>
         <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">Pilihan Ukuran Gapura &amp; Estimasi Biaya</h2>
-        <p class="text-xs sm:text-sm text-slate-500">Semua paket sudah termasuk material bata expose pilihan, pondasi cor bertulang, upah tukang ahli, ornamen ukir, serta lapisan coating anti-lumut.</p>
+        <p class="text-xs sm:text-sm text-slate-500">Semua paket sudah termasuk material bata expose pilihan, pondasi cor bertulang, upah tukang, ornamen ukir, serta lapisan coating anti-lumut.</p>
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -544,87 +605,823 @@
 <!-- ================= GALERI ================= -->
     <section id="galeri" class="container-clean space-y-6 scroll-mt-20">
       <div class="text-center max-w-2xl mx-auto space-y-1.5">
-        <span class="text-xs font-extrabold text-electric uppercase tracking-wider">BUKTI NYATA KUALITAS KAMI</span>
+        <span class="text-xs font-extrabold text-electric uppercase tracking-wider">DOKUMENTASI TIM MITRA</span>
         <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">Portofolio Pengerjaan Gapura</h2>
-        <p class="text-xs sm:text-sm text-slate-500">Dokumentasi nyata dari lokasi proyek: gapura batas desa, gerbang perumahan, gapura kantor, dan gapura kawasan.</p>
+        <p class="text-xs sm:text-sm text-slate-500">Foto asli dari lokasi proyek, dikerjakan tim mitra pengrajin bata expose di Ponorogo. Klik foto untuk melihat versi besar.</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="flex flex-wrap justify-center gap-2">
+<button type="button" class="gal-chip is-on" data-filter="semua">Semua <span class="gal-n">131</span></button>
+<button type="button" class="gal-chip" data-filter="2.5">2.5 m <span class="gal-n">12</span></button>
+<button type="button" class="gal-chip" data-filter="3">3 m <span class="gal-n">36</span></button>
+<button type="button" class="gal-chip" data-filter="4">4 m <span class="gal-n">35</span></button>
+<button type="button" class="gal-chip" data-filter="5">5 m <span class="gal-n">43</span></button>
+<button type="button" class="gal-chip" data-filter="6">6 m <span class="gal-n">5</span></button>
+      </div>
 
-        <div class="card-clean overflow-hidden group border border-slate-200 dark:border-slate-800">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 dark:bg-slate-800">
-            <img src="/images/gapura/gapura-komplek-perumahan.webp" alt="Gapura gerbang komplek perumahan bata expose" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" width="941" height="1672"/>
-          </div>
-          <div class="p-4 space-y-1">
-            <div class="text-[11px] font-bold text-electric uppercase tracking-wider">Gerbang Komplek Perumahan</div>
-            <h3 class="text-sm font-extrabold text-slate-900 dark:text-white">Gapura Akses Utama Perumahan</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Gapura bata expose dengan ukiran relief, dijadikan gerbang masuk utama komplek warga.</p>
-          </div>
-        </div>
-
-        <div class="card-clean overflow-hidden group border border-slate-200 dark:border-slate-800">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 dark:bg-slate-800">
-            <img src="/images/gapura/gapura-batas-desa.webp" alt="Gapura batas desa dua pilar bata merah" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" width="1846" height="852"/>
-          </div>
-          <div class="p-4 space-y-1">
-            <div class="text-[11px] font-bold text-electric uppercase tracking-wider">Gapura Batas Desa</div>
-            <h3 class="text-sm font-extrabold text-slate-900 dark:text-white">Gapura Candi Bentar Jalan Desa</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Dua pilar bata merah mengapit jalan desa, jadi penanda batas wilayah yang berwibawa.</p>
-          </div>
-        </div>
-
-        <div class="card-clean overflow-hidden group border border-slate-200 dark:border-slate-800">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 dark:bg-slate-800">
-            <img src="/images/gapura/gapura-halaman-kantor.webp" alt="Gapura halaman kantor desa bata expose" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" width="1440" height="900"/>
-          </div>
-          <div class="p-4 space-y-1">
-            <div class="text-[11px] font-bold text-electric uppercase tracking-wider">Gapura Halaman Kantor</div>
-            <h3 class="text-sm font-extrabold text-slate-900 dark:text-white">Gerbang Halaman Kantor Desa</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Gapura dengan halaman berpaving rapi, dipakai sebagai gerbang kantor pelayanan warga.</p>
-          </div>
-        </div>
-
-        <div class="card-clean overflow-hidden group border border-slate-200 dark:border-slate-800">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 dark:bg-slate-800">
-            <img src="/images/gapura/gapura-jalan-warga.webp" alt="Gapura jalan warga desa bata merah" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" width="1599" height="899"/>
-          </div>
-          <div class="p-4 space-y-1">
-            <div class="text-[11px] font-bold text-electric uppercase tracking-wider">Gapura Jalan Warga</div>
-            <h3 class="text-sm font-extrabold text-slate-900 dark:text-white">Gapura Candi Bentar Gang Warga</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Ukuran 2,5&ndash;3 meter, pas untuk jalan warga yang tidak terlalu lebar namun tetap kokoh.</p>
-          </div>
-        </div>
-
-        <div class="card-clean overflow-hidden group border border-slate-200 dark:border-slate-800">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 dark:bg-slate-800">
-            <img src="/images/gapura/gapura-bertingkat-tangga.webp" alt="Gapura bertingkat dengan tangga masuk" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" width="1024" height="1536"/>
-          </div>
-          <div class="p-4 space-y-1">
-            <div class="text-[11px] font-bold text-electric uppercase tracking-wider">Gapura Bertingkat</div>
-            <h3 class="text-sm font-extrabold text-slate-900 dark:text-white">Gapura Tangga Masuk Kawasan</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Konstruksi bertingkat dengan undakan masuk, cocok untuk lokasi dengan beda elevasi.</p>
-          </div>
-        </div>
-
-        <div class="card-clean overflow-hidden group border border-slate-200 dark:border-slate-800">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 dark:bg-slate-800">
-            <img src="/images/gapura/detail-ukiran-bata.webp" alt="Detail ukiran relief bata expose gapura" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" width="851" height="1847"/>
-          </div>
-          <div class="p-4 space-y-1">
-            <div class="text-[11px] font-bold text-electric uppercase tracking-wider">Detail Ukiran Relief</div>
-            <h3 class="text-sm font-extrabold text-slate-900 dark:text-white">Ornamen Pahat Manual Klasik</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Detail relief bertingkat hasil pahat manual, bukan cetakan, jadi terlihat hidup dan tidak seragam.</p>
-          </div>
-        </div>
-
+      <div id="galGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+        <figure class="gal-card" data-size="2.5" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-2.5m-001.webp" data-cap="Gapura bata expose tinggi 2.5 m">
+            <img src="/images/gapura/thumb/galeri-2.5m-001.webp" alt="Gapura bata expose tinggi 2.5 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">2.5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="2.5" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-2.5m-005.webp" data-cap="Gapura bata expose tinggi 2.5 m">
+            <img src="/images/gapura/thumb/galeri-2.5m-005.webp" alt="Gapura bata expose tinggi 2.5 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">2.5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="2.5" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-2.5m-006.webp" data-cap="Gapura bata expose tinggi 2.5 m">
+            <img src="/images/gapura/thumb/galeri-2.5m-006.webp" alt="Gapura bata expose tinggi 2.5 m" loading="lazy" decoding="async" width="288" height="640"/>
+            <span class="gal-badge">2.5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="2.5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-2.5m-002.webp" data-cap="Gapura bata expose tinggi 2.5 m">
+            <img src="/images/gapura/thumb/galeri-2.5m-002.webp" alt="Gapura bata expose tinggi 2.5 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">2.5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="2.5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-2.5m-003.webp" data-cap="Gapura bata expose tinggi 2.5 m">
+            <img src="/images/gapura/thumb/galeri-2.5m-003.webp" alt="Gapura bata expose tinggi 2.5 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">2.5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="2.5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-2.5m-004.webp" data-cap="Gapura bata expose tinggi 2.5 m">
+            <img src="/images/gapura/thumb/galeri-2.5m-004.webp" alt="Gapura bata expose tinggi 2.5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">2.5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="2.5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-2.5m-007.webp" data-cap="Gapura bata expose tinggi 2.5 m">
+            <img src="/images/gapura/thumb/galeri-2.5m-007.webp" alt="Gapura bata expose tinggi 2.5 m" loading="lazy" decoding="async" width="640" height="288"/>
+            <span class="gal-badge">2.5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="2.5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-2.5m-008.webp" data-cap="Gapura bata expose tinggi 2.5 m">
+            <img src="/images/gapura/thumb/galeri-2.5m-008.webp" alt="Gapura bata expose tinggi 2.5 m" loading="lazy" decoding="async" width="640" height="288"/>
+            <span class="gal-badge">2.5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="2.5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-2.5m-009.webp" data-cap="Gapura bata expose tinggi 2.5 m">
+            <img src="/images/gapura/thumb/galeri-2.5m-009.webp" alt="Gapura bata expose tinggi 2.5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">2.5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="2.5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-2.5m-010.webp" data-cap="Gapura bata expose tinggi 2.5 m">
+            <img src="/images/gapura/thumb/galeri-2.5m-010.webp" alt="Gapura bata expose tinggi 2.5 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">2.5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="2.5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-2.5m-011.webp" data-cap="Gapura bata expose tinggi 2.5 m">
+            <img src="/images/gapura/thumb/galeri-2.5m-011.webp" alt="Gapura bata expose tinggi 2.5 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">2.5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="2.5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-2.5m-012.webp" data-cap="Gapura bata expose tinggi 2.5 m">
+            <img src="/images/gapura/thumb/galeri-2.5m-012.webp" alt="Gapura bata expose tinggi 2.5 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">2.5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-003.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-003.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-005.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-005.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-006.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-006.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-007.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-007.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-008.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-008.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-009.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-009.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-011.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-011.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-012.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-012.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-017.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-017.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="295" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-027.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-027.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="295" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-028.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-028.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="295" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-029.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-029.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="295" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-030.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-030.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="288" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-031.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-031.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-032.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-032.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-035.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-035.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="295" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-036.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-036.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-001.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-001.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-002.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-002.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-004.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-004.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-010.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-010.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-013.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-013.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-014.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-014.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-015.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-015.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-016.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-016.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-018.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-018.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-019.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-019.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-020.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-020.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-021.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-021.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-022.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-022.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-023.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-023.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-024.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-024.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-025.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-025.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-026.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-026.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-033.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-033.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="3" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-3m-034.webp" data-cap="Gapura bata expose tinggi 3 m">
+            <img src="/images/gapura/thumb/galeri-3m-034.webp" alt="Gapura bata expose tinggi 3 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">3 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-001.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-001.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-002.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-002.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-003.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-003.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-004.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-004.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-005.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-005.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-007.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-007.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-008.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-008.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="427" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-009.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-009.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-012.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-012.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="295" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-013.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-013.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-019.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-019.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="295" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-020.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-020.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-021.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-021.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-022.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-022.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-023.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-023.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-024.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-024.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-025.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-025.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-026.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-026.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-027.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-027.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-028.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-028.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-035.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-035.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-006.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-006.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="481"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-010.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-010.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-011.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-011.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-014.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-014.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-015.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-015.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-016.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-016.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-017.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-017.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-018.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-018.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-029.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-029.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-030.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-030.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="481"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-031.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-031.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-032.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-032.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-033.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-033.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="4" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-4m-034.webp" data-cap="Gapura bata expose tinggi 4 m">
+            <img src="/images/gapura/thumb/galeri-4m-034.webp" alt="Gapura bata expose tinggi 4 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">4 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-007.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-007.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-016.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-016.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-021.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-021.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-029.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-029.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="360" height="640"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-001.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-001.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-002.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-002.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-003.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-003.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-004.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-004.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-005.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-005.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-006.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-006.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-008.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-008.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-009.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-009.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-010.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-010.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-011.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-011.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-012.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-012.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-013.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-013.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-014.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-014.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="478"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-015.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-015.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-017.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-017.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-018.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-018.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-019.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-019.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-020.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-020.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-022.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-022.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-023.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-023.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-024.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-024.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-025.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-025.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-026.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-026.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-027.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-027.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-028.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-028.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-030.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-030.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-031.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-031.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-032.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-032.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-033.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-033.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-034.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-034.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-035.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-035.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-036.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-036.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-037.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-037.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-038.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-038.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-039.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-039.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-040.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-040.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-041.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-041.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="454"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-042.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-042.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="5" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-5m-043.webp" data-cap="Gapura bata expose tinggi 5 m">
+            <img src="/images/gapura/thumb/galeri-5m-043.webp" alt="Gapura bata expose tinggi 5 m" loading="lazy" decoding="async" width="640" height="295"/>
+            <span class="gal-badge">5 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="6" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-6m-003.webp" data-cap="Gapura bata expose tinggi 6 m">
+            <img src="/images/gapura/thumb/galeri-6m-003.webp" alt="Gapura bata expose tinggi 6 m" loading="lazy" decoding="async" width="288" height="640"/>
+            <span class="gal-badge">6 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="6" data-ori="P">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-6m-005.webp" data-cap="Gapura bata expose tinggi 6 m">
+            <img src="/images/gapura/thumb/galeri-6m-005.webp" alt="Gapura bata expose tinggi 6 m" loading="lazy" decoding="async" width="480" height="640"/>
+            <span class="gal-badge">6 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="6" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-6m-001.webp" data-cap="Gapura bata expose tinggi 6 m">
+            <img src="/images/gapura/thumb/galeri-6m-001.webp" alt="Gapura bata expose tinggi 6 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">6 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="6" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-6m-002.webp" data-cap="Gapura bata expose tinggi 6 m">
+            <img src="/images/gapura/thumb/galeri-6m-002.webp" alt="Gapura bata expose tinggi 6 m" loading="lazy" decoding="async" width="640" height="360"/>
+            <span class="gal-badge">6 m</span>
+          </button>
+        </figure>
+        <figure class="gal-card" data-size="6" data-ori="L">
+          <button type="button" class="gal-btn" data-src="/images/gapura/galeri-6m-004.webp" data-cap="Gapura bata expose tinggi 6 m">
+            <img src="/images/gapura/thumb/galeri-6m-004.webp" alt="Gapura bata expose tinggi 6 m" loading="lazy" decoding="async" width="640" height="480"/>
+            <span class="gal-badge">6 m</span>
+          </button>
+        </figure>
       </div>
 
       <div class="card-clean p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-3">
         <div class="text-center sm:text-left">
-          <div class="text-sm font-extrabold text-slate-900 dark:text-white">Masih ada koleksi foto pengerjaan lain</div>
-          <p class="text-xs text-slate-500">Minta lihat galeri lengkap sesuai ukuran dan model yang Anda rencanakan.</p>
+          <div class="text-sm font-extrabold text-slate-900 dark:text-white">Mau lihat foto ukuran tertentu lebih banyak?</div>
+          <p class="text-xs text-slate-500">Sebutkan tinggi dan model yang Anda rencanakan, kami kirimkan dokumentasi yang paling mendekati.</p>
         </div>
-        <a href="https://wa.me/6285196135691?text=Halo%20FirKaizen%20Gapura,%20saya%20ingin%20melihat%20koleksi%20foto%20portofolio%20gapura%20lengkap" target="_blank" rel="noopener" class="btn-outline py-2.5 px-4 text-xs shrink-0">Minta Galeri Lengkap</a>
+        <a href="https://wa.me/6285196135691?text=Halo%20FirKaizen%20Gapura,%20saya%20ingin%20melihat%20dokumentasi%20gapura%20tinggi%20tertentu" target="_blank" rel="noopener" class="btn-outline py-2.5 px-4 text-xs shrink-0">Minta Foto Tambahan</a>
+      </div>
+
+      <div id="galBox" role="dialog" aria-modal="true" aria-label="Foto portofolio gapura">
+        <button type="button" class="gal-x" aria-label="Tutup">&times;</button>
+        <button type="button" class="gal-nav gal-prev" aria-label="Foto sebelumnya">&#8249;</button>
+        <img id="galImg" src="" alt="Foto portofolio gapura" width="1600" height="1200"/>
+        <button type="button" class="gal-nav gal-next" aria-label="Foto berikutnya">&#8250;</button>
+        <div class="gal-cap" id="galCap"></div>
       </div>
     </section>
 
@@ -633,14 +1430,14 @@
       <div class="text-center max-w-2xl mx-auto space-y-1.5">
         <span class="text-xs font-extrabold text-electric uppercase tracking-wider">TRANSPARAN &amp; TANPA REPOT</span>
         <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">Alur Pengerjaan 4 Langkah</h2>
-        <p class="text-xs sm:text-sm text-slate-500">Kami dampingi dari peninjauan awal sampai bangunan siap berdiri megah di lokasi Anda.</p>
+        <p class="text-xs sm:text-sm text-slate-500">Anda didampingi dari peninjauan awal sampai gapura berdiri di lokasi Anda.</p>
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div class="card-clean p-5 space-y-2.5">
           <span class="grid h-9 w-9 place-items-center rounded-xl bg-navy text-white text-sm font-black">1</span>
           <h3 class="text-sm font-extrabold text-slate-900 dark:text-white">Survey Lokasi</h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Tim mandor datang mengukur lebar jalan, akses material, dan daya dukung tanah. Gratis untuk area layanan kami.</p>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Tim mitra mengukur lebar jalan, akses material, dan daya dukung tanah. Ketentuan biaya survei di luar wilayah dijelaskan saat konsultasi.</p>
         </div>
         <div class="card-clean p-5 space-y-2.5">
           <span class="grid h-9 w-9 place-items-center rounded-xl bg-navy text-white text-sm font-black">2</span>
@@ -650,12 +1447,12 @@
         <div class="card-clean p-5 space-y-2.5">
           <span class="grid h-9 w-9 place-items-center rounded-xl bg-navy text-white text-sm font-black">3</span>
           <h3 class="text-sm font-extrabold text-slate-900 dark:text-white">Pengerjaan Ahli</h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Pemasangan bata expose dan ornamen relief oleh tukang spesialis. Laporan progres dikirim rutin via WhatsApp.</p>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Pemasangan bata expose dan ornamen relief dikerjakan tim mitra pengrajin. Perkembangan pekerjaan bisa ditanyakan via WhatsApp.</p>
         </div>
         <div class="card-clean p-5 space-y-2.5">
           <span class="grid h-9 w-9 place-items-center rounded-xl bg-navy text-white text-sm font-black">4</span>
           <h3 class="text-sm font-extrabold text-slate-900 dark:text-white">Finishing &amp; Serah Terima</h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Pembersihan nat, pelapisan cairan pelindung batu anti-lumut, dan penyerahan surat garansi konstruksi.</p>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Pembersihan nat, pelapisan cairan pelindung batu anti-lumut, dan penyerahan pekerjaan sesuai SPK.</p>
         </div>
       </div>
     </section>
@@ -665,7 +1462,7 @@
       <div class="text-center max-w-2xl mx-auto space-y-1.5">
         <span class="text-xs font-extrabold text-electric uppercase tracking-wider">AREA LAYANAN</span>
         <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">Wilayah Pengerjaan</h2>
-        <p class="text-xs sm:text-sm text-slate-500">Kami siap kirim material bata dan tukang ahli ke lokasi proyek Anda.</p>
+        <p class="text-xs sm:text-sm text-slate-500">Material bata dan tenaga kerja mitra dikirim ke lokasi proyek Anda.</p>
       </div>
       <div class="flex flex-wrap justify-center gap-2">
         <span class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs font-bold text-slate-700 dark:text-slate-200">Surabaya</span>
@@ -831,6 +1628,61 @@
         else btn.classList.remove('is-visible');
       }
       window.addEventListener('scroll', onScroll, { passive: true });
+
+      // ---- Galeri: saring per ukuran + lightbox (tanpa dependensi) ----
+      (function () {
+        const grid = document.getElementById('galGrid');
+        if (!grid) return;
+        const kartu = [...grid.querySelectorAll('.gal-card')];
+        const chip  = [...document.querySelectorAll('.gal-chip')];
+
+        chip.forEach(function (c) {
+          c.addEventListener('click', function () {
+            chip.forEach(function (x) { x.classList.toggle('is-on', x === c); });
+            const f = c.dataset.filter;
+            kartu.forEach(function (k) {
+              k.classList.toggle('is-hide', f !== 'semua' && k.dataset.size !== f);
+            });
+          });
+        });
+
+        const box = document.getElementById('galBox');
+        const img = document.getElementById('galImg');
+        const cap = document.getElementById('galCap');
+        let daftar = [], pos = 0;
+
+        function tampil(i) {
+          if (!daftar.length) return;
+          pos = (i + daftar.length) % daftar.length;
+          const b = daftar[pos];
+          img.src = b.dataset.src;
+          cap.textContent = b.dataset.cap + ' (' + (pos + 1) + '/' + daftar.length + ')';
+        }
+        function tutup() { box.classList.remove('is-open'); document.body.style.overflow = ''; }
+        function buka(b) {
+          daftar = kartu.filter(function (k) { return !k.classList.contains('is-hide'); })
+                        .map(function (k) { return k.querySelector('.gal-btn'); });
+          tampil(daftar.indexOf(b));
+          box.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+
+        grid.addEventListener('click', function (e) {
+          const b = e.target.closest('.gal-btn');
+          if (b) buka(b);
+        });
+        box.addEventListener('click', function (e) {
+          if (e.target === box || e.target.closest('.gal-x')) tutup();
+          if (e.target.closest('.gal-prev')) tampil(pos - 1);
+          if (e.target.closest('.gal-next')) tampil(pos + 1);
+        });
+        document.addEventListener('keydown', function (e) {
+          if (!box.classList.contains('is-open')) return;
+          if (e.key === 'Escape') tutup();
+          if (e.key === 'ArrowLeft') tampil(pos - 1);
+          if (e.key === 'ArrowRight') tampil(pos + 1);
+        });
+      })();
 
       initTheme();
       onScroll();
