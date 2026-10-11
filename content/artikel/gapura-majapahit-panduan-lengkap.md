@@ -31,10 +31,10 @@ Ukuran dihitung dari **lebar bersih bukaan** — jarak antara tiang kiri dan tia
 
 | Ukuran | Cocok untuk | Kisaran biaya |
 |---|---|---|
-| 2,5 meter | Gang warga, gerbang masuk kampung kecil | Mulai Rp 33 juta |
-| 3 meter | Jalan kampung utama, gerbang komplek | Mulai Rp 38 juta |
-| 4 meter | Jalan desa, dua kendaraan berpapasan | Mulai Rp 65 juta |
-| 5 meter | Jalan utama desa, akses truk | Mulai Rp 80 juta |
+| 2,5 meter | Gang warga, gerbang masuk kampung kecil | Mulai Rp 30 juta |
+| 3 meter | Jalan kampung utama, gerbang komplek | Mulai Rp 35 juta |
+| 4 meter | Jalan desa, dua kendaraan berpapasan | Mulai Rp 60 juta |
+| 5 meter | Jalan utama desa, akses truk | Mulai Rp 75 juta |
 | 6 meter ke atas | Kawasan, jalan kabupaten, custom | Menyesuaikan desain |
 
 Angka di atas adalah **estimasi all-in**: material, pondasi, tenaga kerja, ukiran, dan pelapis anti lumut. Biaya akhir bergantung pada kondisi tanah, akses material, dan tingkat detail ukiran.
@@ -92,9 +92,9 @@ Pelapis anti lumut yang kami pakai akan memudarkan efeknya setelah beberapa tahu
 
 ## Melayani wilayah mana
 
-Pengerjaan gapura kami utamakan untuk **Jawa Timur** dan sekitarnya, serta **Solo Raya dan Jawa Tengah** untuk proyek material dan kontraktor.
+Pengerjaan gapura kami melayani **seluruh Pulau Jawa**.
 
-Kalau lokasi Anda di luar wilayah itu, tetap tanyakan. Kami bisa menilai kelayakannya dari jarak tempuh dan lama pengerjaan.
+Di **luar Pulau Jawa**, kami hanya mengerjakan **jasa tenaga kerja** — material disiapkan pemilik proyek.
 
 - [Halaman gapura Majapahit](/gapura/) — pilihan ukuran dan foto proyek
 - [Cara menghitung kebutuhan paving block](/artikel/cara-menghitung-kebutuhan-paving-block/) — kalau sekalian menata halaman

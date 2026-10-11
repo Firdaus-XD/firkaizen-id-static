@@ -1,7 +1,7 @@
 ---
 slug: harga-gapura-majapahit-per-ukuran
 title: Harga Gapura Majapahit per Ukuran: Estimasi Biaya 2026
-description: Harga gapura Majapahit bata expose mulai Rp 33 juta untuk lebar 2,5 meter hingga Rp 80 juta untuk 5 meter. Ini rincian per ukuran dan cara memilihnya.
+description: Harga gapura Majapahit bata expose mulai Rp 30 juta untuk lebar 2,5 meter hingga Rp 75 juta untuk 5 meter. Ini rincian per ukuran dan cara memilihnya.
 date: 2026-10-11
 tag: Gapura
 og_image: https://firkaizen.id/images/og/gapura.webp
@@ -17,10 +17,10 @@ Lebar bersih adalah jarak antara dua pilar di bagian dalam gapura. Ukuran inilah
 
 | Lebar bersih | Biaya all-in mulai | Umumnya dipilih untuk | Lihat contoh |
 |---|---|---|---|
-| 2,5 meter | Rp 33 juta | gang warga, gerbang perumahan | [Halaman gapura](/gapura/) |
-| 3,0 meter | Rp 38 juta | ukuran yang paling sering dipilih | [Halaman gapura](/gapura/) |
-| 4,0 meter | Rp 65 juta | gerbang balai desa | [Halaman gapura](/gapura/) |
-| 5,0 meter | Rp 80 juta | landmark kawasan, batas antar desa | [Halaman gapura](/gapura/) |
+| 2,5 meter | Rp 30 juta | gang warga, gerbang perumahan | [Halaman gapura](/gapura/) |
+| 3,0 meter | Rp 35 juta | ukuran yang paling sering dipilih | [Halaman gapura](/gapura/) |
+| 4,0 meter | Rp 60 juta | gerbang balai desa | [Halaman gapura](/gapura/) |
+| 5,0 meter | Rp 75 juta | landmark kawasan, batas antar desa | [Halaman gapura](/gapura/) |
 
 Angka di tabel adalah harga mulai dari dengan sistem all-in. Harga akhir tiap proyek ditentukan setelah survei lokasi, sehingga angka ini sebaiknya dibaca sebagai titik awal perhitungan, bukan penawaran final.
 
@@ -43,7 +43,7 @@ Kalau ragu di antara dua ukuran, pilih yang lebih lebar. Menambah lebar di awal 
 
 Angka di tabel adalah harga mulai dari. Harga akhir ditentukan setelah survei, karena setiap lokasi punya kondisi sendiri. Yang paling sering dicek saat survei:
 
-- **Lokasi dan jarak.** Layanan kami berpusat di Solo Raya dan Jawa Tengah. Untuk gapura, jangkauan sampai Jawa Timur, dan jarak lokasi dihitung di penawaran.
+- **Lokasi dan jarak.** Untuk gapura, jangkauan kami seluruh Pulau Jawa. Jarak lokasi dihitung di penawaran.
 - **Kondisi tanah dan pondasi.** Tanah yang lunak perlu perlakuan pondasi tersendiri.
 - **Akses ke lokasi.** Gang sempit atau jalan yang sulit dilewati kendaraan material berpengaruh pada cara pengerjaan.
 
