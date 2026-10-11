@@ -71,10 +71,8 @@ print(f"setelah buang duplikat: {len(unik)}")
 # --- konversi, urut per ukuran ---
 for f in out.glob('galeri-*.webp'):
     f.unlink()
-thum = out / 'thumb'
-if thum.exists():
-    shutil.rmtree(thum)
-thum.mkdir()
+# thumb/ TIDAK disentuh di sini -- pembuatnya rebuild_galeri.py. Menghapusnya di
+# sini meninggalkan grid tanpa thumbnail sampai rebuild_galeri dijalankan.
 
 urut = {'2.5': 0, '3': 1, '4': 2, '5': 3, '6': 4}
 unik.sort(key=lambda x: (urut.get(x[0], 9), str(x[1])))
@@ -94,3 +92,18 @@ print(f"\nSELESAI: {tot} foto webp")
 for k in ('2.5', '3', '4', '5', '6'):
     print(f"  {k} m: {hitung.get(k, 0)}")
 print(f"  ukuran folder: {sum(f.stat().st_size for f in out.glob('galeri-*.webp'))//1024//1024} MB")
+
+# --- bersihkan sisa pola nama lama yang masih dirujuk HTML ---
+# Nama galeri pernah berbentuk 'galeri-2-5m-f1.webp'; sisa berkas dari pola lama
+# tetap tertinggal di folder dan ikut ter-deploy tanpa dirujuk siapa pun.
+html_txt = "\n".join(p.read_text(encoding='utf-8') for p in repo.rglob('*.html')
+                     if '.backup' not in str(p) and '_arsip' not in str(p))
+sisa = [f for f in out.glob('galeri-*.webp') if f.name not in html_txt]
+for f in sisa:
+    f.unlink()
+    t = out / 'thumb' / f.name
+    if t.exists():
+        t.unlink()
+print(f"  sisa pola lama dibuang: {len(sisa)}")
+for f in sisa:
+    print(f"    {f.name}")
