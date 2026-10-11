@@ -37,7 +37,7 @@ Mulai dari kendaraan yang paling sering lewat, bukan dari selera tampilan.
 
 Kalau ragu di antara dua ukuran, pilih yang lebih lebar. Menambah lebar di awal lebih murah daripada membongkar pilar yang sudah berdiri.
 
-![Gapura Majapahit bata expose lebar 3 meter](/images/gapura/drive-gapura-3m-1.webp)
+<a href="/" style="display:block;text-align:center"><img src="/images/gapura/drive-gapura-3m-1.webp" alt="Gapura Majapahit bata expose lebar 3 meter" style="width:100%;max-width:640px;max-height:560px;object-fit:contain;border-radius:8px"></a>
 
 ## Kenapa harga akhir bisa berbeda
 
@@ -59,9 +59,9 @@ Pertimbangkan 4 meter jika kendaraan yang lewat berukuran besar, misalnya mobil 
 
 Foto berikut adalah dokumentasi gapura lebar 3 meter, ukuran yang paling sering dikerjakan.
 
-![Pilar gapura Majapahit bata expose 3 meter dengan detail bata](/images/gapura/drive-gapura-3m-2.webp)
+<a href="/" style="display:block;text-align:center"><img src="/images/gapura/drive-gapura-3m-2.webp" alt="Pilar gapura Majapahit bata expose 3 meter dengan detail bata" style="width:100%;max-width:640px;max-height:560px;object-fit:contain;border-radius:8px"></a>
 
-Untuk melihat tipe pilar dan contoh penempatan di jalan masuk, batas desa, dan komplek perumahan, buka [halaman gapura Majapahit](https://firkaizen.id/gapura/).
+Untuk melihat tipe pilar dan contoh penempatan di jalan masuk, batas desa, dan komplek perumahan, buka [halaman gapura Majapahit](/gapura/).
 
 ## Yang perlu disiapkan sebelum survei
 
@@ -76,6 +76,6 @@ Data tersebut bisa dikirim lewat WhatsApp ke 0851-9613-5691. Layanan dibuka seti
 
 ## Layanan lain dari firkaizen.id
 
-Selain gapura, kami juga melayani paving block, bata ringan AAC, dan batako. Kalau area yang ingin dibangun juga membutuhkan perkerasan halaman atau dinding pagar, konsultasikan sekaligus di [halaman utama firkaizen.id](https://firkaizen.id/) agar material dan jadwal bisa diatur dalam satu rencana.
+Selain gapura, kami juga melayani paving block, bata ringan AAC, dan batako. Kalau area yang ingin dibangun juga membutuhkan perkerasan halaman atau dinding pagar, konsultasikan sekaligus di [halaman utama firkaizen.id](/) agar material dan jadwal bisa diatur dalam satu rencana.
 
 PT FirKaizen Digital Solutions, Solo Raya, Jawa Tengah.
