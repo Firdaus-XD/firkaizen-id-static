@@ -51,7 +51,7 @@ Kalau lebar lokasi belum pasti, cukup kirim foto dari dua sisi dan perkiraan jar
 
 Harga mulai dari sudah mencakup pekerjaan utama gapura bata expose. Yang dicek saat survei:
 
-- **Lokasi dan jarak.** Layanan kami berpusat di Solo Raya dan Jawa Tengah. Untuk gapura, jangkauan sampai Jawa Timur, dan jarak ke Mojokerto dihitung di penawaran.
+- **Lokasi dan jarak.** Gapura kami melayani seluruh Pulau Jawa, dan jarak ke Mojokerto dihitung di penawaran.
 - **Kondisi tanah dan pondasi.** Tanah lunak perlu perlakuan pondasi tersendiri.
 - **Akses ke lokasi.** Gang sempit atau jalan yang sulit dilewati kendaraan material berpengaruh pada cara pengerjaan.
 
@@ -67,7 +67,7 @@ Untuk melihat tipe pilar dan contoh penempatan di jalan masuk, batas desa, dan k
 
 ## Yang perlu disiapkan sebelum survei
 
-Survei awal tidak dikenakan biaya. Supaya tim bisa langsung menghitung kebutuhan, kirim data berikut:
+Ketentuan biaya survei dijelaskan saat konsultasi. Supaya tim bisa langsung menghitung kebutuhan, kirim data berikut:
 
 1. Lebar jalan atau pintu yang tersedia, dalam meter.
 2. Peruntukan gapura: gang, perumahan, balai desa, atau batas wilayah.
@@ -80,4 +80,4 @@ Kirim data tersebut lewat WhatsApp ke 0851-9613-5691. Layanan dibuka setiap hari
 
 Selain gapura, kami juga melayani paving block, bata ringan AAC, dan batako. Kalau area yang dibangun juga membutuhkan perkerasan halaman atau dinding pagar, konsultasikan sekaligus di [halaman utama firkaizen.id](/) agar material dan jadwal bisa diatur dalam satu rencana.
 
-PT FirKaizen Digital Solutions, Solo Raya, Jawa Tengah.
+PT FirKaizen Digital Solutions.
