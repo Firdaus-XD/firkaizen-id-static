@@ -1,7 +1,7 @@
 ---
 slug: harga-gapura-majapahit-mojokerto
 title: Harga Gapura Majapahit Mojokerto: Estimasi per Ukuran
-description: Harga gapura Majapahit bata expose di Mojokerto mulai Rp 33 juta (2,5 m) sampai Rp 80 juta (5 m). Rincian ukuran dan cara memilih sebelum survei.
+description: Harga gapura Majapahit bata expose di Mojokerto mulai Rp 30 juta (2,5 m) sampai Rp 75 juta (5 m). Rincian ukuran dan cara memilih sebelum survei.
 date: 2026-10-11
 tag: Gapura
 og_image: https://firkaizen.id/images/og/gapura.webp
@@ -17,10 +17,10 @@ Lebar bersih adalah jarak antara dua pilar di bagian dalam. Ukuran inilah yang m
 
 | Lebar bersih | Biaya all-in mulai | Umumnya dipilih untuk | Lihat contoh |
 |---|---|---|---|
-| 2,5 meter | Rp 33 juta | gang warga, gerbang perumahan | [Halaman gapura](/gapura/) |
-| 3,0 meter | Rp 38 juta | ukuran yang paling sering dipilih | [Halaman gapura](/gapura/) |
-| 4,0 meter | Rp 65 juta | gerbang balai desa | [Halaman gapura](/gapura/) |
-| 5,0 meter | Rp 80 juta | landmark kawasan, batas antar desa | [Halaman gapura](/gapura/) |
+| 2,5 meter | Rp 30 juta | gang warga, gerbang perumahan | [Halaman gapura](/gapura/) |
+| 3,0 meter | Rp 35 juta | ukuran yang paling sering dipilih | [Halaman gapura](/gapura/) |
+| 4,0 meter | Rp 60 juta | gerbang balai desa | [Halaman gapura](/gapura/) |
+| 5,0 meter | Rp 75 juta | landmark kawasan, batas antar desa | [Halaman gapura](/gapura/) |
 
 Angka di atas adalah harga mulai dari dengan sistem all-in. Harga akhir ditentukan setelah survei lokasi, jadi anggap ini titik awal perhitungan, bukan penawaran final.
 

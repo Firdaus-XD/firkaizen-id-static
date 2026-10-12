@@ -45,8 +45,12 @@ def main():
         sys.exit("GAGAL: tidak ada .md")
 
     ref = open(REF, encoding="utf-8").read() if os.path.exists(REF) else ""
-    # angka rupiah yang sah (dari referensi + nilai umum yg jelas: ketebalan, persen, hari)
-    angka_sah = set(re.findall(r"[\d][\d.,]{2,}", ref))
+    # harga rupiah yang sah, HANYA dari referensi. "Rp 33 juta" tidak ada di sana
+    # -> langsung ketahuan sebelum deploy. Dua bentuk: "Rp 30 juta" dan "Rp 65.000 /m2".
+    harga_sah = set()
+    for n, sat in re.findall(r"Rp\s*([\d][\d.,]*)\s*(juta|miliar)?", ref):
+        n = n.rstrip(".,")
+        harga_sah.add(f"{n} {sat}" if sat else n)
 
     print(f"Memeriksa {len(files)} artikel\n" + "-" * 62)
     for f in files:
@@ -96,10 +100,33 @@ def main():
         if "FirKaizen Solutions" in body and "PT FirKaizen Digital Solutions" not in body:
             gagal(f, "menulis 'FirKaizen Solutions' tanpa 'PT FirKaizen Digital Solutions'")
 
-        # janji berlebihan
+# Janji berlebihan
         for frasa in ("dijamin halaman 1", "pasti termurah", "nomor 1 di google"):
             if frasa in body.lower():
                 gagal(f, f"klaim berlebihan: '{frasa}'")
+
+        # Harga WAJIB sama dengan supplier. Tanpa ini, artikel bisa mengarang angka
+        # apa saja dan checker tetap bilang lulus (angka_sah dulu dikumpulkan tapi
+        # tidak pernah dipakai).
+        for sumber, teks in (("badan artikel", body), ("deskripsi", meta.get("description", "")),
+                             ("judul", meta.get("title", ""))):
+            for m in re.finditer(r"Rp\s*([\d][\d.,]*)\s*(juta|miliar)?", teks):
+                n = m.group(1).rstrip(".,")
+                satuan = (m.group(2) or "").lower()
+                if satuan:
+                    kunci = f"{n} {satuan}"
+                else:
+                    kunci = n
+                if kunci not in harga_sah:
+                    gagal(f, f"{sumber}: harga '{m.group(0).strip()}' tidak ada di referensi")
+
+        # klaim terlarang (belum ada sumbernya dari mitra)
+        for frasa in ("garansi", "survei gratis", "survey gratis", "gratis survey",
+                      "pengrajin kami", "tukang kami", "tim mandor kami",
+                      "cakar ayam", "lung-lungan", "puluhan tahun", "bebas lumut",
+                      "tidak mudah berlumut"):
+            if frasa in body.lower():
+                gagal(f, f"klaim tanpa sumber: '{frasa}'")
 
         # keluaran HTML ada?
         htmlf = os.path.join(OUT, meta.get("slug", nama), "index.html")
