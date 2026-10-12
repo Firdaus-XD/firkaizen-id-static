@@ -1,0 +1,17 @@
+# Foto yang TAMPIL di portofolio /gapura/  (satu nama per baris)
+# Sisanya tetap ada di Drive + ~/.hermes/cache/scratch/gapura_id/ (mentah) dan
+# _arsip-portofolio/ (webp), jadi bisa ditukar kapan saja tanpa unduh ulang:
+#   1. ubah daftar ini
+#   2. python3 ops/rebuild_galeri.py
+#   3. bash ops/deploy-halaman.sh gapura images/gapura
+#
+# Syarat foto layak tampil: gapura utuh & jadi subjek utama, sudah selesai
+# (bukan lokasi konstruksi), tanpa orang berpose, tanpa kendaraan, tanpa
+# perancah/reruntuhan.
+
+galeri-2.5m-008.webp
+galeri-3m-002.webp
+galeri-3m-004.webp
+galeri-4m-006.webp
+galeri-5m-015.webp
+galeri-6m-001.webp

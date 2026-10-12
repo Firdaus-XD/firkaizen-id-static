@@ -1,34 +1,63 @@
 #!/usr/bin/env python3
-"""Bangun ulang bagian GALERI di gapura/index.html dari STOK FOTO YANG ADA.
+"""Bangun ulang bagian GALERI di gapura/index.html dari FOTO YANG DIPILIH.
 
-Sumber: images/gapura/galeri-*.webp  (dari folder Drive mitra; nama berkas
-menyimpan tinggi gapura).  Thumbnail 640px dibuat di images/gapura/thumb/,
-versi penuh tetap dipakai lightbox.
+Sumber pilihan: ops/galeri_pilih.txt (satu nama berkas per baris, '#' = komentar).
+Foto di luar daftar disisihkan ke images/gapura/tidak-tampil/ (TIDAK dihapus),
+jadi menukar foto = ubah daftar + jalankan ulang skrip ini.
 
-Dijalankan ulang setiap kali stok foto bertambah:
+Thumbnail 640px dibuat di images/gapura/thumb/, versi penuh dipakai lightbox.
+
     python3 ops/rebuild_galeri.py
 """
-import pathlib, re, sys
+import pathlib, re, shutil
 from PIL import Image
 
 repo = pathlib.Path(__file__).resolve().parent.parent
 img  = repo / 'images' / 'gapura'
+simpan = img / 'tidak-tampil'
 thum = img / 'thumb'
 html = repo / 'gapura' / 'index.html'
 thum.mkdir(exist_ok=True)
 
-# 'galeri-2-5m-...' -> '2.5'   'galeri-4m-...' -> '4'
+daftar_file = repo / 'ops' / 'galeri_pilih.txt'
+if daftar_file.exists():
+    daftar = [n.strip() for n in daftar_file.read_text(encoding='utf-8').splitlines()
+              if n.strip() and not n.lstrip().startswith('#')]
+else:
+    daftar = [f.name for f in sorted(img.glob('galeri-*.webp'))]
+
+# tukar posisi: yang dipilih dikembalikan, yang tidak dipilih disisihkan
+simpan.mkdir(exist_ok=True)
+dipilih = set(daftar)
+geser = 0
+for f in sorted(img.glob('galeri-*.webp')):
+    if f.name not in dipilih:
+        shutil.move(str(f), simpan / f.name); geser += 1
+for f in sorted(simpan.glob('galeri-*.webp')):
+    if f.name in dipilih:
+        shutil.move(str(f), img / f.name)
+for f in sorted(thum.glob('*.webp')):
+    if f.name not in dipilih:
+        f.unlink()
+if daftar_file.exists():
+    print(f"dipilih: {len(daftar)} | disisihkan: {geser}")
+
+# 'galeri-2.5m-001' -> '2.5'   'galeri-4m-007' -> '4'
 def tinggi(nama):
-    """'galeri-2.5m-001' -> '2.5'   'galeri-4m-007' -> '4'."""
     m = re.match(r'galeri-(\d)(?:[.-](\d))?m', nama)
     if not m:
         return None
     return f"{m.group(1)}.{m.group(2)}" if m.group(2) else m.group(1)
 
 kartu = []
-for f in sorted(img.glob('galeri-*.webp')):
+for nama in daftar:
+    f = img / nama
+    if not f.exists():
+        print(f"  LEWAT (tak ada): {nama}")
+        continue
     t = tinggi(f.stem)
     if t is None:
+        print(f"  LEWAT (nama tak dikenali): {nama}")
         continue
     # thumbnail untuk grid
     th = thum / f.name
@@ -78,7 +107,7 @@ seksi = f"""<!-- ================= GALERI ================= -->
 {chip_html}
       </div>
 
-      <div id="galGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+      <div id="galGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
 {chr(10).join(kartu_html(k) for k in kartu)}
       </div>
 
