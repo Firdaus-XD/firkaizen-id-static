@@ -7,8 +7,13 @@ Output:  artikel/index.html          (daftar artikel)
 
 Alasan pakai generator, bukan tulis HTML tangan: menambah artikel = tambah 1 file .md,
 lalu jalankan script. Tidak ada salinan nav/footer/head yang bisa jadi tidak sinkron.
+
+Tata letak artikel mengikuti halaman artikel firkaizen.com: breadcrumb, judul besar,
+baris penulis + aksi, panel ringkasan, daftar isi bernomor, prosa satu kolom, navigasi
+artikel, blok penulis, artikel terkait, lalu ajakan. Diterapkan di generator supaya
+seluruh artikel ikut sekaligus -- bukan disunting satu per satu.
 """
-import os, re, html, json, datetime, glob, shutil
+import os, re, html, json, datetime, glob
 
 import markdown
 
@@ -19,60 +24,136 @@ BASE = "https://firkaizen.id"
 WA = "https://wa.me/6285196135691"
 TODAY = datetime.date.today().isoformat()
 
-# ---------- aset bersama (disalin dari halaman yang sudah ada supaya konsisten) ----------
+BULAN = ["", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
+         "Agustus", "September", "Oktober", "November", "Desember"]
 
-STYLE = """    body {
-      background-color: #F8FAFC;
-      color: #334155;
+
+def tanggal_id(iso):
+    """2026-10-12 -> '12 Oktober 2026'."""
+    try:
+        y, m, d = iso.split("-")
+        return f"{int(d)} {BULAN[int(m)]} {y}"
+    except (ValueError, IndexError):
+        return iso
+
+
+# ---------- aset bersama ----------
+#
+# Warna dipindah ke variabel CSS (--surface, --heading, ...). Sebelumnya setiap aturan
+# butuh dua baris (.x dan .dark .x); dengan variabel satu aturan cukup, dan aturan yang
+# lupa varian .dark-nya tidak lagi membuat halaman gelap-separuh.
+
+STYLE = """    :root {
+      --surface: #FFFFFF;
+      --surface-2: #F1F5F9;
+      --border: #E2E8F0;
+      --heading: #0F172A;
+      --body: #334155;
+      --soft: #64748B;
+      --page: #F8FAFC;
+    }
+    .dark {
+      --surface: #111827;
+      --surface-2: #0F1729;
+      --border: #1F2937;
+      --heading: #F8FAFC;
+      --body: #CBD5E1;
+      --soft: #94A3B8;
+      --page: #0A0F1D;
+    }
+
+    body {
+      background-color: var(--page);
+      color: var(--body);
       font-size: 15px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-    .dark body { background-color: #0A0F1D; color: #CBD5E1; }
+
+    .t-heading { color: var(--heading); }
+    .t-body { color: var(--body); }
+    .t-soft { color: var(--soft); }
 
     .container-clean {
       width: 100%; max-width: 68rem; margin-left: auto; margin-right: auto;
       padding-left: 1.25rem; padding-right: 1.25rem;
     }
-    .prose-clean { max-width: 46rem; }
-    .prose-clean h2 {
-      font-size: 1.35rem; font-weight: 900; margin-top: 2.25rem; margin-bottom: 0.75rem;
-      color: #0F172A; letter-spacing: -0.01em; scroll-margin-top: 5rem;
+
+    .prose-clean { max-width: 48rem; }
+
+    .prose-article h2 {
+      font-size: 1.5rem; font-weight: 800; margin-top: 2.75rem; margin-bottom: 0.85rem;
+      color: var(--heading); letter-spacing: -0.015em; line-height: 1.25;
+      scroll-margin-top: 6rem;
     }
-    .dark .prose-clean h2 { color: #F8FAFC; }
-    .prose-clean h3 {
-      font-size: 1.1rem; font-weight: 800; margin-top: 1.75rem; margin-bottom: 0.5rem;
-      color: #0F172A; scroll-margin-top: 5rem;
+    .prose-article h3 {
+      font-size: 1.15rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.6rem;
+      color: var(--heading); scroll-margin-top: 6rem;
     }
-    .dark .prose-clean h3 { color: #F1F5F9; }
-    .prose-clean p { margin-bottom: 1rem; }
-    .prose-clean ul, .prose-clean ol { margin: 0 0 1rem 1.25rem; }
-    .prose-clean ul { list-style: disc; }
-    .prose-clean ol { list-style: decimal; }
-    .prose-clean li { margin-bottom: 0.4rem; }
-    .prose-clean a { color: #0B6BFF; font-weight: 600; text-decoration: underline; }
-    .prose-clean strong { font-weight: 800; color: #0F172A; }
-    .dark .prose-clean strong { color: #F8FAFC; }
-    .prose-clean table {
-      width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.875rem;
+    .prose-article p { margin-bottom: 1.15rem; font-size: 1rem; line-height: 1.75; }
+    .prose-article ul, .prose-article ol { margin: 0 0 1.15rem 1.35rem; }
+    .prose-article ul { list-style: disc; }
+    .prose-article ol { list-style: decimal; }
+    .prose-article li { margin-bottom: 0.5rem; line-height: 1.7; }
+    .prose-article a { color: #0B6BFF; font-weight: 600; text-decoration: underline;
+                       text-underline-offset: 3px; }
+    .prose-article a:hover { color: #0A5AD6; }
+    .prose-article strong { font-weight: 700; color: var(--heading); }
+    .prose-article img { border-radius: 1rem; margin: 1.75rem 0; }
+    .prose-article table {
+      width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem;
     }
-    .prose-clean th, .prose-clean td {
-      border: 1px solid #E2E8F0; padding: 0.6rem 0.75rem; text-align: left;
+    .prose-article th, .prose-article td {
+      border: 1px solid var(--border); padding: 0.7rem 0.85rem; text-align: left;
     }
-    .dark .prose-clean th, .dark .prose-clean td { border-color: #1F2937; }
-    .prose-clean th { background-color: #F1F5F9; font-weight: 800; }
-    .dark .prose-clean th { background-color: #111827; }
-    .prose-clean blockquote {
-      border-left: 3px solid #0B6BFF; padding-left: 1rem; margin: 1.25rem 0;
-      color: #475569; font-style: italic;
+    .prose-article th {
+      background-color: var(--surface-2); font-weight: 700; color: var(--heading);
     }
-    .dark .prose-clean blockquote { color: #94A3B8; }
+    .prose-article blockquote {
+      border-left: 3px solid #0B6BFF; padding-left: 1.15rem; margin: 1.5rem 0;
+      color: var(--soft); font-style: italic;
+    }
+    /* Tabel lebar di HP: bisa digeser, bukan memaksa seluruh halaman melebar. */
+    .tabel-bungkus { overflow-x: auto; margin: 1.5rem 0; }
 
     .card-clean {
-      background-color: #FFFFFF; border: 1px solid #E2E8F0;
+      background-color: var(--surface); border: 1px solid var(--border);
       border-radius: 1.25rem; box-shadow: 0 4px 20px -4px rgba(7, 25, 82, 0.05);
     }
-    .dark .card-clean { background-color: #111827; border-color: #1F2937; box-shadow: none; }
+    .dark .card-clean { box-shadow: none; }
+
+    .panel-soft {
+      background-color: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 1.25rem;
+    }
+    .panel-ringkas {
+      background-color: rgba(11, 107, 255, 0.04);
+      border: 1px solid rgba(11, 107, 255, 0.25);
+      border-radius: 1.25rem;
+    }
+
+    .teks-judul {
+      font-size: 1.875rem; font-weight: 800; letter-spacing: -0.02em;
+      line-height: 1.2; color: var(--heading);
+    }
+    @media (min-width: 640px) { .teks-judul { font-size: 2.25rem; } }
+    @media (min-width: 1024px) { .teks-judul { font-size: 2.625rem; } }
+
+    .tombol-halus {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      border: 1px solid var(--border); background-color: var(--surface);
+      border-radius: 9999px; padding: 0.4rem 0.85rem;
+      font-size: 12px; font-weight: 600; color: var(--body);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .tombol-halus:hover { border-color: #0B6BFF; color: #0B6BFF; }
+
+    .avatar-fk {
+      display: grid; place-items: center; height: 2.5rem; width: 2.5rem;
+      flex-shrink: 0; border-radius: 9999px;
+      background-color: rgba(11, 107, 255, 0.1); color: #0B6BFF;
+      font-weight: 800; font-size: 0.8rem; letter-spacing: 0.02em;
+    }
 
     .btn-wa {
       display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
@@ -86,6 +167,23 @@ STYLE = """    body {
       display: inline-flex; align-items: center; gap: 0.375rem; border-radius: 9999px;
       padding: 0.25rem 0.75rem; font-size: 11px; font-weight: 800;
       text-transform: uppercase; letter-spacing: 0.06em;
+    }
+
+    .pita-baca {
+      position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 50;
+      background: transparent; pointer-events: none;
+    }
+    .pita-baca > div {
+      height: 100%; width: 0%; background-color: #0B6BFF;
+      box-shadow: 0 0 8px rgba(11, 107, 255, 0.6);
+      transition: width 75ms ease-out;
+    }
+
+    .pola-grid {
+      background-image:
+        linear-gradient(to right, rgba(11, 107, 255, 0.16) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(11, 107, 255, 0.16) 1px, transparent 1px);
+      background-size: 44px 44px;
     }
 
     .wa-float {
@@ -208,6 +306,44 @@ SCRIPT = """  <script>
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     }
+
+    // Pita kemajuan baca.
+    const pita = document.querySelector('#pitaBaca > div');
+    const isi = document.querySelector('.prose-article');
+    if (pita && isi) {
+      const update = () => {
+        const tinggi = isi.offsetHeight - window.innerHeight;
+        const lewat = window.scrollY - isi.offsetTop;
+        pita.style.width = Math.min(100, Math.max(0, (lewat / tinggi) * 100)) + '%';
+      };
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    }
+
+    // Salin tautan: tanpa ini tombolnya cuma hiasan.
+    function salinTautan(btn) {
+      const asli = btn.innerHTML;
+      const beres = () => {
+        btn.innerHTML = 'Tautan disalin';
+        setTimeout(() => { btn.innerHTML = asli; }, 1600);
+      };
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(location.href).then(beres, () => {});
+      } else {
+        const t = document.createElement('textarea');
+        t.value = location.href; document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); beres(); } catch (e) {}
+        document.body.removeChild(t);
+      }
+    }
+
+    // Tabel lebar di HP: bungkus supaya bisa digeser, bukan memaksa halaman melebar.
+    document.querySelectorAll('.prose-article table').forEach(t => {
+      if (t.parentElement.classList.contains('tabel-bungkus')) return;
+      const w = document.createElement('div'); w.className = 'tabel-bungkus';
+      t.parentNode.insertBefore(w, t); w.appendChild(t);
+    });
   </script>"""
 
 
@@ -217,13 +353,16 @@ SCRIPT = """  <script>
 # gapura salah dan menyesatkan -- wilayah ditentukan per artikel, bukan satu templat
 # untuk semua. Bisa ditimpa dari frontmatter `wilayah: ...`.
 DEFAULT_WILAYAH = {"label": "Solo Raya & Jawa Tengah",
-                   "area": ["Solo Raya", "Jawa Tengah", "Jawa Timur"]}
+                   "area": ["Solo Raya", "Jawa Tengah", "Jawa Timur"],
+                   "ringkas": "Solo Raya dan Jawa Tengah"}
 WILAYAH = {
     # Gapura dikerjakan tim mitra di Ponorogo -- jangan sebut Solo (itu lini material).
     "pulau-jawa": {"label": "Ponorogo, Jawa Timur",
-                   "area": ["Pulau Jawa"]},
+                   "area": ["Pulau Jawa"],
+                   "ringkas": "seluruh Pulau Jawa"},
     "solo-jateng": DEFAULT_WILAYAH,
 }
+
 
 def pilih_wilayah(meta):
     w = meta.get("wilayah")
@@ -269,7 +408,7 @@ def page_shell(*, title, desc, slug, body, ld_extra, breadcrumb, canonical,
                 "@type": "Organization", "@id": BASE + "/#organization",
                 "name": "PT FirKaizen Digital Solutions", "url": BASE + "/",
                 "logo": BASE + "/logo.webp", "email": "halo@firkaizen.com",
-                "telephone": "+6285196135691",
+                "telephone": "+628****5691",
                 "address": {"@type": "PostalAddress", "addressRegion": "Jawa Tengah",
                             "addressLocality": "Solo Raya", "addressCountry": "ID"},
                 "areaServed": list(wilayah["area"]),
@@ -330,6 +469,8 @@ def page_shell(*, title, desc, slug, body, ld_extra, breadcrumb, canonical,
 <body>
 {HEADER}
 
+  <div class="pita-baca" id="pitaBaca" aria-hidden="true"><div></div></div>
+
   <main class="py-8 sm:py-12">
 {body}
   </main>
@@ -348,7 +489,152 @@ def page_shell(*, title, desc, slug, body, ld_extra, breadcrumb, canonical,
 """
 
 
-def render_article(md_path):
+# ---------- komponen halaman artikel ----------
+
+def daftar_isi(body_html):
+    """Daftar isi dari h2 yang diberi id oleh ekstensi `toc` markdown.
+
+    Nomor dua digit (01, 02, ...) mengikuti halaman artikel firkaizen.com: pembaca tahu
+    panjang artikelnya sejak awal. Tanpa h2 sama sekali hasilnya string kosong -- bukan
+    panel kosong yang membingungkan.
+    """
+    judul = re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', body_html, re.S)
+    if not judul:
+        return ""
+    item = []
+    for i, (sid, teks) in enumerate(judul, 1):
+        bersih = html.unescape(re.sub(r"<[^>]+>", "", teks)).strip()
+        item.append(
+            f'<li><a href="#{sid}" class="group flex items-start gap-2.5 t-body hover:text-electric transition-colors">'
+            f'<span class="mt-0.5 text-xs font-mono font-bold" style="color:rgba(11,107,255,0.7)">{i:02d}. </span>'
+            f'<span class="group-hover:underline underline-offset-4 leading-snug">{html.escape(bersih)}</span>'
+            f"</a></li>"
+        )
+    return (
+        '<div class="panel-soft mt-8 p-5 sm:p-6">'
+        '<div class="flex items-center gap-2 text-sm font-bold t-heading">'
+        '<svg class="h-4 w-4 text-electric" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>'
+        "<span>Daftar Isi Artikel</span></div>"
+        '<ul class="mt-3.5 space-y-2.5 text-sm">' + "".join(item) + "</ul></div>"
+    )
+
+
+def navigasi_artikel(semua, slug):
+    """Artikel sebelumnya / berikutnya menurut tanggal.
+
+    Tanpa ini pembaca buntu di ujung halaman, padahal artikel di sini saling menjawab
+    pertanyaan yang berdekatan.
+
+    `semua` HARUS memuat artikel yang sedang dibuka -- mencari `slug` di dalam daftar yang
+    sudah dikecualikan membuat indeksnya tidak pernah ketemu dan blok ini diam-diam kosong.
+    """
+    if len(semua) < 2:
+        return ""
+    urut = sorted(semua, key=lambda a: (a["date"], a["slug"]), reverse=True)
+    idx = next((i for i, a in enumerate(urut) if a["slug"] == slug), None)
+    if idx is None:
+        return ""
+    lebih_baru = urut[idx - 1] if idx > 0 else None
+    lebih_lama = urut[idx + 1] if idx + 1 < len(urut) else None
+
+    def kartu(a, arah):
+        if not a:
+            return ""
+        panah = "&larr;" if arah == "baru" else "&rarr;"
+        rata = "" if arah == "baru" else " sm:text-right"
+        return (
+            f'<a href="/artikel/{a["slug"]}/" class="group block flex-1 rounded-2xl border p-4 transition-colors" '
+            f'style="border-color:var(--border);background-color:var(--surface)">'
+            f'<div class="text-[11px] font-bold uppercase tracking-wider t-soft">{panah} '
+            f'{"Lebih baru" if arah == "baru" else "Sebelumnya"}</div>'
+            f'<div class="mt-1.5 text-sm font-bold t-heading group-hover:text-electric transition-colors{rata}">'
+            f'{html.escape(a["title"])}</div></a>'
+        )
+
+    return (
+        '<div class="mt-14 flex flex-col gap-4 border-t pt-8 sm:flex-row" '
+        'style="border-color:var(--border)">'
+        + kartu(lebih_baru, "baru") + kartu(lebih_lama, "lama") + "</div>"
+    )
+
+
+def blok_penulis(tag, wilayah):
+    """Blok penulis.
+
+    Tidak memakai klaim yang tidak bisa dibuktikan (jumlah tahun pengalaman, jumlah
+    proyek) -- hanya divisi dan cakupan layanan yang memang benar. Aturan yang sama
+    seperti artikel: klaim tanpa sumber dilarang.
+    """
+    return (
+        '<div class="panel-soft mt-8 p-6 sm:p-8">'
+        '<div class="flex flex-col items-start gap-5 sm:flex-row sm:items-center">'
+        '<div class="avatar-fk h-14 w-14 text-base">FK</div>'
+        '<div class="flex-1">'
+        '<h3 class="text-base font-bold t-heading">PT FirKaizen Digital Solutions</h3>'
+        '<p class="mt-1.5 text-sm t-body">Divisi konstruksi fisik: gapura Majapahit bata '
+        'expose, paving block, batako, dan bata ringan. Untuk topik '
+        f'<strong class="t-heading">{html.escape(tag)}</strong>, layanan kami mencakup '
+        f"{html.escape(wilayah['ringkas'])}.</p>"
+        '<div class="mt-4 flex flex-wrap items-center gap-2">'
+        f'<a href="{WA}?text=Halo%20FirKaizen,%20saya%20ingin%20bertanya" '
+        'target="_blank" rel="noopener" class="tombol-halus no-underline">Tanya lewat WhatsApp</a>'
+        '<a href="/artikel/" class="tombol-halus no-underline">Semua artikel</a>'
+        "</div></div></div></div>"
+    )
+
+
+def kartu_terkait(lain, slug, tag):
+    """Artikel lain dengan tag sama; kalau kurang dari tiga, ditambal artikel terbaru."""
+    senada = [a for a in lain if a["tag"] == tag]
+    tambahan = [a for a in sorted(lain, key=lambda x: x["date"], reverse=True)
+                if a["tag"] != tag]
+    pilihan = (senada + tambahan)[:3]
+    if not pilihan:
+        return ""
+    kartu = []
+    for a in pilihan:
+        kartu.append(
+            f'<a href="/artikel/{a["slug"]}/" class="group flex flex-col overflow-hidden rounded-2xl border transition-colors" '
+            f'style="border-color:var(--border);background-color:var(--surface)">'
+            f'<div class="flex flex-1 flex-col p-5">'
+            f'<div class="flex items-center gap-2 text-[12px] t-soft">'
+            f'<span>{html.escape(a["tag"])}</span><span>&middot;</span>'
+            f'<span>{a["read_min"]} menit baca</span></div>'
+            f'<h3 class="mt-2.5 text-base font-bold leading-snug t-heading group-hover:text-electric transition-colors">'
+            f'{html.escape(a["title"])}</h3>'
+            f'<div class="mt-4 flex items-center gap-1.5 text-xs font-semibold text-electric">Baca artikel &rarr;</div>'
+            f"</div></a>"
+        )
+    return (
+        '<div class="container-clean mt-16 max-w-4xl">'
+        '<div class="flex items-center justify-between">'
+        '<h2 class="text-xl font-bold t-heading">Artikel terkait</h2>'
+        '<a href="/artikel/" class="text-xs font-semibold text-electric hover:underline">Lihat semua</a></div>'
+        '<div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">'
+        + "".join(kartu) + "</div></div>"
+    )
+
+
+def hero_cta(wilayah):
+    return (
+        '<div class="container-clean mt-16 max-w-4xl">'
+        '<section class="relative overflow-hidden rounded-3xl" style="background-color:#071952">'
+        '<div class="pola-grid absolute inset-0 opacity-60"></div>'
+        '<div class="relative px-6 py-10 sm:px-12 sm:py-16">'
+        '<div class="mx-auto max-w-2xl text-center">'
+        '<h2 class="text-2xl font-bold text-white sm:text-4xl">Butuh hitungan untuk proyek Anda?</h2>'
+        '<p class="mt-3 text-sm text-slate-300 sm:text-base">Kirim ukuran dan lokasi, tim kami '
+        f"hitungkan kebutuhan material dan gambaran biaya untuk {html.escape(wilayah['ringkas'])}. "
+        'Ketentuan survei dijelaskan saat konsultasi.</p>'
+        '<div class="mt-6 flex flex-col items-center justify-center gap-2.5 sm:flex-row sm:gap-3">'
+        f'<a href="{WA}?text=Halo%20FirKaizen,%20saya%20ingin%20konsultasi%20proyek" '
+        'target="_blank" rel="noopener" class="btn-wa px-6 py-3 text-sm no-underline">Konsultasi via WhatsApp</a>'
+        '<a href="/" class="rounded-xl border border-white/25 px-6 py-3 text-sm font-semibold text-white no-underline transition-colors hover:bg-white/10">Lihat layanan lain</a>'
+        "</div></div></div></section></div>"
+    )
+
+
+def render_article(md_path, semua):
     meta, body_md = parse_front(open(md_path, encoding="utf-8").read())
     slug = meta["slug"]
     title = meta["title"]
@@ -358,46 +644,76 @@ def render_article(md_path):
     date = meta.get("date", TODAY)
     tag = meta.get("tag", "Artikel")
     read_min = max(1, round(len(body_md.split()) / 220))
+    wilayah = pilih_wilayah(meta)
 
     body_html = markdown.markdown(
         body_md, extensions=["extra", "sane_lists", "toc"], output_format="html"
     )
+    lain = [a for a in semua if a["slug"] != slug]
 
     header_html = f"""    <div class="container-clean">
-      <div class="prose-clean mx-auto">
-        <nav class="mb-4 text-xs font-semibold text-slate-500" aria-label="Breadcrumb">
-          <a href="/" class="hover:text-electric">Beranda</a>
-          <span class="mx-1.5">/</span>
-          <a href="/artikel/" class="hover:text-electric">Artikel</a>
-          <span class="mx-1.5">/</span>
-          <span class="text-slate-700 dark:text-slate-300">{html.escape(tag)}</span>
-        </nav>
+      <nav class="flex items-center gap-2 text-[12px] t-soft" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-electric">Beranda</a>
+        <span>/</span>
+        <a href="/artikel/" class="transition-colors hover:text-electric">Artikel</a>
+        <span>/</span>
+        <span class="truncate max-w-[200px] sm:max-w-md t-heading">{html.escape(tag)}</span>
+      </nav>
+    </div>
 
+    <article class="container-clean prose-clean mt-8 max-w-3xl">
+      <div class="flex flex-wrap items-center gap-2.5">
         <span class="pill-badge bg-electric/10 text-electric">{html.escape(tag)}</span>
-        <h1 class="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-snug">
-          {html.escape(title)}
-        </h1>
-        <p class="mt-3 text-sm text-slate-500">
-          <time datetime="{date}">{date}</time> · {read_min} menit baca · PT FirKaizen Digital Solutions
-        </p>
+        <span class="text-xs t-soft">&middot;</span>
+        <span class="inline-flex items-center gap-1 text-xs t-soft">
+          <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          {read_min} menit baca
+        </span>
       </div>
-    </div>
 
-    <div class="container-clean mt-8">
-      <article class="card-clean prose-clean mx-auto p-6 sm:p-9">
+      <h1 class="teks-judul mt-5">{html.escape(title)}</h1>
+
+      <div class="mt-8 flex flex-wrap items-center justify-between gap-4 border-y py-4 text-sm" style="border-color:var(--border)">
+        <div class="flex items-center gap-3">
+          <div class="avatar-fk">FK</div>
+          <div>
+            <div class="font-semibold t-heading">PT FirKaizen Digital Solutions</div>
+            <div class="text-xs t-soft">Dipublikasikan pada {tanggal_id(date)}</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="salinTautan(this)" class="tombol-halus">
+            <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span>Salin Tautan</span>
+          </button>
+          <a href="{WA}?text=Halo%20FirKaizen,%20saya%20ingin%20konsultasi" target="_blank" rel="noopener" class="tombol-halus no-underline">
+            <svg class="h-3.5 w-3.5" style="color:#25D366" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            <span>Tanya Tim</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="panel-ringkas mt-8 p-5 sm:p-6">
+        <div class="mb-2.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-electric">
+          <span class="inline-block h-2 w-2 rounded-full bg-electric animate-pulse"></span>
+          Inti &amp; Ringkasan Pembahasan
+        </div>
+        <p class="text-[15px] font-medium leading-relaxed t-heading sm:text-base">{html.escape(desc)}</p>
+      </div>
+
+      {daftar_isi(body_html)}
+
+      <div class="prose-article mt-10">
 {body_html}
-      </article>
-    </div>
-
-    <div class="container-clean mt-8">
-      <div class="prose-clean mx-auto rounded-2xl bg-navy p-6 text-white sm:p-8">
-        <h2 class="!mt-0 !text-white text-xl font-black">Butuh hitungan untuk proyek Anda?</h2>
-        <p class="!mb-4 text-slate-300">Kirim ukuran dan lokasi, tim kami hitungkan kebutuhan material dan gambaran biaya. Ketentuan survei dijelaskan saat konsultasi.</p>
-        <a href="{WA}?text=Halo%20FirKaizen,%20saya%20ingin%20konsultasi%20proyek" target="_blank" rel="noopener" class="btn-wa px-5 py-3 text-sm no-underline">
-          Konsultasi via WhatsApp
-        </a>
       </div>
-    </div>"""
+
+      {navigasi_artikel(semua, slug)}
+      {blok_penulis(tag, wilayah)}
+    </article>
+
+{kartu_terkait(lain, slug, tag)}
+
+{hero_cta(wilayah)}"""
 
     ld_extra = {
         "@type": "Article",
@@ -418,37 +734,44 @@ def render_article(md_path):
     return slug, page_shell(
         title=title, desc=desc, slug=slug, body=header_html,
         ld_extra=ld_extra, breadcrumb=breadcrumb, canonical=canonical, og_image=og,
-        wilayah=pilih_wilayah(meta),
+        wilayah=wilayah,
     ), meta
 
 
 def render_index(articles):
-    """Halaman daftar artikel."""
-    cards = []
-    for a in sorted(articles, key=lambda x: x["date"], reverse=True):
-        cards.append(f"""        <a href="/artikel/{a['slug']}/" class="card-clean group flex flex-col p-6 transition hover:border-electric">
-          <span class="pill-badge bg-electric/10 text-electric self-start">{html.escape(a['tag'])}</span>
-          <h2 class="mt-3 text-lg font-black text-slate-900 dark:text-white group-hover:text-electric">{html.escape(a['title'])}</h2>
-          <p class="mt-2 text-sm text-slate-500 line-clamp-3">{html.escape(a['description'])}</p>
-          <span class="mt-4 text-xs font-bold text-slate-400">{a['date']} · baca selengkapnya</span>
-        </a>""")
+    """Halaman /artikel/ -- daftar semua artikel, terbaru dulu."""
+    kartu = []
+    for a in sorted(articles, key=lambda x: (x["date"], x["slug"]), reverse=True):
+        kartu.append(
+            f'<a href="/artikel/{a["slug"]}/" class="group flex flex-col overflow-hidden rounded-2xl border transition-colors" '
+            f'style="border-color:var(--border);background-color:var(--surface)">'
+            f'<div class="flex flex-1 flex-col p-5">'
+            f'<div class="flex items-center gap-2 text-[12px] t-soft">'
+            f'<span class="pill-badge bg-electric/10 text-electric">{html.escape(a["tag"])}</span>'
+            f'<span>{tanggal_id(a["date"])}</span></div>'
+            f'<h3 class="mt-3 text-lg font-bold leading-snug t-heading group-hover:text-electric transition-colors">'
+            f'{html.escape(a["title"])}</h3>'
+            f'<p class="mt-2 flex-1 text-sm t-body">{html.escape(a["description"])}</p>'
+            f'<div class="mt-4 flex items-center gap-1.5 text-xs font-semibold text-electric">Baca &rarr;</div>'
+            f"</div></a>"
+        )
 
     body = f"""    <div class="container-clean">
-      <div class="prose-clean mx-auto text-center">
-        <span class="pill-badge bg-electric/10 text-electric">Artikel &amp; Wawasan</span>
-        <h1 class="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-          Panduan Material &amp; Pengerjaan
-        </h1>
-        <p class="mt-3 text-slate-500">
-          Hitungan biaya, perbandingan material, dan hal yang sering terlewat sebelum
-          memesan paving, batako, atau gapura.
-        </p>
-      </div>
+      <nav class="flex items-center gap-2 text-[12px] t-soft" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-electric">Beranda</a>
+        <span>/</span>
+        <span class="t-heading">Artikel</span>
+      </nav>
+      <h1 class="teks-judul mt-5">Artikel &amp; Wawasan</h1>
+      <p class="mt-4 max-w-2xl text-sm t-body sm:text-base">
+        Hitungan biaya, perbandingan material, dan hal yang sering terlewat sebelum
+        memesan paving, batako, atau gapura.
+      </p>
     </div>
 
     <div class="container-clean mt-10">
-      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-{chr(10).join(cards) if cards else '        <p class="text-slate-500">Belum ada artikel.</p>'}
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+{chr(10).join(kartu) if kartu else '        <p class="t-soft">Belum ada artikel.</p>'}
       </div>
     </div>"""
 
@@ -459,31 +782,51 @@ def render_index(articles):
     # areaServed yang benar adalah gabungannya, bukan salah satu.
     ada_gapura = any(str(a.get("tag", "")).strip().lower() == "gapura" for a in articles)
     w_index = ({"label": "Ponorogo & Solo Raya",
-                "area": ["Pulau Jawa", "Jawa Tengah", "Jawa Timur"]}
+                "area": ["Pulau Jawa", "Jawa Tengah", "Jawa Timur"],
+                "ringkas": "seluruh Pulau Jawa dan Solo Raya"}
                if ada_gapura else DEFAULT_WILAYAH)
     return page_shell(
         title="Artikel & Wawasan Material Konstruksi",
-        desc="Panduan dan hitungan biaya paving block, batako, bata ringan, dan gapura Majapahit dari FirKaizen.",
+        desc=("Panduan dan hitungan biaya paving block, batako, bata ringan, dan gapura "
+              "Majapahit dari FirKaizen."),
         slug="artikel", body=body, ld_extra=ld_extra, breadcrumb=breadcrumb,
         canonical=f"{BASE}/artikel/", og_image=f"{BASE}/images/og/default.webp",
         wilayah=w_index,
     )
 
 
-if __name__ == "__main__":
-    os.makedirs(OUT, exist_ok=True)
+def main():
     files = sorted(glob.glob(os.path.join(SRC, "*.md")))
     if not files:
         raise SystemExit(f"tidak ada .md di {SRC}")
-    metas = []
+
+    # Dua lintasan: ringkasan semua artikel dibaca dulu supaya navigasi dan "artikel
+    # terkait" bisa disusun tanpa membaca ulang berkas.
+    semua = []
     for f in files:
-        slug, out, meta = render_article(f)
+        meta, body_md = parse_front(open(f, encoding="utf-8").read())
+        semua.append({
+            "slug": meta["slug"], "title": meta["title"],
+            "description": meta.get("description", ""), "date": meta.get("date", TODAY),
+            "tag": meta.get("tag", "Artikel"),
+            "read_min": max(1, round(len(body_md.split()) / 220)),
+            "path": f,
+        })
+
+    os.makedirs(OUT, exist_ok=True)
+    for a in semua:
+        slug, html_out, _ = render_article(a["path"], semua)
         d = os.path.join(OUT, slug)
         os.makedirs(d, exist_ok=True)
-        open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(out)
-        meta["slug"] = slug
-        metas.append(meta)
-        print(f"  artikel/{slug}/index.html  ({len(out)//1024} KB)")
-    open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(
-        render_index(metas))
-    print(f"  artikel/index.html  ({len(metas)} artikel)")
+        with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as fh:
+            fh.write(html_out)
+        print(f"  artikel/{slug}/index.html  ({len(html_out)//1024} KB)")
+
+    konten = render_index(semua)
+    with open(os.path.join(OUT, "index.html"), "w", encoding="utf-8") as fh:
+        fh.write(konten)
+    print(f"  artikel/index.html  ({len(semua)} artikel)")
+
+
+if __name__ == "__main__":
+    main()
