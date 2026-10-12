@@ -61,7 +61,7 @@ Yang **tidak** termasuk dan biasanya disiapkan pemilik: tanah urug kalau lokasi 
 
 ## Alur pengerjaan
 
-**1. Konsultasi dan hitung awal.** Kirim lokasi dan perkiraan ukuran. Kami beri kisaran biaya dan pilihan desain.
+**1. Konsultasi dan hitung awal.** Kirim lokasi dan perkiraan ukuran. Anda dapat kisaran biaya dan pilihan desain, beserta ketentuan biaya survei.
 
 **2. Survei lokasi.** Yang diperiksa: daya dukung tanah, akses truk material, posisi saluran air, dan batas tanah.
 

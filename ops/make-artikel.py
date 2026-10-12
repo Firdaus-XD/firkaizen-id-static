@@ -169,7 +169,7 @@ FOOTER = """  <footer class="mt-14 border-t border-slate-200 dark:border-slate-8
           <ul class="mt-3 space-y-2">
             <li><a href="tel:085196135691" class="font-bold text-slate-900 dark:text-white hover:underline">0851-9613-5691</a></li>
             <li>halo@firkaizen.com</li>
-            <li>Solo Raya &amp; Jawa Tengah, Indonesia</li>
+            <li>__WILAYAH__, Indonesia</li>
           </ul>
         </div>
       </div>
@@ -211,6 +211,29 @@ SCRIPT = """  <script>
   </script>"""
 
 
+# ---------- wilayah layanan ----------
+# Gapura dikerjakan tim mitra di Ponorogo dan dilayani se-Pulau Jawa. Lini material
+# (paving/batako/bata ringan) berpusat di Solo Raya. Menuliskan "Solo Raya" di artikel
+# gapura salah dan menyesatkan -- wilayah ditentukan per artikel, bukan satu templat
+# untuk semua. Bisa ditimpa dari frontmatter `wilayah: ...`.
+DEFAULT_WILAYAH = {"label": "Solo Raya & Jawa Tengah",
+                   "area": ["Solo Raya", "Jawa Tengah", "Jawa Timur"]}
+WILAYAH = {
+    # Gapura dikerjakan tim mitra di Ponorogo -- jangan sebut Solo (itu lini material).
+    "pulau-jawa": {"label": "Ponorogo, Jawa Timur",
+                   "area": ["Pulau Jawa"]},
+    "solo-jateng": DEFAULT_WILAYAH,
+}
+
+def pilih_wilayah(meta):
+    w = meta.get("wilayah")
+    if w:
+        return WILAYAH.get(w, DEFAULT_WILAYAH)
+    if str(meta.get("tag", "")).strip().lower() == "gapura":
+        return WILAYAH["pulau-jawa"]
+    return DEFAULT_WILAYAH
+
+
 # ---------- frontmatter ----------
 
 def parse_front(text):
@@ -233,8 +256,12 @@ def parse_front(text):
 
 
 def page_shell(*, title, desc, slug, body, ld_extra, breadcrumb, canonical,
-               og_image, meta_extra=""):
-    """HTML lengkap satu halaman."""
+               og_image, meta_extra="", wilayah=DEFAULT_WILAYAH):
+    """HTML lengkap satu halaman.
+
+    `wilayah` = daerah yang BENAR-BENAR dilayani untuk topik artikel ini:
+    {'label': teks di footer kontak, 'area': daftar areaServed JSON-LD}.
+    """
     ld = {
         "@context": "https://schema.org",
         "@graph": [
@@ -245,7 +272,7 @@ def page_shell(*, title, desc, slug, body, ld_extra, breadcrumb, canonical,
                 "telephone": "+6285196135691",
                 "address": {"@type": "PostalAddress", "addressRegion": "Jawa Tengah",
                             "addressLocality": "Solo Raya", "addressCountry": "ID"},
-                "areaServed": ["Solo Raya", "Jawa Tengah", "Jawa Timur"],
+                "areaServed": list(wilayah["area"]),
             },
             ld_extra,
             {
@@ -259,6 +286,7 @@ def page_shell(*, title, desc, slug, body, ld_extra, breadcrumb, canonical,
     }
     wa_consult = (WA + "?text=Halo%20FirKaizen,%20saya%20ingin%20konsultasi%20"
                   "tentang%20material%20dan%20jasa%20konstruksi")
+    FOOTER_WILAYAH = FOOTER.replace("__WILAYAH__", html.escape(wilayah["label"]))
     return f"""<!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
@@ -306,7 +334,7 @@ def page_shell(*, title, desc, slug, body, ld_extra, breadcrumb, canonical,
 {body}
   </main>
 
-{FOOTER}
+{FOOTER_WILAYAH}
 
   <div id="waFloat" class="wa-float">
     <a href="{wa_consult}" target="_blank" rel="noopener" aria-label="Chat WhatsApp" class="btn-wa h-14 w-14 !rounded-full shadow-lg">
@@ -364,7 +392,7 @@ def render_article(md_path):
     <div class="container-clean mt-8">
       <div class="prose-clean mx-auto rounded-2xl bg-navy p-6 text-white sm:p-8">
         <h2 class="!mt-0 !text-white text-xl font-black">Butuh hitungan untuk proyek Anda?</h2>
-        <p class="!mb-4 text-slate-300">Kirim ukuran dan lokasi, tim kami hitungkan kebutuhan material dan estimasi biaya tanpa biaya survei awal.</p>
+        <p class="!mb-4 text-slate-300">Kirim ukuran dan lokasi, tim kami hitungkan kebutuhan material dan gambaran biaya. Ketentuan survei dijelaskan saat konsultasi.</p>
         <a href="{WA}?text=Halo%20FirKaizen,%20saya%20ingin%20konsultasi%20proyek" target="_blank" rel="noopener" class="btn-wa px-5 py-3 text-sm no-underline">
           Konsultasi via WhatsApp
         </a>
@@ -390,6 +418,7 @@ def render_article(md_path):
     return slug, page_shell(
         title=title, desc=desc, slug=slug, body=header_html,
         ld_extra=ld_extra, breadcrumb=breadcrumb, canonical=canonical, og_image=og,
+        wilayah=pilih_wilayah(meta),
     ), meta
 
 
@@ -426,11 +455,18 @@ def render_index(articles):
     ld_extra = {"@type": "CollectionPage", "name": "Artikel & Wawasan FirKaizen",
                 "url": f"{BASE}/artikel/", "inLanguage": "id-ID"}
     breadcrumb = [("Beranda", BASE + "/"), ("Artikel", BASE + "/artikel/")]
+    # halaman ini memuat artikel gapura (se-Pulau Jawa) dan material (Solo Raya) --
+    # areaServed yang benar adalah gabungannya, bukan salah satu.
+    ada_gapura = any(str(a.get("tag", "")).strip().lower() == "gapura" for a in articles)
+    w_index = ({"label": "Ponorogo & Solo Raya",
+                "area": ["Pulau Jawa", "Jawa Tengah", "Jawa Timur"]}
+               if ada_gapura else DEFAULT_WILAYAH)
     return page_shell(
         title="Artikel & Wawasan Material Konstruksi",
         desc="Panduan dan hitungan biaya paving block, batako, bata ringan, dan gapura Majapahit dari FirKaizen.",
         slug="artikel", body=body, ld_extra=ld_extra, breadcrumb=breadcrumb,
         canonical=f"{BASE}/artikel/", og_image=f"{BASE}/images/og/default.webp",
+        wilayah=w_index,
     )
 
 

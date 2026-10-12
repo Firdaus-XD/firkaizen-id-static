@@ -65,7 +65,7 @@ Untuk melihat tipe pilar dan contoh penempatan di jalan masuk, batas desa, dan k
 
 ## Yang perlu disiapkan sebelum survei
 
-Survei awal tidak dikenakan biaya. Supaya tim bisa langsung menghitung kebutuhan, kirim data berikut:
+Ketentuan biaya survei dijelaskan saat konsultasi. Supaya tim bisa langsung menghitung kebutuhan, kirim data berikut:
 
 1. Lebar jalan atau pintu yang tersedia, dalam meter.
 2. Peruntukan gapura: gang, perumahan, balai desa, atau batas wilayah.
@@ -78,4 +78,4 @@ Data tersebut bisa dikirim lewat WhatsApp ke 0851-9613-5691. Layanan dibuka seti
 
 Selain gapura, kami juga melayani paving block, bata ringan AAC, dan batako. Kalau area yang ingin dibangun juga membutuhkan perkerasan halaman atau dinding pagar, konsultasikan sekaligus di [halaman utama firkaizen.id](/) agar material dan jadwal bisa diatur dalam satu rencana.
 
-PT FirKaizen Digital Solutions, Solo Raya, Jawa Tengah.
+PT FirKaizen Digital Solutions. Pengerjaan gapura bersama tim mitra pengrajin di Ponorogo, melayani seluruh Pulau Jawa.
