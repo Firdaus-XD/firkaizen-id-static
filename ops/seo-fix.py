@@ -12,6 +12,20 @@ WA = "https://wa.me/6285196135691"
 EMAIL = "founder@firkaizen.com"
 TODAY = datetime.date.today().isoformat()
 
+# Wilayah per jenis halaman. Gapura dikerjakan tim mitra di Ponorogo dan dijangkau
+# se-Pulau Jawa; lini material berpusat di Solo Raya.
+#
+# Tanpa ini skrip ini MEMBALIKKAN perbaikan wilayah: ia menulis ulang seluruh blok <head>
+# dari satu templat, jadi areaServed gapura kembali berbunyi "Solo Raya" -- persis
+# kontradiksi yang dulu dilaporkan pemilik ("kenapa ngarang di solo kan tempat gapuranya
+# di ponorogo"). Halaman layanan tidak dihasilkan generator artikel, jadi tidak ada yang
+# menahannya kalau wilayahnya tidak dinyatakan di sini.
+WILAYAH = {
+    "default":    {"label": "Solo Raya & Jawa Tengah",
+                   "area": ["Solo Raya", "Jawa Tengah", "Jawa Timur"]},
+    "pulau-jawa": {"label": "Pulau Jawa", "area": ["Pulau Jawa"]},
+}
+
 # slug -> (title<=60, desc 140..160, og_image slug, path)
 PAGES = {
     "index.html": dict(
@@ -28,8 +42,8 @@ PAGES = {
         og="batako", kind="service"),
     "gapura/index.html": dict(
         path="/gapura/", t="Jasa Pembuatan Gapura Majapahit Bata Expose",
-        d="Jasa pembuatan gapura Majapahit bata expose ukiran relief klasik. Ukuran 2,5m hingga 6m dan custom. Melayani Jawa Timur.",
-        og="gapura", kind="service"),
+        d="Jasa pembuatan gapura Majapahit bata expose ukiran relief klasik. Ukuran 2,5m hingga 6m dan custom. Melayani seluruh Pulau Jawa.",
+        og="gapura", kind="service", wilayah="pulau-jawa"),
     "porto/index.html": dict(
         path="/porto/", t="Portofolio & Kontak FirKaizen",
         d="Portofolio dan kontak resmi PT FirKaizen Digital Solutions. Konsultasi langsung dengan tim engineer di Solo Raya.",
@@ -53,7 +67,13 @@ def esc(s):
 
 
 def ld_for(slug, cfg):
-    """JSON-LD sesuai jenis halaman."""
+    """JSON-LD sesuai jenis halaman.
+
+    areaServed diambil dari wilayah halaman ini, bukan satu nilai tetap -- dan diletakkan
+    di Organization MAUPUN Service. Dulu keduanya bertabrakan (Organization bilang Jawa
+    Timur, Service bilang Solo Raya) sementara teks halaman bilang se-Pulau Jawa.
+    """
+    w = WILAYAH[cfg.get("wilayah", "default")]
     org = {
         "@type": "Organization",
         "@id": BASE + "/#organization",
@@ -63,7 +83,7 @@ def ld_for(slug, cfg):
         "email": EMAIL,
         "telephone": PHONE,
         "address": {"@type": "PostalAddress", "addressRegion": "Jawa Tengah", "addressLocality": "Solo Raya", "addressCountry": "ID"},
-        "areaServed": ["Solo Raya", "Jawa Tengah", "Jawa Timur"],
+        "areaServed": list(w["area"]),
     }
     graph = [org]
     if cfg["kind"] == "service":
@@ -73,7 +93,7 @@ def ld_for(slug, cfg):
             "description": cfg["d"],
             "serviceType": cfg["t"].split(" — ")[0],
             "provider": {"@id": BASE + "/#organization"},
-            "areaServed": ["Solo Raya", "Jawa Tengah"],
+            "areaServed": list(w["area"]),
             "offers": {"@type": "Offer", "priceCurrency": "IDR", "availability": "https://schema.org/InStock"},
         })
         graph.append({
@@ -157,7 +177,11 @@ def patch(slug, cfg):
 
 if __name__ == "__main__":
     # backup dulu
-    bdir = os.path.join(ROOT, f".backup-seo-{datetime.datetime.now():%Y%m%d-%H%M%S}")
+    # Di LUAR repo: cadangan di dalam repo ikut ter-commit dan ter-mirror ke R2, dan
+    # berkas .bak di repo bisa tersalin balik ke halaman baru (lihat skill). Simpan di
+    # samping repo.
+    bdir = os.path.join(os.path.dirname(ROOT.rstrip("/")),
+                        f"fk-arsip-seo-{datetime.datetime.now():%Y%m%d-%H%M%S}")
     for slug in list(PAGES) + ["link/index.html", "links/index.html"]:
         src = os.path.join(ROOT, slug)
         if os.path.exists(src):

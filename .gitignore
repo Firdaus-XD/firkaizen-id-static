@@ -13,3 +13,7 @@ data/
 .DS_Store
 Thumbs.db
 *.swp
+# Cadangan di dalam repo ikut ter-commit + ter-mirror ke R2, dan berkas .bak
+# bisa tersalin balik ke halaman baru. Simpan cadangan DI LUAR repo.
+.backup-*/
+*.bak-*
