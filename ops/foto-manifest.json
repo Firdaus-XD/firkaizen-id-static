@@ -138,5 +138,40 @@
    394,
    700
   ]
+ },
+ "images/gapura/gen-3m-1.webp": {
+  "src": "GAPURA 3M",
+  "size": [
+   700,
+   323
+  ]
+ },
+ "images/gapura/gen-3m-2.webp": {
+  "src": "GAPURA 3M",
+  "size": [
+   700,
+   525
+  ]
+ },
+ "images/gapura/gen-3m-3.webp": {
+  "src": "GAPURA 3M",
+  "size": [
+   700,
+   394
+  ]
+ },
+ "images/gapura/gen-3m-4.webp": {
+  "src": "GAPURA 3M",
+  "size": [
+   322,
+   700
+  ]
+ },
+ "images/gapura/gen-3m-5.webp": {
+  "src": "GAPURA 3M",
+  "size": [
+   323,
+   700
+  ]
  }
 }
