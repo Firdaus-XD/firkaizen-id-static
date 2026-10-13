@@ -27,6 +27,14 @@ TODAY = datetime.date.today().isoformat()
 BULAN = ["", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
          "Agustus", "September", "Oktober", "November", "Desember"]
 
+# Gambar depan per artikel. Dipilih dari stok nyata lewat contact sheet + inspeksi visual,
+# TIDAK ditebak dari nama berkas. og_image per kategori cuma ada empat (gapura/paving/
+# batako/default), jadi tanpa pilihan ini tiga kartu "artikel terkait" bergambar identik.
+# Thumbnail ringannya dibuat `ops/build_thumb.py` dari peta yang sama.
+PILIH_THUMB = os.path.join(os.path.dirname(os.path.abspath(__file__)), "thumb_pilih.json")
+with open(PILIH_THUMB, encoding="utf-8") as _f:
+    GAMBAR_DEPAN = json.load(_f)
+
 
 def tanggal_id(iso):
     """2026-10-12 -> '12 Oktober 2026'."""
@@ -491,6 +499,78 @@ def page_shell(*, title, desc, slug, body, ld_extra, breadcrumb, canonical,
 
 # ---------- komponen halaman artikel ----------
 
+def thumb(slug):
+    """Gambar depan satu artikel; None kalau tidak terdaftar.
+
+    Dipakai kartu daftar dan kartu "artikel terkait". Kalau berkasnya tidak ada, kembalikan
+    None supaya kartunya jatuh ke tampilan tanpa gambar -- lebih baik daripada <img> rusak
+    yang bisa bikin pelompatnya memblokir render.
+    """
+    src = GAMBAR_DEPAN.get(slug)
+    if not src:
+        return None
+    kecil = os.path.join(ROOT, "images", "thumb", f"{slug}.webp")
+    if os.path.exists(kecil):
+        return f"/images/thumb/{slug}.webp"
+    return "/" + src.lstrip("/") if os.path.exists(os.path.join(ROOT, src)) else None
+
+
+def kartu_gambar(slug, alt, kelas="aspect-[16/10]"):
+    """Blok gambar untuk kartu artikel. Kosong kalau tidak ada gambar.
+
+    Foto gapura dari HP hampir semuanya PORTRAIT (~0.56). Memaksa `object-cover` ke kotak
+    16:10 membuang dua pertiga gambar: yang tersisa cuma potongan pilar, bukan gapuranya.
+    Jadi: gambar ditampilkan utuh (`object-contain`) di tengah, dan sisi kosongnya diisi
+    versi blur dari foto yang sama (`object-cover`) -- pola yang sama dipakai kartu produk
+    di halaman layanan. Nol dependensi, satu berkas sumber.
+    """
+    g = thumb(slug)
+    if not g:
+        return ""
+    return (
+        f'<div class="relative overflow-hidden border-b {kelas}" '
+        f'style="border-color:var(--border);background-color:var(--surface-2)">'
+        f'<img src="{g}" alt="" aria-hidden="true" loading="lazy" '
+        f'class="absolute inset-0 h-full w-full object-cover blur-3xl scale-125"/>'
+        f'<img src="{g}" alt="{html.escape(alt)}" loading="lazy" '
+        f'class="absolute inset-0 h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"/>'
+        f"</div>"
+    )
+
+
+def rasio_kotak(slug):
+    """Kelas aspect-ratio untuk gambar utama, mengikuti rasio foto sumbernya.
+
+    Foto gapura dari HP banyak yang potret (rasio 0.46-0.75). Memaksa semuanya ke kotak
+    lebar membuat gapuranya menyusut jadi strip kecil di tengah -- terlihat rusak, bukan
+    "gambar penuh". Kotak yang mengikuti rasio sumber menampilkan foto hampir penuh.
+    """
+    # Kotak mengikuti rasio foto sedekat mungkin, karena `object-contain` menyisakan
+    # bantalan di sisi yang tidak cocok. Satu kotak potret untuk semua tidak cukup: foto
+    # 0.75 di kotak 9/16 (0.5625) justru menyisakan bantalan ATAS-BAWAH ~22% tinggi.
+    # Dua tingkat: potret tinggi (0.46-0.65) dan potret sedang (0.65-0.85).
+    kelas_potret_tinggi = "aspect-[9/16] sm:aspect-[4/5]"
+    kelas_potret = "aspect-[3/4]"
+    kelas_landai = "aspect-[4/3] sm:aspect-[3/2]"
+    kelas_lebar = "aspect-[4/3] sm:aspect-[16/9]"
+    src = GAMBAR_DEPAN.get(slug)
+    if not src:
+        return kelas_landai
+    try:
+        from PIL import Image as _I
+        with _I.open(os.path.join(ROOT, src)) as im:
+            r = im.width / im.height
+    except Exception:
+        return kelas_landai
+    if r < 0.65:
+        return kelas_potret_tinggi
+    if r < 0.85:
+        return kelas_potret
+    if r < 1.5:
+        return kelas_landai
+    return kelas_lebar
+
+
 def daftar_isi(body_html):
     """Daftar isi dari h2 yang diberi id oleh ekstensi `toc` markdown.
 
@@ -596,6 +676,7 @@ def kartu_terkait(lain, slug, tag):
         kartu.append(
             f'<a href="/artikel/{a["slug"]}/" class="group flex flex-col overflow-hidden rounded-2xl border transition-colors" '
             f'style="border-color:var(--border);background-color:var(--surface)">'
+            + kartu_gambar(a["slug"], a["title"]) +
             f'<div class="flex flex-1 flex-col p-5">'
             f'<div class="flex items-center gap-2 text-[12px] t-soft">'
             f'<span>{html.escape(a["tag"])}</span><span>&middot;</span>'
@@ -650,6 +731,17 @@ def render_article(md_path, semua):
         body_md, extensions=["extra", "sane_lists", "toc"], output_format="html"
     )
     lain = [a for a in semua if a["slug"] != slug]
+    g = thumb(slug)
+    gambar_utama = (
+        '<div class="relative mt-8 overflow-hidden rounded-2xl border" '
+        'style="border-color:var(--border);background-color:var(--surface-2)">'
+        f'<div class="relative {rasio_kotak(slug)} w-full">'
+        f'<img src="{g}" alt="" aria-hidden="true" '
+        'class="absolute inset-0 h-full w-full object-cover blur-3xl scale-125"/>'
+        f'<img src="{g}" alt="{html.escape(title)}" width="1200" height="900" '
+        'class="absolute inset-0 h-full w-full object-contain"/>'
+        "</div></div>"
+    ) if g else ""
 
     header_html = f"""    <div class="container-clean">
       <nav class="flex items-center gap-2 text-[12px] t-soft" aria-label="Breadcrumb">
@@ -692,6 +784,8 @@ def render_article(md_path, semua):
           </a>
         </div>
       </div>
+
+      {gambar_utama}
 
       <div class="panel-ringkas mt-8 p-5 sm:p-6">
         <div class="mb-2.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-electric">
@@ -745,6 +839,7 @@ def render_index(articles):
         kartu.append(
             f'<a href="/artikel/{a["slug"]}/" class="group flex flex-col overflow-hidden rounded-2xl border transition-colors" '
             f'style="border-color:var(--border);background-color:var(--surface)">'
+            + kartu_gambar(a["slug"], a["title"]) +
             f'<div class="flex flex-1 flex-col p-5">'
             f'<div class="flex items-center gap-2 text-[12px] t-soft">'
             f'<span class="pill-badge bg-electric/10 text-electric">{html.escape(a["tag"])}</span>'

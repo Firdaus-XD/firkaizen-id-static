@@ -62,7 +62,13 @@ for d in "${DIRS[@]}"; do
   # pemasangan tanpa pesan. Sediakan dulu induk direktori cadangannya.
   ibu=$(dirname "$d"); [ "$ibu" = "." ] && ibu=""
   echo "mkdir -p $W/.$ibu" >> "$PASANG"
-  echo "cp -r $W/$d $W/.$d.bak-$STAMP" >> "$PASANG"
+  # Cadangan hanya kalau tujuannya SUDAH ada. Tanpa penjaga ini, memasang direktori BARU
+  # (mis. images/thumb yang belum pernah ada di server) membuat cp gagal, `set -e` di
+  # server membatalkan SELURUH pemasangan, dan yang terlihat cuma "GAGAL pasang" --
+  # sementara HTML sudah kelanjur terkirim di langkah sebelumnya, jadi halaman live
+  # menunjuk gambar yang belum ada.
+  echo "[ -e $W/$d ] && cp -r $W/$d $W/.$d.bak-$STAMP || true" >> "$PASANG"
+  echo "mkdir -p $W/$d" >> "$PASANG"
   echo "cp -r /tmp/fkhsend/$d/. $W/$d/" >> "$PASANG"
   echo "chown -R www:www $W/$d" >> "$PASANG"
 done
