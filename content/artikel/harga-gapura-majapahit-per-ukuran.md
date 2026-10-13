@@ -4,6 +4,7 @@ title: Harga Gapura Majapahit per Ukuran: Estimasi Biaya 2026
 description: Harga gapura Majapahit bata expose mulai Rp 30 juta untuk lebar 2,5 meter hingga Rp 75 juta untuk 5 meter. Ini rincian per ukuran dan cara memilihnya.
 date: 2026-10-11
 tag: Gapura
+tags: bata expose, gapura desa, biaya bangun
 og_image: https://firkaizen.id/images/og/gapura.webp
 ---
 

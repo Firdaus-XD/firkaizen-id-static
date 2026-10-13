@@ -4,6 +4,7 @@ title: Paving Block vs Beton Cor untuk Halaman Rumah
 description: Perbandingan paving block dan beton cor untuk halaman rumah: biaya per meter, drainase, perawatan saat rusak, dan waktu pengerjaan di lokasi.
 date: 2026-10-11
 tag: Paving Block
+tags: paving block, kanstin, halaman rumah
 og_image: https://firkaizen.id/images/og/paving.webp
 ---
 

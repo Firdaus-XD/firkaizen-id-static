@@ -4,6 +4,7 @@ title: Kesalahan Pemasangan Paving Block yang Bikin Cepat Rusak
 description: Tujuh kesalahan pemasangan paving block yang bikin cepat amblas dan rusak: drainase, ketebalan, kanstin, pasir alas, sampai pemadatan stamper.
 date: 2026-10-11
 tag: Paving Block
+tags: paving block, kanstin, halaman rumah
 og_image: https://firkaizen.id/images/og/paving.webp
 ---
 

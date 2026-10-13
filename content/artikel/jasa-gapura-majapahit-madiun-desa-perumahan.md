@@ -4,6 +4,7 @@ title: Jasa Gapura Majapahit Madiun untuk Desa dan Perumahan
 description: Jasa gapura Majapahit bata expose untuk desa dan perumahan di Madiun. Harga mulai Rp 30 juta, pilihan lebar 2,5 sampai 5 meter, dan data untuk survei.
 date: 2026-10-12
 tag: Gapura
+tags: bata expose, gapura desa, biaya bangun
 og_image: https://firkaizen.id/images/og/gapura.webp
 ---
 

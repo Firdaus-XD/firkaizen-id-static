@@ -4,6 +4,7 @@ title: Bata Ringan AAC vs Bata Merah untuk Rumah 2 Lantai
 description: Perbandingan bata ringan AAC dan bata merah untuk rumah 2 lantai: beban struktur, kecepatan pasang, tebal spesi, ketahanan api, dan biaya upah.
 date: 2026-10-11
 tag: Bata Ringan
+tags: bata ringan, batako, dinding rumah
 og_image: https://firkaizen.id/images/og/batako.webp
 ---
 

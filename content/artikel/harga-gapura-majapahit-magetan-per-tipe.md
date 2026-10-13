@@ -4,6 +4,7 @@ title: Harga Gapura Majapahit Magetan: Rincian per Tipe
 description: Harga gapura Majapahit bata expose di Magetan mulai Rp 30 juta untuk 2,5 meter sampai Rp 75 juta untuk 5 meter. Rincian per tipe dan cara memilih.
 date: 2026-10-12
 tag: Gapura
+tags: bata expose, gapura desa, biaya bangun
 og_image: https://firkaizen.id/images/og/gapura.webp
 ---
 

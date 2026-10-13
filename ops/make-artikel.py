@@ -13,7 +13,7 @@ baris penulis + aksi, panel ringkasan, daftar isi bernomor, prosa satu kolom, na
 artikel, blok penulis, artikel terkait, lalu ajakan. Diterapkan di generator supaya
 seluruh artikel ikut sekaligus -- bukan disunting satu per satu.
 """
-import os, re, html, json, datetime, glob
+import os, re, html, json, datetime, glob, urllib.parse
 
 import markdown
 
@@ -599,6 +599,46 @@ def daftar_isi(body_html):
     )
 
 
+def blok_bagikan(tag, title, canonical, tags=None):
+    """Blok bagi + daftar topik. Mengikuti halaman artikel firkaizen.com.
+
+    Ditaruh sesudah prosa, sebelum navigasi: pembaca yang selesai membaca langsung punya
+    tombol untuk menyebarkannya, tanpa harus menggulir sampai bawah.
+    """
+    daftar = tags or [tag]
+    if isinstance(daftar, str):
+        daftar = [t.strip() for t in daftar.split(",") if t.strip()]
+    if tag not in daftar:
+        daftar.insert(0, tag)
+    teks = urllib.parse.quote(f"{title}\n\nBaca selengkapnya di:\n{canonical}")
+    pil = "".join(
+        f'<span class="rounded-lg border px-2.5 py-1 text-xs font-medium t-body" '
+        f'style="border-color:var(--border);background-color:var(--surface)">#{html.escape(t)}</span>'
+        for t in daftar
+    )
+    return (
+        '<div class="mt-14 flex flex-col justify-between gap-4 border-t pt-6 sm:flex-row sm:items-center" '
+        'style="border-color:var(--border)">'
+        '<div class="text-xs font-semibold uppercase tracking-wider t-soft">'
+        "Suka artikel ini? Bagikan ke rekan Anda:</div>"
+        '<div class="flex items-center gap-2">'
+        f'<a href="https://api.whatsapp.com/send?text={teks}" target="_blank" rel="noopener noreferrer" '
+        'class="tombol-halus no-underline">'
+        '<svg class="h-4 w-4" style="color:#25D366" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" '
+        'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+        '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Bagikan via WhatsApp</a>'
+        '<button type="button" onclick="salinTautan(this)" class="tombol-halus">'
+        '<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" '
+        'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+        '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>'
+        '<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>'
+        "<span>Salin Tautan</span></button></div></div>"
+        '<div class="mt-8 flex flex-wrap items-center gap-2 border-t pt-6" style="border-color:var(--border)">'
+        '<span class="text-xs font-semibold uppercase tracking-wider t-soft">Topik Terkait:</span>'
+        + pil + "</div>"
+    )
+
+
 def navigasi_artikel(semua, slug):
     """Artikel sebelumnya / berikutnya menurut tanggal.
 
@@ -683,7 +723,9 @@ def kartu_terkait(lain, slug, tag):
             f'<span>{a["read_min"]} menit baca</span></div>'
             f'<h3 class="mt-2.5 text-base font-bold leading-snug t-heading group-hover:text-electric transition-colors">'
             f'{html.escape(a["title"])}</h3>'
-            f'<div class="mt-4 flex items-center gap-1.5 text-xs font-semibold text-electric">Baca artikel &rarr;</div>'
+            + (f'<p class="mt-2 flex-1 text-sm t-body">{html.escape(a["description"])}</p>'
+               if a.get("description") else "")
+            + f'<div class="mt-4 flex items-center gap-1.5 text-xs font-semibold text-electric">Baca artikel &rarr;</div>'
             f"</div></a>"
         )
     return (
@@ -801,6 +843,7 @@ def render_article(md_path, semua):
 {body_html}
       </div>
 
+      {blok_bagikan(tag, title, canonical, meta.get("tags"))}
       {navigasi_artikel(semua, slug)}
       {blok_penulis(tag, wilayah)}
     </article>

@@ -4,6 +4,7 @@ title: Cara Menghitung Kebutuhan Paving Block per Meter Persegi
 description: Rumus menghitung kebutuhan paving block per m2, plus faktor kemiringan, kanstin, dan cadangan pemotongan yang sering bikin kurang beli.
 date: 2026-10-11
 tag: Paving Block
+tags: paving block, kanstin, halaman rumah
 og_image: https://firkaizen.id/images/og/paving.webp
 ---
 

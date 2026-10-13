@@ -4,6 +4,7 @@ title: Gapura Bata Ekspos Malang: Harga Transparan per Unit
 description: Gapura bata ekspos di Malang dikerjakan tim mitra. Harga mulai Rp 30 juta untuk lebar 2,5 meter, rincian per ukuran, dan data yang perlu disiapkan.
 date: 2026-10-12
 tag: Gapura
+tags: bata expose, gapura desa, biaya bangun
 og_image: https://firkaizen.id/images/og/gapura.webp
 ---
 

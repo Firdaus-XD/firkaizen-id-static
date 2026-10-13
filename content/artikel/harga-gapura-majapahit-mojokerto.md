@@ -4,6 +4,7 @@ title: Harga Gapura Majapahit Mojokerto: Estimasi per Ukuran
 description: Harga gapura Majapahit bata expose di Mojokerto mulai Rp 30 juta (2,5 m) sampai Rp 75 juta (5 m). Rincian ukuran dan cara memilih sebelum survei.
 date: 2026-10-11
 tag: Gapura
+tags: bata expose, gapura desa, biaya bangun
 og_image: https://firkaizen.id/images/og/gapura.webp
 ---
 

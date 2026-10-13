@@ -4,6 +4,7 @@ title: Gapura Bata Ekspos Ponorogo: Portofolio dan Harga
 description: Gapura bata ekspos di Ponorogo dikerjakan tim mitra pengrajin. Lihat dokumentasi, harga mulai Rp 30 juta, dan data yang perlu disiapkan sebelum survei.
 date: 2026-10-12
 tag: Gapura
+tags: bata expose, gapura desa, biaya bangun
 og_image: https://firkaizen.id/images/og/gapura.webp
 ---
 

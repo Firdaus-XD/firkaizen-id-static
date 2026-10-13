@@ -4,6 +4,7 @@ title: Panduan Memilih Ketebalan Paving Block yang Tepat
 description: Salah pilih ketebalan paving block, perkerasan cepat amblas atau retak. Panduan teknis 6 cm, 8 cm, 10 cm sesuai beban dan peruntukan area.
 date: 2026-10-11
 tag: Paving Block
+tags: paving block, kanstin, halaman rumah
 og_image: https://firkaizen.id/images/og/paving.webp
 ---
 

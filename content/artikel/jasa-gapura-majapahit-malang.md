@@ -4,6 +4,7 @@ title: Jasa Gapura Majapahit Malang: Ukuran dan Alur Pengerjaan
 description: Jasa gapura Majapahit bata expose di Malang, lebar 2,5 sampai 5 meter. Harga mulai Rp 30 juta, cara memilih ukuran, dan data untuk survei.
 date: 2026-10-12
 tag: Gapura
+tags: bata expose, gapura desa, biaya bangun
 og_image: https://firkaizen.id/images/og/gapura.webp
 ---
 

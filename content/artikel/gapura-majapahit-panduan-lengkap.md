@@ -4,6 +4,7 @@ title: Gapura Majapahit: Ukuran, Biaya, dan Alur Pembuatan
 description: Panduan gapura Majapahit bata expose: pilihan ukuran 2,5 sampai 6 meter, komponen biaya, tahapan pengerjaan, dan hal yang harus disiapkan.
 date: 2026-10-11
 tag: Gapura
+tags: bata expose, gapura desa, biaya bangun
 og_image: https://firkaizen.id/images/og/gapura.webp
 ---
 

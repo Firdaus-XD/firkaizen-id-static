@@ -4,6 +4,7 @@ title: Gapura Bata Ekspos Ngawi: Pilihan Ukuran dan Harga
 description: Gapura bata ekspos di Ngawi dikerjakan tim mitra. Pilihan ukuran 2,5 sampai 5 meter, harga mulai Rp 30 juta, dan cara memilih lebar yang tepat.
 date: 2026-10-12
 tag: Gapura
+tags: bata expose, gapura desa, biaya bangun
 og_image: https://firkaizen.id/images/og/gapura.webp
 ---
 
