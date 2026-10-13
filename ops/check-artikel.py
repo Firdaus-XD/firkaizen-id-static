@@ -143,6 +143,43 @@ def main():
 
         print(f"  {'OK ' if not GAGAL else '   '} {nama[:52]:<52} {tl:>3}/{dl:>3} char  {kata:>4} kata")
 
+    # Gambar depan: setiap artikel harus punya gambar SENDIRI yang berkasnya sudah ada.
+    # Tanpa pemeriksaan ini artikel baru tayang tanpa sampul dan kartunya jadi teks kosong
+    # di antara kartu bergambar -- dan itu tidak terlihat sebagai kegagalan apa pun.
+    # Pernah terjadi: HTML terkirim lebih dulu menunjuk gambar yang belum ada, 15 halaman
+    # bergambar rusak.
+    try:
+        import json as _json
+        _tp = os.path.join(ROOT, "ops", "thumb_pilih.json")
+        peta_gambar = _json.load(open(_tp, encoding="utf-8")) if os.path.exists(_tp) else {}
+    except Exception as e:
+        peta_gambar = {}
+        GAGAL.append(f"ops/thumb_pilih.json tidak terbaca: {e}")
+
+    dipakai = {}
+    for f in files:
+        meta, _ = front(open(f, encoding="utf-8").read())
+        s = (meta or {}).get("slug", "")
+        src = peta_gambar.get(s)
+        if not src:
+            GAGAL.append(f"gambar depan: '{s}' belum punya entri di ops/thumb_pilih.json")
+        elif not os.path.exists(os.path.join(ROOT, src)):
+            GAGAL.append(f"gambar depan '{s}': berkas sumber tidak ada -> {src}")
+        else:
+            dipakai.setdefault(src, []).append(s)
+        h = os.path.join(ROOT, "artikel", s, "index.html")
+        if os.path.exists(h):
+            if f"/images/thumb/{s}.webp" not in open(h, encoding="utf-8").read():
+                GAGAL.append(f"gambar depan '{s}': HTML tidak menunjuk /images/thumb/{s}.webp")
+            if not os.path.exists(os.path.join(ROOT, "images", "thumb", f"{s}.webp")):
+                GAGAL.append(f"gambar depan '{s}': images/thumb/{s}.webp belum dibuat (jalankan build_thumb.py)")
+
+    for src, slugs in dipakai.items():
+        if len(slugs) > 1:
+            GAGAL.append(f"gambar depan kembar, dipakai {len(slugs)} artikel -> {src} :: {', '.join(slugs)}")
+
+    print(f"  gambar depan: {len(files)} artikel, {len(dipakai)} gambar unik")
+
     # sitemap memuat semua slug?
     sm = os.path.join(ROOT, "sitemap.xml")
     if os.path.exists(sm):
