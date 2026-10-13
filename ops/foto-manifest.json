@@ -1,0 +1,142 @@
+{
+ "images/gapura/gen-01-5m.webp": {
+  "src": "/tmp/gp10/01.png",
+  "size": [
+   700,
+   394
+  ]
+ },
+ "images/gapura/gen-02-5m.webp": {
+  "src": "/tmp/gp10/02.png",
+  "size": [
+   700,
+   323
+  ]
+ },
+ "images/gapura/gen-03-5m.webp": {
+  "src": "/tmp/gp10/03.png",
+  "size": [
+   700,
+   323
+  ]
+ },
+ "images/gapura/gen-04-5m.webp": {
+  "src": "/tmp/gp10/04.png",
+  "size": [
+   700,
+   394
+  ]
+ },
+ "images/gapura/gen-05-5m.webp": {
+  "src": "/tmp/gp10/05.png",
+  "size": [
+   700,
+   394
+  ]
+ },
+ "images/gapura/gen-06-5m.webp": {
+  "src": "/tmp/gp10/06.png",
+  "size": [
+   700,
+   394
+  ]
+ },
+ "images/gapura/gen-07-5m.webp": {
+  "src": "/tmp/gp10/07.png",
+  "size": [
+   700,
+   394
+  ]
+ },
+ "images/gapura/gen-08-5m.webp": {
+  "src": "/tmp/gp10/08.png",
+  "size": [
+   700,
+   394
+  ]
+ },
+ "images/gapura/gen-09-4m.webp": {
+  "src": "/tmp/gp10/09.png",
+  "size": [
+   394,
+   700
+  ]
+ },
+ "images/gapura/gen-10-4m.webp": {
+  "src": "/tmp/gp10/10.png",
+  "size": [
+   394,
+   700
+  ]
+ },
+ "images/gapura/gen-11-4m.webp": {
+  "src": "/tmp/gp10/11.png",
+  "size": [
+   394,
+   700
+  ]
+ },
+ "images/gapura/gen-12-4m.webp": {
+  "src": "/tmp/gp10/12.png",
+  "size": [
+   700,
+   526
+  ]
+ },
+ "images/gapura/gen-13-4m.webp": {
+  "src": "/tmp/gp10/13.png",
+  "size": [
+   525,
+   700
+  ]
+ },
+ "images/gapura/gen-14-4m.webp": {
+  "src": "/tmp/gp10/14.png",
+  "size": [
+   467,
+   700
+  ]
+ },
+ "images/gapura/gen-15-4m.webp": {
+  "src": "/tmp/gp10/15.png",
+  "size": [
+   525,
+   700
+  ]
+ },
+ "images/gapura/gen-16-4m.webp": {
+  "src": "/tmp/gp10/16.png",
+  "size": [
+   700,
+   525
+  ]
+ },
+ "images/gapura/gen-17-4m.webp": {
+  "src": "/tmp/gp10/17.png",
+  "size": [
+   700,
+   525
+  ]
+ },
+ "images/gapura/gen-18-4m.webp": {
+  "src": "/tmp/gp10/18.png",
+  "size": [
+   700,
+   525
+  ]
+ },
+ "images/gapura/gen-19-4m.webp": {
+  "src": "/tmp/gp10/19.png",
+  "size": [
+   323,
+   700
+  ]
+ },
+ "images/gapura/gen-20-4m.webp": {
+  "src": "/tmp/gp10/20.png",
+  "size": [
+   394,
+   700
+  ]
+ }
+}
