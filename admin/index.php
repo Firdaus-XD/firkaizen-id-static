@@ -9,30 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'fk-navy': '#070E33',
-            'fk-dark': '#0B1650',
-            'fk-blue': '#0B6BFF',
-            'fk-surface': '#F8FAFC',
-            'fk-border': '#E2E8F0',
-            'fk-heading': '#0F172A',
-            'fk-body': '#475569',
-            'fk-green': '#16A34A',
-            'fk-amber': '#F59E0B'
-          },
-          fontFamily: {
-            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
-            display: ['Space Grotesk', 'sans-serif']
-          }
-        }
-      }
-    };
-  </script>
+  
+  
+  <link rel="stylesheet" href="../css/tw-c1207171.css">
 </head>
 <body class="bg-slate-100 font-sans text-fk-body antialiased min-h-screen">
 
