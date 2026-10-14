@@ -23,7 +23,7 @@ W=/www/wwwroot/firkaizen.id
 # hanya path yang benar-benar ada di repo
 DIRS=()
 for d in "$@"; do
-  if [ -d "$d" ]; then DIRS+=("$d"); else echo "  LEWAT (bukan direktori): $d"; fi
+  if [ -e "$d" ]; then DIRS+=("$d"); else echo "  LEWAT (tidak ada): $d"; fi
 done
 [ ${#DIRS[@]} -ge 1 ] || { echo "tidak ada direktori yang bisa dikirim"; exit 1; }
 echo "=== dikirim: ${DIRS[*]} ==="
@@ -68,8 +68,14 @@ for d in "${DIRS[@]}"; do
   # sementara HTML sudah kelanjur terkirim di langkah sebelumnya, jadi halaman live
   # menunjuk gambar yang belum ada.
   echo "[ -e $W/$d ] && cp -r $W/$d $W/.$d.bak-$STAMP || true" >> "$PASANG"
-  echo "mkdir -p $W/$d" >> "$PASANG"
-  echo "cp -r /tmp/fkhsend/$d/. $W/$d/" >> "$PASANG"
+  # File tunggal (mis. index.html): 'mkdir -p' atas file yang sudah ada ERROR,
+  # set -e membatalkan seluruh pemasangan; 'cp -r file/.' juga gagal. Rute beda.
+  if [ -f "$d" ]; then
+    echo "cp /tmp/fkhsend/$d $W/$d" >> "$PASANG"
+  else
+    echo "mkdir -p $W/$d" >> "$PASANG"
+    echo "cp -r /tmp/fkhsend/$d/. $W/$d/" >> "$PASANG"
+  fi
   echo "chown -R www:www $W/$d" >> "$PASANG"
 done
 echo "rm -rf /tmp/fkhsend" >> "$PASANG"
@@ -82,8 +88,13 @@ beda=0
 for d in "${DIRS[@]}"; do
   # satu panggilan SSH per direktori; loop per-berkas bikin nggantung kalau
   # berkasnya ratusan (galeri foto).
-  (cd "$d" && find . -type f -exec md5sum {} + | sed 's| \./| |' | sort -k2) > /tmp/fk-md5-lokal.txt
-  $SSH $HOST "cd $W/$d && sudo find . -type f -exec md5sum {} + | sed 's| \\./| |' | sort -k2" > /tmp/fk-md5-server.txt 2>/dev/null || true
+  if [ -f "$d" ]; then
+    md5sum "$d" > /tmp/fk-md5-lokal.txt
+    $SSH $HOST "cd $W && md5sum $d" > /tmp/fk-md5-server.txt 2>/dev/null || true
+  else
+    (cd "$d" && find . -type f -exec md5sum {} + | sed 's| \./| |' | sort -k2) > /tmp/fk-md5-lokal.txt
+    $SSH $HOST "cd $W/$d && sudo find . -type f -exec md5sum {} + | sed 's| \\./| |' | sort -k2" > /tmp/fk-md5-server.txt 2>/dev/null || true
+  fi
   # hanya berkas LOKAL yang diperiksa: berkas lama yang sengaja dibiarkan di
   # server (supaya HTML lama di cache browser tidak 404) tidak dihitung beda.
   n=$(awk 'NR==FNR { s[$2]=$1; next } { if (s[$2] != $1) print "  BEDA " $2 }' /tmp/fk-md5-server.txt /tmp/fk-md5-lokal.txt | tee /dev/stderr | grep -c BEDA || true)
@@ -94,6 +105,12 @@ done
 echo
 echo "=== 4. URL live ==="
 for d in "${DIRS[@]}"; do
-  curl -s -o /dev/null -w "  /$d/  %{http_code}\n" "https://firkaizen.id/$d/"
+  # file tunggal: '/index.html/' (trailing slash) cuma bikin redirect, bukan
+  # status halaman. URL file = path apa adanya.
+  if [ -f "$d" ]; then
+    curl -s -o /dev/null -w "  /$d  %{http_code}\n" "https://firkaizen.id/$d"
+  else
+    curl -s -o /dev/null -w "  /$d/  %{http_code}\n" "https://firkaizen.id/$d/"
+  fi
 done
 [ "$beda" -eq 0 ] || exit 1
