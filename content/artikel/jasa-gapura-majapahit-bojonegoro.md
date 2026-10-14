@@ -8,76 +8,92 @@ tags: bata expose, gapura desa, biaya bangun
 og_image: https://firkaizen.id/images/og/gapura.webp
 ---
 
-Bojonegoro punya banyak desa dengan jalan lebar dan kawasan yang ingin punya penanda masuk. Gapura bata expose sering dipilih karena tampilannya kuat dan tidak perlu dicat.
+Anggaran desa untuk pembangunan gapura biasanya terbagi dalam beberapa tahap pencairan. Karena itu kalkulasi gapura Majapahit sebaiknya tidak hanya jadi angka pasti di awal. Biaya yang dihitung berdasarkan lebar bersih memudahkan perencanaan tahap, karena setiap ukuran punya harga mulai yang jelas.
 
-Artikel ini merinci harga mulai per lebar bersih gerbang, lalu menjelaskan apa saja yang ikut menentukan harga akhir di Bojonegoro. Angkanya mengacu pada rincian harga kami, bukan perkiraan dari luar.
+Artikel ini ditujukan untuk perangkat desa atau kepala desa yang merencanakan gapura di Bojonegoro: estimasi biaya per ukuran, cara menyelaraskan ukuran dengan plafon anggaran, dan data yang dibutuhkan untuk menyusun usulan kegiatan.
 
-## Harga mulai per lebar bersih
+## Estimasi biaya per ukuran
 
-Gapura bata ekspos dihitung dari lebar bersih, yaitu jarak antara dua tiang di bagian dalam. Harga berikut adalah harga mulai, sudah termasuk pekerjaan utama gapura bata expose.
+Gapura dihitung berdasarkan lebar bersih, yaitu jarak antara dua tiang di bagian dalam gerbang. Tabel berikut adalah biaya mulai, sudah termasuk pekerjaan utama gapura bata expose.
 
-| Lebar bersih | Harga mulai | Peruntukan umum | Detail |
-|---|---|---|---|
-| 2,5 meter | Rp 30 juta | gang warga, gerbang perumahan | [Halaman gapura](/gapura/) |
-| 3 meter | Rp 35 juta | ukuran yang paling sering dipilih | [Halaman gapura](/gapura/) |
-| 4 meter | Rp 60 juta | gerbang balai desa | [Halaman gapura](/gapura/) |
-| 5 meter | Rp 75 juta | landmark kawasan, batas antar desa | [Halaman gapura](/gapura/) |
+| Lebar bersih | Biaya mulai | Pasal yang umum diusulkan |
+|---|---|---|
+| 2,5 meter | Rp 30 juta | gang warga, gerbang perumahan |
+| 3 meter | Rp 35 juta | gerbang utama sebagian besar desa |
+| 4 meter | Rp 60 juta | gerbang balai desa |
+| 5 meter | Rp 75 juta | penanda kawasan, batas antar desa |
 
-Dari empat pilihan ini, lebar 3 meter paling sering dipilih karena proporsinya enak dilihat dari jalan dan kendaraan masih leluasa lewat.
+Contoh tampilan dan tipe pilar untuk tiap ukuran ada di [halaman gapura Majapahit](/gapura/).
 
-## Cara memilih ukuran di Bojonegoro
+## Menyusun anggaran desa
 
-Pilih ukuran dari fungsi gerbang, bukan dari selera foto di internet. Untuk gang warga dengan jalan kecil, 2,5 meter biasanya sudah cukup dan tidak menghalangi motor atau tamu. Untuk gerbang perumahan dengan mobil keluar masuk, 3 meter lebih aman. Gerbang balai desa atau akses yang sering dipakai acara sebaiknya 4 meter. Lebar 5 meter cocok untuk penanda kawasan atau batas antar desa yang harus terlihat dari kejauhan.
+Angka pada tabel di atas adalah biaya mulai. Dalam praktik di desa, biaya gapura sering tidak diatur dalam satu mata anggaran. Sebagian desa menempatkannya dalam belanja infrastruktur, sebagian lain dalam belanja gotong-royong atau penunjang kegiatan desa.ladesh
 
-Yang sering terlewat: lebar yang dipesan adalah lebar bersih, bukan lebar pondasi. Tinggi juga perlu dicek, terutama kalau ada kendaraan bertinggi besar atau pohon di dekat gerbang.
+Pilih ukuran berdasarkan plafon yang tersedia. Kalau anggaran satu tahun berjumlah sekitar Rp 60 juta, opsi paling realistis adalah 2 atau 3 unit berukuran 2,5 atau 3 meter untuk beberapa dukuh. Kalau dananya terkumpul dari swadaya ditambah bantuan, satu unit 4 meter untuk gerbang balai desa menjadi pilihan yang lebih sesuai.
 
-## Cara mengukur lebar bersih sebelum menghubungi
+Kalau gapura yang diinginkan melebihi plafon satu tahun anggaran, dua jalan yang biasa ditempuh: memecah pekerjaan menjadi dua tahap anggaran, atau mengajukan ke pihak ketiga. Kedua opsi ini dibahas saat konsultasi.
 
-Ukur jarak antar bagian dalam dua tiang yang sudah ada, atau antar titik rencana tiang kalau belum ada. Catat dalam meter dengan satu angka desimal, misalnya 3,0 atau 2,5.
+## Alur SPK dan pencairan bertahap
 
-Kalau gerbangnya berbentuk lengkung atau tidak simetris, ukur di bagian paling sempit. Foto dua sisi jalan juga membantu, karena tim bisa melihat kondisi sekitar tanpa harus datang dulu.
+Pembayaran proyek gapura dilakukan secara bertahap: DP di awal, pembayaran tengah, dan pelunasan di akhir. Untuk desa di Bojonegoro, alurnya biasanya seperti ini:
 
-## Gapura penanda kawasan
+1. **Penyusunan usulan.** Desa mengirimkan data lokasi, lebar bersih yang diinginkan, dan peruntukan. Tim menghitung kebutuhan dan.memberikan angka estimasi.
+2. **Penawaran dan SPK.** Angka estimasi menjadi dasar penyusunan surat perintah kerja. SPK adalah dokumen perintah kerja tertulis, bukan jaminan hasil pekerjaan.
+3. **Pencairan DP.** Pekerjaan dimulai setelah DP diterima.
+4. **Pembayaran tengah dan pelunasan.** Pembayaran tengah dikeluarkan saat pekerjaan mencapai tahap tertentu. Pelunasan setelah pekerjaan selesai.
 
-Kalau gapura dipakai sebagai penanda kawasan atau batas desa, lebar 4 sampai 5 meter lebih sering dipilih supaya terlihat dari kejauhan dan kendaraan besar tetap leluasa. Untuk gang kecil di dalam desa, 2,5 meter sudah cukup.
+Ketentuan biaya survei dijelaskan saat konsultasi, sebagai bagian dari penawaran.
 
-## Kenapa harga akhir bisa berbeda
+## Memilih ukuran untuk desa
 
-Harga mulai di atas bisa naik atau turun setelah survei. Hal yang biasanya memengaruhi:
+Pemilihan lebar di desa-desa Bojonegoro sebaiknya mempertimbangkan aktivitas warga yang akan lewat, bukan hanya tampilan.
+
+- **2,5 meter** untuk gang atau jalan setapak yang dilewati motor dan pejalan kaki.
+- **3 meter** untuk jalan desa yang dilewati mobil. Ini ukuran yang paling sering dipilih.
+- **4 meter** untuk gerbang balai desa atau akses yang sering dipakai acara dan kendaraan lebih besar.
+- **5 meter** untuk penanda kawasan atau batas antar desa yang harus terlihat dari kejauhan.
+
+Lebar yang dipesan adalah lebar bersih, bukan lebar pondasi. Tinggi juga diperhatikan kalau ada kendaraan bertingkat yang lewat.
+
+## Yang mengubah angka setelah survei
+
+Biaya mulai pada tabel dapat berubah setelah survei. Beberapa hal yang biasanya memengaruhinya:
 
 - tinggi gapura dan jumlah lapis bata
 - kondisi tanah dan kebutuhan pondasi tambahan
-- ornamen atau detail tambahan yang diminta
-- akses lokasi untuk material dan peralatan
+- ornamen atau detail yang diminta
+- akses jalan untuk kendaraan pengangkut material
 
-Ketentuan biaya survei dijelaskan saat konsultasi. Itu bagian dari penawaran, bukan kesepakatan yang diambil dari artikel ini.
+## Wilayah kerja
 
-## Contoh tampilan gapura
+Gapura dikerjakan oleh tim mitra pengrajin yang berdomisili di Ponorogo dan melayani seluruh Pulau Jawa, termasuk Bojonegoro. Untuk lokasi di luar Pulau Jawa, yang tersedia adalah jasa tenaga kerja saja, tanpa pengiriman material.
 
-Dua contoh di bawah adalah dokumentasi gapura bata expose dari tim mitra. Ukuran di keterangan foto tidak selalu sama dengan ukuran di tabel harga, jadi patokan harga tetap mengacu pada tabel di atas.
+## Dokumentasi dari tim mitra
+
+Foto berikut adalah dokumentasi gapura bata expose dari tim mitra. Ukuran pada dokumentasi tidak selalu sama dengan ukuran di tabel, jadi patokan biaya tetap mengacu pada tabel di atas.
 
 <a href="/" style="display:block;text-align:center"><img src="/images/gapura/gen-3m-4.webp" alt="Gapura bata expose penanda kawasan dari tim mitra" style="width:100%;max-width:640px;max-height:560px;object-fit:contain;border-radius:8px"></a>
 
 <a href="/" style="display:block;text-align:center"><img src="/images/gapura/gen-3m-5.webp" alt="Gapura bata expose dari tim mitra untuk Bojonegoro" style="width:100%;max-width:640px;max-height:560px;object-fit:contain;border-radius:8px"></a>
 
-## Yang perlu disiapkan sebelum survei
+## Data yang perlu dikirim
 
-Supaya tim bisa langsung menghitung kebutuhan, kirim data berikut:
+Supaya tim dapat segera menghitung kebutuhan, kirimkan data berikut:
 
 1. Lebar bersih gerbang dalam meter.
 2. Peruntukan: gang, perumahan, balai desa, atau batas wilayah.
 3. Lokasi lengkap di Bojonegoro, minimal kecamatan dan kelurahan.
-4. Foto dari dua sisi jalan dan tiang yang sudah ada.
+4. Foto lokasi dari dua sisi jalan dan tiang yang sudah ada.
 
-Data ini dikirim lewat WhatsApp 0851-9613-5691, layanan setiap hari pukul 07.00 sampai 20.00 WIB.
+Data tersebut dikirim lewat WhatsApp 0851-9613-5691, layanan dibuka setiap hari pukul 07.00 sampai 20.00 WIB.
 
 ## Pertanyaan yang sering muncul
 
-Apakah gapura bisa dipasang di luar Bojonegoro? Bisa. Gapura melayani seluruh Pulau Jawa, dan jarak ke lokasi dihitung saat penawaran dibuat.
+Apakah gapura bisa dipasang di luar Bojonegoro? Bisa. Layanan gapura mencakup seluruh Pulau Jawa, dan jarak ke lokasi dihitung saat penawaran dibuat.
 
-Apakah bisa pilih lebar selain 2,5, 3, 4, dan 5 meter? Ukuran di tabel adalah pilihan yang paling umum. Lebar lain bisa dibahas lewat konsultasi, dengan harga menyesuaikan ukuran yang dipilih.
+Apakah bisa pilih lebar selain 2,5, 3, 4, dan 5 meter? Keempat ukuran itu adalah yang paling umum. Lebar lain dapat dibahas saat konsultasi, dengan biaya menyesuaikan ukuran yang dipilih.
 
-Apakah harus ada pondasi khusus? Tergantung kondisi tanah di lokasi. Itu dicek saat survei, bukan ditebak dari jarak jauh.
+Apakah pondasi perlu disiapkan khusus? Tergantung kondisi tanah di lokasi. Hal itu dicek saat survei, bukan ditebak dari jarak jauh.
 
 ## Layanan lain dari firkaizen.id
 

@@ -8,76 +8,87 @@ tags: bata expose, gapura desa, biaya bangun
 og_image: https://firkaizen.id/images/og/gapura.webp
 ---
 
-Harga gapura di Tulungagung dihitung dari lebar bersih gerbang. Angka di bawah adalah harga mulai, dan harga akhirnya menyesuaikan kondisi lokasi setelah survei.
+Pembeli yang pertama kali memesan gapura biasanya menyangka biaya ditentukan oleh tinggi ornamen atau jumlah lengkungan. Tidak. Biaya gapura Majapahit beralaskan bata expose nyaris seluruhnya ditentukan satu angka: lebar bersih gerbang. Karena itu, memilih ukuran adalah keputusan anggaran, bukan sekadar masalah selera tampilan.
 
-Artikel ini merinci harga mulai per lebar bersih gerbang, lalu menjelaskan apa saja yang ikut menentukan harga akhir di Tulungagung. Angkanya mengacu pada rincian harga kami, bukan perkiraan dari luar.
+Untuk pembeli di Tulungagung, artikel ini menjabarkan estimasi biaya per ukuran dan logika pemilihan lebar yang cocok untuk kondisi jalan di wilayah tersebut.
 
-## Harga mulai per lebar bersih
+## Berapa lebar yang harus dipilih
 
-Gapura bata ekspos dihitung dari lebar bersih, yaitu jarak antara dua tiang di bagian dalam. Harga berikut adalah harga mulai, sudah termasuk pekerjaan utama gapura bata expose.
+Pemilihan lebar di Tulungagung sebaiknya berpijak pada kendaraan yang akan lewat setiap hari, bukan pada foto di internet.
 
-| Lebar bersih | Harga mulai | Peruntukan umum | Detail |
-|---|---|---|---|
-| 2,5 meter | Rp 30 juta | gang warga, gerbang perumahan | [Halaman gapura](/gapura/) |
-| 3 meter | Rp 35 juta | ukuran yang paling sering dipilih | [Halaman gapura](/gapura/) |
-| 4 meter | Rp 60 juta | gerbang balai desa | [Halaman gapura](/gapura/) |
-| 5 meter | Rp 75 juta | landmark kawasan, batas antar desa | [Halaman gapura](/gapura/) |
+- **2,5 meter** untuk gang warga yang dilewati pejalan kaki dan sepeda motor.
+- **3 meter** untuk jalan perumahan dengan mobil kecil. Ini ukuran yang paling sering dipilih karena proposinya pas dan kendaraan tetap leluasa.
+- **4 meter** untuk gerbang balai desa atau akses yang sering digunakan untuk acara warga.
+- **5 meter** untuk penanda kawasan atau batas antar desa yang harus terlihat dari jarak jauh.
 
-Dari empat pilihan ini, lebar 3 meter paling sering dipilih karena proporsinya enak dilihat dari jalan dan kendaraan masih leluasa lewat.
+Kalau bingung di antara dua ukuran, ambil yang lebih lebar. Membongkar tiang yang sudah berdiri karena terlalu sempit jauh lebih mahal daripada menambah lebar di tahap perencanaan.
 
-## Cara memilih ukuran di Tulungagung
+## Estimasi biaya per ukuran
 
-Pilih ukuran dari fungsi gerbang, bukan dari selera foto di internet. Untuk gang warga dengan jalan kecil, 2,5 meter biasanya sudah cukup dan tidak menghalangi motor atau tamu. Untuk gerbang perumahan dengan mobil keluar masuk, 3 meter lebih aman. Gerbang balai desa atau akses yang sering dipakai acara sebaiknya 4 meter. Lebar 5 meter cocok untuk penanda kawasan atau batas antar desa yang harus terlihat dari kejauhan.
+Gapura dihitung dari lebar bersih, yaitu jarak antara dua tiang di bagian dalam gerbang. Tabel berikut adalah biaya mulai, sudah mencakup pekerjaan utama gapura bata expose.
 
-Yang sering terlewat: lebar yang dipesan adalah lebar bersih, bukan lebar pondasi. Tinggi juga perlu dicek, terutama kalau ada kendaraan bertinggi besar atau pohon di dekat gerbang.
+| Lebar bersih | Biaya mulai | Peruntukan umum |
+|---|---|---|
+| 2,5 meter | Rp 30 juta | gang warga, gerbang perumahan |
+| 3 meter | Rp 35 juta | ukuran paling sering dipilih |
+| 4 meter | Rp 60 juta | gerbang balai desa |
+| 5 meter | Rp 75 juta | landmark kawasan, batas antar desa |
 
-## Cara mengukur lebar bersih sebelum menghubungi
+Rincian tiap ukuran dapat dilihat di [halaman gapura Majapahit](/gapura/).
 
-Ukur jarak antar bagian dalam dua tiang yang sudah ada, atau antar titik rencana tiang kalau belum ada. Catat dalam meter dengan satu angka desimal, misalnya 3,0 atau 2,5.
+## Mengukur lebar yang sebenarnya
 
-Kalau gerbangnya berbentuk lengkung atau tidak simetris, ukur di bagian paling sempit. Foto dua sisi jalan juga membantu, karena tim bisa melihat kondisi sekitar tanpa harus datang dulu.
+Yang dipesan adalah lebar bersih, bukan lebar pondasi. Ukur dari sisi dalam satu tiang ke sisi dalam tiang yang lain, dengan satu angka desimal: 3,0 atau 2,5.
 
-## Ukuran yang sering dipilih
+Perhatikan juga saluran air atau pembatasan di kiri-kanan jalan. Sebuah jalan masuk perumahan yang lebarnya 4 meter, tetapi memiliki saluran air 0,5 meter di setiap sisi, hanya menyisakan sekitar 3 meter untuk gapura. Ukuran 3 meter muat, sedangkan 4 meter terpaksa membongkar saluran.
 
-Lebar 3 meter paling sering dipilih karena proporsinya seimbang dan kendaraan masih leluasa lewat. Untuk gang warga, 2,5 meter sudah cukup. Kalau gapura dipakai sebagai penanda kawasan, 5 meter lebih terlihat dari kejauhan.
+Kalau gerbang berbentuk lengkung, ukur di bagian paling sempit. Kirimkan foto dari dua sisi agar tim dapat melihat kondisi sekitar tanpa harus datang lebih dulu.
 
-## Kenapa harga akhir bisa berbeda
+## Yang mengubah angka setelah survei
 
-Harga mulai di atas bisa naik atau turun setelah survei. Hal yang biasanya memengaruhi:
+Biaya mulai pada tabel berikut dapat berubah setelah survei:
 
 - tinggi gapura dan jumlah lapis bata
 - kondisi tanah dan kebutuhan pondasi tambahan
-- ornamen atau detail tambahan yang diminta
-- akses lokasi untuk material dan peralatan
+- ornamen atau detail yang diminta
+- akses jalan untuk kendaraan pengangkut material
 
-Ketentuan biaya survei dijelaskan saat konsultasi. Itu bagian dari penawaran, bukan kesepakatan yang diambil dari artikel ini.
+Ketentuan biaya survei dijelaskan saat konsultasi, sebagai bagian dari penawaran.
 
 ## Contoh tampilan gapura
 
-Dua contoh di bawah adalah dokumentasi gapura bata expose dari tim mitra. Ukuran di keterangan foto tidak selalu sama dengan ukuran di tabel harga, jadi patokan harga tetap mengacu pada tabel di atas.
+Foto berikut adalah dokumentasi gapura bata expose dari tim mitra. Ukuran pada dokumentasi tidak selalu sama dengan ukuran di tabel, jadi patokan biaya tetap mengacu pada tabel di atas.
 
 <a href="/" style="display:block;text-align:center"><img src="/images/gapura/gen-3m-2.webp" alt="Gapura bata expose dari tim mitra untuk Tulungagung" style="width:100%;max-width:640px;max-height:560px;object-fit:contain;border-radius:8px"></a>
 
 <a href="/" style="display:block;text-align:center"><img src="/images/gapura/gen-3m-3.webp" alt="Pilar gapura bata expose dari tim mitra" style="width:100%;max-width:640px;max-height:560px;object-fit:contain;border-radius:8px"></a>
 
-## Yang perlu disiapkan sebelum survei
+## Wilayah kerja
 
-Supaya tim bisa langsung menghitung kebutuhan, kirim data berikut:
+Gapura dikerjakan oleh tim mitra pengrajin yang berdomisili di Ponorogo dan melayani seluruh Pulau Jawa, termasuk Tulungagung. Untuk lokasi di luar Pulau Jawa, yang tersedia adalah jasa tenaga kerja saja, tanpa pengiriman material.
+
+## Data yang perlu disiapkan
+
+Supaya tim dapat segera menghitung kebutuhan, kirimkan data berikut:
 
 1. Lebar bersih gerbang dalam meter.
 2. Peruntukan: gang, perumahan, balai desa, atau batas wilayah.
 3. Lokasi lengkap di Tulungagung, minimal kecamatan dan kelurahan.
-4. Foto dari dua sisi jalan dan tiang yang sudah ada.
+4. Foto lokasi dari dua sisi jalan dan tiang yang sudah ada.
 
-Data ini dikirim lewat WhatsApp 0851-9613-5691, layanan setiap hari pukul 07.00 sampai 20.00 WIB.
+Data tersebut dikirim lewat WhatsApp 0851-9613-5691, layanan dibuka setiap hari pukul 07.00 sampai 20.00 WIB.
+
+## Pertanyaan tentang material
+
+Apakah bata expose bisa diganti dengan bata biasa? Bisa dibahas saat konsultasi. Biaya di atas mengacu pada bata expose MRH Mojokerto, dan penggantian material menghitung ulang kebutuhan bata serta waktu pengerjaan.
+
+Apakah warna bata bisa dipilih? Warna bata expose melekat pada materialnya. Kalau ingin warna tertentu, pembahasannya muncul saat konsultasi, bukan dipilih dari daftar.
 
 ## Pertanyaan yang sering muncul
 
-Apakah gapura bisa dipasang di luar Tulungagung? Bisa. Gapura melayani seluruh Pulau Jawa, dan jarak ke lokasi dihitung saat penawaran dibuat.
+Apakah gapura bisa dipasang di luar Tulungagung? Bisa. Layanan gapura mencakup seluruh Pulau Jawa, dan jarak ke lokasi dihitung saat penawaran dibuat.
 
-Apakah bisa pilih lebar selain 2,5, 3, 4, dan 5 meter? Ukuran di tabel adalah pilihan yang paling umum. Lebar lain bisa dibahas lewat konsultasi, dengan harga menyesuaikan ukuran yang dipilih.
-
-Apakah harus ada pondasi khusus? Tergantung kondisi tanah di lokasi. Itu dicek saat survei, bukan ditebak dari jarak jauh.
+Apakah pondasi perlu disiapkan khusus? Tergantung kondisi tanah di lokasi. Hal itu dicek saat survei, bukan ditebak dari jarak jauh.
 
 ## Layanan lain dari firkaizen.id
 
