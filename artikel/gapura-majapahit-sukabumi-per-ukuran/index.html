@@ -32,8 +32,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 
-  
-  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: '#071952', navydark: '#0B1536', electric: '#0B6BFF',
+            amberc: '#F59E0B', amberdark: '#D97706', wagreen: '#25D366',
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
 
   <style>
     :root {
@@ -185,7 +198,6 @@
     }
     .wa-float.is-visible { opacity: 1; pointer-events: auto; }
   </style>
-  <link rel="stylesheet" href="../../css/tw-d2c6ec4f.css">
 </head>
 <body>
   <header class="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">

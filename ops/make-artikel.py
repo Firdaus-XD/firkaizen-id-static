@@ -875,10 +875,73 @@ def render_article(md_path, semua):
     ), meta
 
 
-def render_index(articles):
-    """Halaman /artikel/ -- daftar semua artikel, terbaru dulu."""
+PAGE_SIZE = 12
+
+
+def render_pagination(current_page, total_pages):
+    if total_pages <= 1:
+        return ""
+    items = []
+
+    # Tombol Sebelumnya
+    if current_page > 1:
+        prev_url = "/artikel/" if current_page == 2 else f"/artikel/page/{current_page - 1}/"
+        items.append(
+            f'<a href="{prev_url}" class="rounded-xl border px-3.5 py-2 text-xs sm:text-sm font-semibold transition-colors hover:border-electric hover:text-electric" '
+            f'style="border-color:var(--border);background-color:var(--surface);color:var(--heading)">&larr; Sebelumnya</a>'
+        )
+    else:
+        items.append(
+            f'<span class="rounded-xl border px-3.5 py-2 text-xs sm:text-sm font-semibold opacity-40 cursor-not-allowed" '
+            f'style="border-color:var(--border);background-color:var(--surface);color:var(--soft)">&larr; Sebelumnya</span>'
+        )
+
+    # Nomor Halaman
+    for p in range(1, total_pages + 1):
+        p_url = "/artikel/" if p == 1 else f"/artikel/page/{p}/"
+        if p == current_page:
+            items.append(
+                f'<span class="rounded-xl border px-3.5 py-2 text-xs sm:text-sm font-bold text-white bg-electric" '
+                f'style="border-color:var(--electric)">{p}</span>'
+            )
+        else:
+            items.append(
+                f'<a href="{p_url}" class="rounded-xl border px-3.5 py-2 text-xs sm:text-sm font-semibold transition-colors hover:border-electric hover:text-electric" '
+                f'style="border-color:var(--border);background-color:var(--surface);color:var(--heading)">{p}</a>'
+            )
+
+    # Tombol Selanjutnya
+    if current_page < total_pages:
+        next_url = f"/artikel/page/{current_page + 1}/"
+        items.append(
+            f'<a href="{next_url}" class="rounded-xl border px-3.5 py-2 text-xs sm:text-sm font-semibold transition-colors hover:border-electric hover:text-electric" '
+            f'style="border-color:var(--border);background-color:var(--surface);color:var(--heading)">Selanjutnya &rarr;</a>'
+        )
+    else:
+        items.append(
+            f'<span class="rounded-xl border px-3.5 py-2 text-xs sm:text-sm font-semibold opacity-40 cursor-not-allowed" '
+            f'style="border-color:var(--border);background-color:var(--surface);color:var(--soft)">Selanjutnya &rarr;</span>'
+        )
+
+    return (
+        f'<div class="mt-12 flex flex-wrap items-center justify-center gap-2">'
+        + "".join(items)
+        + "</div>"
+    )
+
+
+def render_index(articles, current_page=1, total_pages=1):
+    """Halaman /artikel/ -- daftar artikel dengan pagination (12 per halaman)."""
+    sorted_articles = sorted(articles, key=lambda x: (x["date"], x["slug"]), reverse=True)
+    start_idx = (current_page - 1) * PAGE_SIZE
+    if current_page == total_pages:
+        end_idx = len(sorted_articles)
+    else:
+        end_idx = start_idx + PAGE_SIZE
+    page_articles = sorted_articles[start_idx:end_idx]
+
     kartu = []
-    for a in sorted(articles, key=lambda x: (x["date"], x["slug"]), reverse=True):
+    for a in page_articles:
         kartu.append(
             f'<a href="/artikel/{a["slug"]}/" class="group flex flex-col overflow-hidden rounded-2xl border transition-colors" '
             f'style="border-color:var(--border);background-color:var(--surface)">'
@@ -894,16 +957,20 @@ def render_index(articles):
             f"</div></a>"
         )
 
+    pagination_html = render_pagination(current_page, total_pages)
+    hal_text = f" (Halaman {current_page})" if current_page > 1 else ""
+    breadcrumb_last = f"Artikel Hal. {current_page}" if current_page > 1 else "Artikel"
+
     body = f"""    <div class="container-clean">
       <nav class="flex items-center gap-2 text-[12px] t-soft" aria-label="Breadcrumb">
         <a href="/" class="transition-colors hover:text-electric">Beranda</a>
         <span>/</span>
-        <span class="t-heading">Artikel</span>
+        <span class="t-heading">{breadcrumb_last}</span>
       </nav>
-      <h1 class="teks-judul mt-5">Artikel &amp; Wawasan</h1>
+      <h1 class="teks-judul mt-5">Artikel &amp; Wawasan{hal_text}</h1>
       <p class="mt-4 max-w-2xl text-sm t-body sm:text-base">
         Hitungan biaya, perbandingan material, dan hal yang sering terlewat sebelum
-        memesan paving, batako, atau gapura.
+        memesan paving, batako, atau gapura Majapahit. Menampilkan {len(page_articles)} dari total {len(articles)} artikel.
       </p>
     </div>
 
@@ -911,24 +978,36 @@ def render_index(articles):
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 {chr(10).join(kartu) if kartu else '        <p class="t-soft">Belum ada artikel.</p>'}
       </div>
+      {pagination_html}
     </div>"""
 
-    ld_extra = {"@type": "CollectionPage", "name": "Artikel & Wawasan FirKaizen",
-                "url": f"{BASE}/artikel/", "inLanguage": "id-ID"}
-    breadcrumb = [("Beranda", BASE + "/"), ("Artikel", BASE + "/artikel/")]
-    # halaman ini memuat artikel gapura (se-Pulau Jawa) dan material (Solo Raya) --
-    # areaServed yang benar adalah gabungannya, bukan salah satu.
+    page_canonical = f"{BASE}/artikel/" if current_page == 1 else f"{BASE}/artikel/page/{current_page}/"
+    ld_extra = {
+        "@type": "CollectionPage",
+        "name": f"Artikel & Wawasan FirKaizen{hal_text}",
+        "url": page_canonical,
+        "inLanguage": "id-ID"
+    }
+    breadcrumb = [("Beranda", BASE + "/")]
+    if current_page == 1:
+        breadcrumb.append(("Artikel", f"{BASE}/artikel/"))
+    else:
+        breadcrumb.append(("Artikel", f"{BASE}/artikel/"))
+        breadcrumb.append((f"Halaman {current_page}", page_canonical))
+
     ada_gapura = any(str(a.get("tag", "")).strip().lower() == "gapura" for a in articles)
     w_index = ({"label": "Ponorogo & Solo Raya",
                 "area": ["Pulau Jawa", "Jawa Tengah", "Jawa Timur"],
                 "ringkas": "seluruh Pulau Jawa dan Solo Raya"}
                if ada_gapura else DEFAULT_WILAYAH)
+
     return page_shell(
-        title="Artikel & Wawasan Material Konstruksi",
-        desc=("Panduan dan hitungan biaya paving block, batako, bata ringan, dan gapura "
-              "Majapahit dari FirKaizen."),
-        slug="artikel", body=body, ld_extra=ld_extra, breadcrumb=breadcrumb,
-        canonical=f"{BASE}/artikel/", og_image=f"{BASE}/images/og/default.webp",
+        title=f"Artikel & Wawasan Material Konstruksi{hal_text}",
+        desc=(f"Panduan dan hitungan biaya paving block, batako, bata ringan, dan gapura "
+              f"Majapahit dari FirKaizen.{hal_text}"),
+        slug="artikel" if current_page == 1 else f"artikel-page-{current_page}",
+        body=body, ld_extra=ld_extra, breadcrumb=breadcrumb,
+        canonical=page_canonical, og_image=f"{BASE}/images/og/default.webp",
         wilayah=w_index,
     )
 
@@ -960,10 +1039,23 @@ def main():
             fh.write(html_out)
         print(f"  artikel/{slug}/index.html  ({len(html_out)//1024} KB)")
 
-    konten = render_index(semua)
+    total_pages = max(1, len(semua) // PAGE_SIZE)
+    if (len(semua) % PAGE_SIZE) > 3:
+        total_pages += 1
+    # Page 1
+    konten_hal1 = render_index(semua, current_page=1, total_pages=total_pages)
     with open(os.path.join(OUT, "index.html"), "w", encoding="utf-8") as fh:
-        fh.write(konten)
-    print(f"  artikel/index.html  ({len(semua)} artikel)")
+        fh.write(konten_hal1)
+    print(f"  artikel/index.html  (Halaman 1/{total_pages}, {len(semua)} artikel)")
+
+    # Page 2..N
+    for p in range(2, total_pages + 1):
+        p_dir = os.path.join(OUT, "page", str(p))
+        os.makedirs(p_dir, exist_ok=True)
+        konten_hal_p = render_index(semua, current_page=p, total_pages=total_pages)
+        with open(os.path.join(p_dir, "index.html"), "w", encoding="utf-8") as fh:
+            fh.write(konten_hal_p)
+        print(f"  artikel/page/{p}/index.html  (Halaman {p}/{total_pages})")
 
 
 if __name__ == "__main__":
