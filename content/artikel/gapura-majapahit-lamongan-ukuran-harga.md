@@ -46,7 +46,7 @@ Angka berikut dipakai sebagai titik awal pembicaraan, dihitung dari lebar bersih
 | 4 meter | Rp 60 juta | gerbang balai desa |
 | 5 meter | Rp 75 juta | penanda kawasan, batas antar desa |
 
-Model dan foto dokumentasi tiap ukuran dapat dilihat pada [halaman layanan gapura](/gapura/).
+Model dan foto dokumentasi tiap ukuran dapat dilihat pada [halaman layanan gapura](https://gapuramajapahit.web.id/).
 
 ## Tahap 4: Pengerjaan
 

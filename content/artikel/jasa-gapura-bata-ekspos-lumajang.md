@@ -79,6 +79,6 @@ Kalau permukaan tampak mengapur atau berubah warna, penanganannya tergantung pen
 
 Area layanan gapura adalah seluruh Pulau Jawa. Untuk proyek di Lumajang, kirimkan data lokasi dan ukuran bersih lewat WhatsApp 0851-9613-5691 atau surel halo@firkaizen.com. Layanan setiap hari pukul 07.00-20.00 WIB.
 
-Halaman [layanan gapura](/gapura/) memuat pilihan ukuran dan dokumentasi pekerjaan. Untuk urutan langkah dari pengukuran sampai proses akhir, baca [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/). Rincian biaya tiap ukuran ada di halaman [harga gapura per ukuran](/artikel/harga-gapura-majapahit-per-ukuran/).
+Halaman [layanan gapura](https://gapuramajapahit.web.id/) memuat pilihan ukuran dan dokumentasi pekerjaan. Untuk urutan langkah dari pengukuran sampai proses akhir, baca [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/). Rincian biaya tiap ukuran ada di halaman [harga gapura per ukuran](/artikel/harga-gapura-majapahit-per-ukuran/).
 
 PT FirKaizen Digital Solutions melayani konsultasi sebelum pemesanan dikonfirmasi.

@@ -44,7 +44,7 @@ Data berikut tidak perlu lengkap sempurna. Semakin detail yang dikirim, semakin 
 * **Lokasi dan akses**: desa dan kecamatan di Trenggalek, jenis jalan menuju titik pemasangan, serta apakah truk dapat masuk.
 * **Foto lokasi** dari beberapa sudut, termasuk tampak jalan dan lahan di sekitarnya.
 * **Kondisi lahan**: datar atau miring, bekas sawah, tanah urug, atau bekas bangunan lama.
-* **Model atau referensi**: contoh bentuk yang disukai, bisa diambil dari [halaman layanan gapura](/gapura/).
+* **Model atau referensi**: contoh bentuk yang disukai, bisa diambil dari [halaman layanan gapura](https://gapuramajapahit.web.id/).
 * **Status lahan dan kesepakatan**: pemilik lahan, serta persetujuan warga atau pihak desa bila gerbang berada di akses bersama.
 
 ## Ukuran dan biaya all-in mulai

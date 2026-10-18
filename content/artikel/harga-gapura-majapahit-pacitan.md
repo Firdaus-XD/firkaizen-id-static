@@ -64,7 +64,7 @@ Hitungan bisa lebih cepat kalau empat hal ini sudah ada:
 
 Data itu cukup untuk membuat perkiraan awal. Bila diperlukan, tim mitra menjadwalkan peninjauan lokasi, dan ketentuan biaya survei dijelaskan saat konsultasi.
 
-Untuk membandingkan ukuran lebih dalam, lihat pembahasan pada [harga gapura Majapahit per ukuran](/artikel/harga-gapura-majapahit-per-ukuran/) dan panduan umum di [halaman layanan gapura](/gapura/). Bila lokasi Anda di Pacitan dan ingin langsung dihitung, halaman [jasa gapura Majapahit Pacitan](/artikel/jasa-gapura-majapahit-pacitan/) memuat alur pemesanan, dan daftar topik lain ada di [semua artikel](/artikel/).
+Untuk membandingkan ukuran lebih dalam, lihat pembahasan pada [harga gapura Majapahit per ukuran](/artikel/harga-gapura-majapahit-per-ukuran/) dan panduan umum di [halaman layanan gapura](https://gapuramajapahit.web.id/). Bila lokasi Anda di Pacitan dan ingin langsung dihitung, halaman [jasa gapura Majapahit Pacitan](/artikel/jasa-gapura-majapahit-pacitan/) memuat alur pemesanan, dan daftar topik lain ada di [semua artikel](/artikel/).
 
 Wilayah layanan gapura mencakup seluruh Pulau Jawa, termasuk Pacitan dan sekitarnya. Di luar Pulau Jawa, yang ditawarkan adalah jasa tenaga kerja saja.
 

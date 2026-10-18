@@ -18,10 +18,10 @@ Lebar bersih adalah jarak antara dua pilar di bagian dalam gapura. Ukuran inilah
 
 | Lebar bersih | Biaya all-in mulai | Umumnya dipilih untuk | Lihat contoh |
 |---|---|---|---|
-| 2,5 meter | Rp 30 juta | gang warga, gerbang perumahan | [Halaman gapura](/gapura/) |
-| 3,0 meter | Rp 35 juta | ukuran yang paling sering dipilih | [Halaman gapura](/gapura/) |
-| 4,0 meter | Rp 60 juta | gerbang balai desa | [Halaman gapura](/gapura/) |
-| 5,0 meter | Rp 75 juta | landmark kawasan, batas antar desa | [Halaman gapura](/gapura/) |
+| 2,5 meter | Rp 30 juta | gang warga, gerbang perumahan | [Halaman gapura](https://gapuramajapahit.web.id/) |
+| 3,0 meter | Rp 35 juta | ukuran yang paling sering dipilih | [Halaman gapura](https://gapuramajapahit.web.id/) |
+| 4,0 meter | Rp 60 juta | gerbang balai desa | [Halaman gapura](https://gapuramajapahit.web.id/) |
+| 5,0 meter | Rp 75 juta | landmark kawasan, batas antar desa | [Halaman gapura](https://gapuramajapahit.web.id/) |
 
 Angka di tabel adalah harga mulai dari dengan sistem all-in. Harga akhir tiap proyek ditentukan setelah survei lokasi, sehingga angka ini sebaiknya dibaca sebagai titik awal perhitungan, bukan penawaran final.
 
@@ -62,7 +62,7 @@ Foto berikut adalah dokumentasi gapura lebar 3 meter, ukuran yang paling sering 
 
 <a href="/" style="display:block;text-align:center"><img src="/images/gapura/drive-gapura-3m-2.webp" alt="Pilar gapura Majapahit bata expose 3 meter dengan detail bata" style="width:100%;max-width:640px;max-height:560px;object-fit:contain;border-radius:8px"></a>
 
-Untuk melihat tipe pilar dan contoh penempatan di jalan masuk, batas desa, dan komplek perumahan, buka [halaman gapura Majapahit](/gapura/).
+Untuk melihat tipe pilar dan contoh penempatan di jalan masuk, batas desa, dan komplek perumahan, buka [halaman gapura Majapahit](https://gapuramajapahit.web.id/).
 
 ## Yang perlu disiapkan sebelum survei
 
@@ -80,3 +80,5 @@ Data tersebut bisa dikirim lewat WhatsApp ke 0851-9613-5691. Layanan dibuka seti
 Selain gapura, kami juga melayani paving block, bata ringan AAC, dan batako. Kalau area yang ingin dibangun juga membutuhkan perkerasan halaman atau dinding pagar, konsultasikan sekaligus di [halaman utama firkaizen.id](/) agar material dan jadwal bisa diatur dalam satu rencana.
 
 PT FirKaizen Digital Solutions. Pengerjaan gapura bersama tim mitra pengrajin di Ponorogo, melayani seluruh Pulau Jawa.
+
+Panduan ukuran, perawatan, dan hal yang perlu disiapkan sebelum pemasangan ada di [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/).

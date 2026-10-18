@@ -75,6 +75,6 @@ Dua hal ini murah diputuskan di awal dan mahal diperbaiki setelah bangunan berdi
 
 Tentukan lebih dahulu bentuk dan lebar bersih, baru bicarakan biaya. Dua keputusan itu yang mengubah angka paling besar.
 
-Konsultasi dan pengiriman data: WhatsApp 0851-9613-5691, surel halo@firkaizen.com, setiap hari 07.00-20.00 WIB. Jangkauan pemasangan tim mitra mencakup seluruh Pulau Jawa. Halaman layanan dan contoh pekerjaan ada di [gapura bata expose](/gapura/), sedangkan daftar tulisan lain ada di [artikel](/artikel/).
+Konsultasi dan pengiriman data: WhatsApp 0851-9613-5691, surel halo@firkaizen.com, setiap hari 07.00-20.00 WIB. Jangkauan pemasangan tim mitra mencakup seluruh Pulau Jawa. Halaman layanan dan contoh pekerjaan ada di [gapura bata expose](https://gapuramajapahit.web.id/), sedangkan daftar tulisan lain ada di [artikel](/artikel/).
 
 Disiapkan sebagai materi pemasaran oleh PT FirKaizen Digital Solutions.

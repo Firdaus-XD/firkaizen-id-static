@@ -104,5 +104,5 @@ Kirimkan ke kami: **ukuran area** (panjang dan lebar tiap sisi), **peruntukan** 
 
 - [Katalog paving block dan harga](https://pavingblockjatim.my.id/) — jenis, pola, paket material, dan paket all-in termasuk pemasangan
 - [Cara menghitung kebutuhan paving block](/artikel/cara-menghitung-kebutuhan-paving-block/) — rumus lengkap dengan contoh
-- [Gapura Majapahit bata expose](/gapura/) — untuk gerbang masuk komplek atau perumahan
+- [Gapura Majapahit bata expose](https://gapuramajapahit.web.id/) — untuk gerbang masuk komplek atau perumahan
 - [Bata ringan dan batako](/batako/) — material dinding dengan pengiriman yang sama

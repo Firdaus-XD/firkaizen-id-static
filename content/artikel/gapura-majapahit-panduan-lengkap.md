@@ -97,6 +97,6 @@ Pengerjaan gapura kami melayani **seluruh Pulau Jawa**.
 
 Di **luar Pulau Jawa**, kami hanya mengerjakan **jasa tenaga kerja** — material disiapkan pemilik proyek.
 
-- [Halaman gapura Majapahit](/gapura/) — pilihan ukuran dan foto proyek
+- [Halaman gapura Majapahit](https://gapuramajapahit.web.id/) — pilihan ukuran dan foto proyek
 - [Cara menghitung kebutuhan paving block](/artikel/cara-menghitung-kebutuhan-paving-block/) — kalau sekalian menata halaman
 - [Kontak dan portofolio](/porto/) — hubungi tim untuk survei lokasi

@@ -81,6 +81,6 @@ Dua contoh di bawah adalah dokumentasi gapura bata expose dari tim mitra. Ukuran
 
 ## Pilihan lain di firkaizen.id
 
-Kalau anggaran juga mencakup perkerasan jalan masuk atau dinding penyangga, [paving block dan kanstin](https://pavingblockjatim.my.id/) maupun [batako dan bata ringan](/batako/) bisa direncanakan dalam satu pekerjaan. Rinciannya ada di [halaman utama firkaizen.id](/). Untuk melihat contoh pilar dan penempatan gapura, buka [halaman gapura Majapahit](/gapura/).
+Kalau anggaran juga mencakup perkerasan jalan masuk atau dinding penyangga, [paving block dan kanstin](https://pavingblockjatim.my.id/) maupun [batako dan bata ringan](/batako/) bisa direncanakan dalam satu pekerjaan. Rinciannya ada di [halaman utama firkaizen.id](/). Untuk melihat contoh pilar dan penempatan gapura, buka [halaman gapura Majapahit](https://gapuramajapahit.web.id/).
 
 PT FirKaizen Digital Solutions.

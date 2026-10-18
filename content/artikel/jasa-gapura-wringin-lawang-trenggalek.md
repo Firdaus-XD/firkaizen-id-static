@@ -41,7 +41,7 @@ Yang dihitung bukan lebar jalan, melainkan jarak bebas antar pilar setelah gapur
 | 4,0 meter | Rp 60 juta | gerbang balai desa |
 | 5,0 meter | Rp 75 juta | penanda kawasan, batas antar desa |
 
-Angka di atas adalah biaya mulai untuk pekerjaan gapura bata ekspos. Ukuran di luar tabel dibicarakan terpisah karena perhitungannya menyusul hasil pengukuran. Rincian tiap ukuran ada di [halaman layanan gapura](/gapura/), dan perbandingan biaya per ukuran dibahas di [harga gapura Majapahit per ukuran](/artikel/harga-gapura-majapahit-per-ukuran/).
+Angka di atas adalah biaya mulai untuk pekerjaan gapura bata ekspos. Ukuran di luar tabel dibicarakan terpisah karena perhitungannya menyusul hasil pengukuran. Rincian tiap ukuran ada di [halaman layanan gapura](https://gapuramajapahit.web.id/), dan perbandingan biaya per ukuran dibahas di [harga gapura Majapahit per ukuran](/artikel/harga-gapura-majapahit-per-ukuran/).
 
 ## Bahan: bata ekspos MRH Mojokerto
 

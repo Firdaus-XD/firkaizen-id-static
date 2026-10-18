@@ -85,6 +85,6 @@ Gapura untuk proyek desa dikerjakan oleh tim mitra pengrajin di Ponorogo, sement
 
 ## Penutup
 
-Untuk proyek desa di Jember, urutan yang bekerja: ukur lebar bersih, pilih bentuk, baru bicarakan angka. Kirim daftar data di atas lewat WhatsApp 0851-9613-5691 atau halo@firkaizen.com pada jam layanan 07.00-20.00 WIB supaya perhitungan bisa dimulai. Rincian tiap ukuran ada di [halaman layanan gapura](/gapura/); kebutuhan lain seperti [paving block untuk jalan desa](https://pavingblockjatim.my.id/), [batako dan bata ringan](/batako/), serta kumpulan [artikel](/artikel/) dapat dilihat dari [halaman utama](/).
+Untuk proyek desa di Jember, urutan yang bekerja: ukur lebar bersih, pilih bentuk, baru bicarakan angka. Kirim daftar data di atas lewat WhatsApp 0851-9613-5691 atau halo@firkaizen.com pada jam layanan 07.00-20.00 WIB supaya perhitungan bisa dimulai. Rincian tiap ukuran ada di [halaman layanan gapura](https://gapuramajapahit.web.id/); kebutuhan lain seperti [paving block untuk jalan desa](https://pavingblockjatim.my.id/), [batako dan bata ringan](/batako/), serta kumpulan [artikel](/artikel/) dapat dilihat dari [halaman utama](/).
 
 PT FirKaizen Digital Solutions.

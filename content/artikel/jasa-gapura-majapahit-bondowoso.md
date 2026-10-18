@@ -72,7 +72,7 @@ Bentuk gapura sering diminta mengikuti ciri lama, misalnya tubuh yang menjulang 
 - **Garis pandang.** Dari arah masuk, puncak gapura sebaiknya terlihat utuh. Pepohonan tinggi tepat di depan lahan sering merusak kesan ini.
 - **Warna sekitarnya.** Bata expose tampil berbeda di depan dinding tembok halus dan di depan pagar besi. Kirim foto lingkungan sekitar, bukan hanya lahan kosong.
 
-Contoh pertanyaan lain soal ukuran, undakan, dan bentuk ada di [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/). Gambaran pekerjaan secara keseluruhan ada di halaman [layanan gapura](/gapura/), dan artikel lain untuk perbandingan ada di [daftar artikel](/artikel/).
+Contoh pertanyaan lain soal ukuran, undakan, dan bentuk ada di [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/). Gambaran pekerjaan secara keseluruhan ada di halaman [layanan gapura](https://gapuramajapahit.web.id/), dan artikel lain untuk perbandingan ada di [daftar artikel](/artikel/).
 
 ## Langkah berikutnya
 

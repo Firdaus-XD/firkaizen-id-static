@@ -78,4 +78,4 @@ Pengerjaan dimulai setelah ukuran dan titik pondasi disepakati. Survei dijadwalk
 
 Sebelum menghubungi, siapkan tiga hal: lebar jalan tersempit, foto jalan dari dua arah, dan peruntukan gapura. Dengan itu, perhitungan ukuran dan biaya bisa langsung disusun tanpa menebak. Kalau ukuran 3 meter terasa pas, bandingkan dulu dengan kondisi jalan saat jam ramai.
 
-Konsultasi ukuran dan biaya dapat dilakukan lewat WhatsApp 0851-9613-5691 atau surel halo@firkaizen.com, setiap hari pukul 07.00-20.00 WIB. Halaman layanan lengkapnya ada di [gapura Majapahit](/gapura/), dan untuk melihat pekerjaan lain seperti penutup halaman, buka [paving block](https://pavingblockjatim.my.id/).
+Konsultasi ukuran dan biaya dapat dilakukan lewat WhatsApp 0851-9613-5691 atau surel halo@firkaizen.com, setiap hari pukul 07.00-20.00 WIB. Halaman layanan lengkapnya ada di [gapura Majapahit](https://gapuramajapahit.web.id/), dan untuk melihat pekerjaan lain seperti penutup halaman, buka [paving block](https://pavingblockjatim.my.id/).

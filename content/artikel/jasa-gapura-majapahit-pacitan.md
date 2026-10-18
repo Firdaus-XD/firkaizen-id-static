@@ -74,6 +74,6 @@ Alur kerjanya sederhana: kirim data lokasi, tentukan lebar bersih dan empat bagi
 
 Ukuran menentukan biaya, sedangkan desain menentukan apakah gapura itu cocok dengan medan. Sebutkan lebar bersih dan kondisi jalan yang sebenarnya, lalu sisanya bisa dibicarakan pada satu pembahasan yang sama.
 
-Rincian keempat paket ukuran ada di [harga gapura Majapahit per ukuran](/artikel/harga-gapura-majapahit-per-ukuran/), sementara dasar pemilihan bentuk, material, dan tata letak ada di [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/). Untuk melihat cakupan pekerjaannya, buka halaman [layanan gapura](/gapura/); kumpulan tulisan lain tentang material dan konstruksi ada di [artikel](/artikel/).
+Rincian keempat paket ukuran ada di [harga gapura Majapahit per ukuran](/artikel/harga-gapura-majapahit-per-ukuran/), sementara dasar pemilihan bentuk, material, dan tata letak ada di [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/). Untuk melihat cakupan pekerjaannya, buka halaman [layanan gapura](https://gapuramajapahit.web.id/); kumpulan tulisan lain tentang material dan konstruksi ada di [artikel](/artikel/).
 
 Hubungi WhatsApp 0851-9613-5691 atau halo@firkaizen.com pada jam layanan 07.00-20.00 WIB. Sertakan lebar bersih, foto dua arah, dan beda tinggi tanah di kiri-kanan titik pilar supaya pengukuran bisa langsung dihitung.

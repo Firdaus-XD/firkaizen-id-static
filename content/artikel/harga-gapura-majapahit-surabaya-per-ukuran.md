@@ -8,7 +8,7 @@ tags: bata expose, gapura desa, biaya bangun
 og_image: https://firkaizen.id/images/og/gapura.webp
 ---
 
-Saat melihat portofolio di web atau di media sosial, hampir semua calon pemesan menanyakan hal yang sama: "Ini gapura ada di mana?" Pertanyaannya bukan tentang lokasi, tetapi tentang jaminan bahwa gapura yang dilihat benar-benar dibuat, bukan sekadar gambar. Dokumentasi yang ada di [halaman gapura](/gapura/) adalah foto hasil pengerjaan tim mitra. Cara membacanya menentukan apakah Anda memesan dengan harapan yang benar atau salah.
+Saat melihat portofolio di web atau di media sosial, hampir semua calon pemesan menanyakan hal yang sama: "Ini gapura ada di mana?" Pertanyaannya bukan tentang lokasi, tetapi tentang jaminan bahwa gapura yang dilihat benar-benar dibuat, bukan sekadar gambar. Dokumentasi yang ada di [halaman gapura](https://gapuramajapahit.web.id/) adalah foto hasil pengerjaan tim mitra. Cara membacanya menentukan apakah Anda memesan dengan harapan yang benar atau salah.
 
 Artikel ini membahas cara menilai dokumentasi proyek sebelum memesan, beserta biaya mulai di setiap ukuran.
 

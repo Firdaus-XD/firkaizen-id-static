@@ -73,6 +73,6 @@ Kalau lokasi sudah punya gapura lama, sertakan fotonya juga. Gapura yang akan di
 
 Ukuran yang paling sering dipilih untuk gerbang desa adalah 3 meter, dengan biaya all-in mulai Rp 35 juta. Kalau jalur tersebut dilewati truk pengangkut, naikkan ke 4 meter atau 5 meter sejak awal, karena memperlebar gapura setelah berdiri jauh lebih mahal daripada memutuskan lebarnya sebelum pekerjaan dimulai.
 
-Penjelasan lengkap soal bentuk, tahapan, dan istilah bagian gapura ada di [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/). Halaman [layanan gapura](/gapura/) memuat pilihan ukuran beserta dokumentasi proyek. Untuk mulai menghitung, kirim lokasi, lebar bersih, dan foto jalan lewat WhatsApp 0851-9613-5691 atau surel halo@firkaizen.com. Jam layanan setiap hari 07.00-20.00 WIB. Artikel lain bisa dibuka di [daftar artikel](/artikel/).
+Penjelasan lengkap soal bentuk, tahapan, dan istilah bagian gapura ada di [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/). Halaman [layanan gapura](https://gapuramajapahit.web.id/) memuat pilihan ukuran beserta dokumentasi proyek. Untuk mulai menghitung, kirim lokasi, lebar bersih, dan foto jalan lewat WhatsApp 0851-9613-5691 atau surel halo@firkaizen.com. Jam layanan setiap hari 07.00-20.00 WIB. Artikel lain bisa dibuka di [daftar artikel](/artikel/).
 
 PT FirKaizen Digital Solutions, mitra pemasaran untuk pekerjaan gapura.

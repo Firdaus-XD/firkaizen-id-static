@@ -74,4 +74,6 @@ Layanan ini mencakup **seluruh Pulau Jawa** , termasuk Madiun dan daerah sekitar
 
 PT FirKaizen Digital Solutions. Pengerjaan gapura bersama tim mitra pengrajin di Ponorogo, melayani seluruh Pulau Jawa.
 
-Dokumentasi portofolio dan pilihan model dapat dilihat pada [halaman layanan gapura](/gapura/). Untuk kebutuhan material lain seperti paving atau batako, cek selengkapnya di [halaman utama firkaizen.id](/).
+Dokumentasi portofolio dan pilihan model dapat dilihat pada [halaman layanan gapura](https://gapuramajapahit.web.id/). Untuk kebutuhan material lain seperti paving atau batako, cek selengkapnya di [halaman utama firkaizen.id](/).
+
+Panduan ukuran, perawatan, dan hal yang perlu disiapkan sebelum pemasangan ada di [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/).

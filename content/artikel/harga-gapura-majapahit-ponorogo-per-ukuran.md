@@ -29,7 +29,7 @@ Gapura dihitung dari lebar bersih, yaitu jarak antara dua tiang di bagian dalam 
 | 4 meter | Rp 60 juta | gerbang balai desa |
 | 5 meter | Rp 75 juta | penanda kawasan, batas antar desa |
 
-Contoh tampilan dan tipe pilar untuk tiap ukuran ada di [halaman gapura Majapahit](/gapura/).
+Contoh tampilan dan tipe pilar untuk tiap ukuran ada di [halaman gapura Majapahit](https://gapuramajapahit.web.id/).
 
 Ukuran 3 meter adalah yang paling sering dipilih di Ponorogo. Lebarnya cukup untuk mobil masuk dan tidak memakan terlalu banyak bagian depan halaman warga.
 

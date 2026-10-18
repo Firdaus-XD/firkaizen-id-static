@@ -93,7 +93,7 @@ Memilih ukuran karena tetangga memakainya. Kebutuhan tiap jalur berbeda, terutam
 
 ## Bacaan lanjutan
 
-Untuk membandingkan angka antar ukuran secara berdampingan, ada tabel lengkap di [harga gapura Majapahit per ukuran](/artikel/harga-gapura-majapahit-per-ukuran/). Panduan umum soal bagian-bagian gapura, pilihan motif, dan hal yang perlu diperiksa sebelum memesan ada di [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/). Halaman layanannya sendiri ada di [gapura Majapahit](/gapura/), dan daftar topik lain tersedia di [semua artikel](/artikel/).
+Untuk membandingkan angka antar ukuran secara berdampingan, ada tabel lengkap di [harga gapura Majapahit per ukuran](/artikel/harga-gapura-majapahit-per-ukuran/). Panduan umum soal bagian-bagian gapura, pilihan motif, dan hal yang perlu diperiksa sebelum memesan ada di [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/). Halaman layanannya sendiri ada di [gapura Majapahit](https://gapuramajapahit.web.id/), dan daftar topik lain tersedia di [semua artikel](/artikel/).
 
 ## Kirim data, lalu tunggu penawaran
 

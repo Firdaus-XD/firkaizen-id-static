@@ -71,6 +71,6 @@ Setelah data diterima, tim mitra menghitung kebutuhan material dan menyusun pena
 
 ## Langkah berikutnya
 
-Sebutkan lebar bersih, peruntukan gapura, dan lokasi lahan saat menghubungi. Jika masih ragu memilih ukuran, bandingkan dulu pilihan lebar dan fungsinya di [panduan gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/), lalu lihat contoh pekerjaan pada [halaman layanan gapura](/gapura/). Untuk gambaran biaya, tanyakan langsung supaya angkanya sesuai kondisi lapangan.
+Sebutkan lebar bersih, peruntukan gapura, dan lokasi lahan saat menghubungi. Jika masih ragu memilih ukuran, bandingkan dulu pilihan lebar dan fungsinya di [panduan gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/), lalu lihat contoh pekerjaan pada [halaman layanan gapura](https://gapuramajapahit.web.id/). Untuk gambaran biaya, tanyakan langsung supaya angkanya sesuai kondisi lapangan.
 
 Kontak: WhatsApp 0851-9613-5691, surel halo@firkaizen.com, jam layanan 07.00-20.00 WIB. Layanan gapura dan konstruksi fisik dikelola oleh PT FirKaizen Digital Solutions.

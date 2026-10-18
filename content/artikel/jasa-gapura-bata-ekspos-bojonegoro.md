@@ -80,4 +80,6 @@ Setiap pemesanan ditangani secara personal sejak konsultasi awal hingga serah te
 
 PT FirKaizen Digital Solutions. Pengerjaan gapura bersama tim mitra pengrajin di Ponorogo, melayani seluruh Pulau Jawa.
 
-Dokumentasi portofolio dan pilihan model dapat dilihat pada [halaman layanan gapura](/gapura/). Untuk kebutuhan material lain seperti paving atau batako, cek selengkapnya di [halaman utama firkaizen.id](/).
+Dokumentasi portofolio dan pilihan model dapat dilihat pada [halaman layanan gapura](https://gapuramajapahit.web.id/). Untuk kebutuhan material lain seperti paving atau batako, cek selengkapnya di [halaman utama firkaizen.id](/).
+
+Pembanding harga untuk tipe bata expose ada di [rincian biaya gapura bata expose Malang](/artikel/gapura-bata-ekspos-malang-harga-transparan/).

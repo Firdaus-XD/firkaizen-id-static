@@ -23,7 +23,7 @@ Biaya dihitung dari lebar bersih, yaitu ruang yang dilewati kendaraan setelah ga
 | 4 meter | Rp 60 juta | gerbang balai desa |
 | 5 meter | Rp 75 juta | penanda kawasan, batas antar desa |
 
-Lebar 3 meter paling sering diambil sebab proporsinya seimbang dan mobil masih leluasa lewat. Dokumentasi tiap ukuran ada di [halaman gapura](/gapura/).
+Lebar 3 meter paling sering diambil sebab proporsinya seimbang dan mobil masih leluasa lewat. Dokumentasi tiap ukuran ada di [halaman gapura](https://gapuramajapahit.web.id/).
 
 ## Lima langkah menyiapkan anggaran
 

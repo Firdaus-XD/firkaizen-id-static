@@ -23,7 +23,7 @@ Gapura dihitung dari lebar bersih, yaitu jarak antara dua pilar di bagian dalam 
 | 4 meter | Rp 60 juta | akses: gerbang balai desa |
 | 5 meter | Rp 75 juta | penanda: landmark kawasan, batas antar desa |
 
-Contoh tampilan dan tipe pilar untuk tiap ukuran ada di [halaman gapura Majapahit](/gapura/).
+Contoh tampilan dan tipe pilar untuk tiap ukuran ada di [halaman gapura Majapahit](https://gapuramajapahit.web.id/).
 
 ## Penanda atau akses?
 

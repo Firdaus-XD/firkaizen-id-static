@@ -70,6 +70,6 @@ Semakin lengkap data awal, semakin cepat penawaran bisa disusun. Konsultasi bisa
 
 ## Penutup
 
-Untuk kebutuhan di Lumajang maupun wilayah lain di pulau Jawa, pengerjaan gapura Majapahit dilakukan oleh tim mitra pengrajin di Ponorogo, sedangkan PT FirKaizen Digital Solutions berperan sebagai mitra pemasaran. Pilihan model, dokumentasi pekerjaan, dan cakupan layanan dapat Anda lihat di [halaman layanan gapura](/gapura/), dan panduan umum sebelum memesan ada di [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/).
+Untuk kebutuhan di Lumajang maupun wilayah lain di pulau Jawa, pengerjaan gapura Majapahit dilakukan oleh tim mitra pengrajin di Ponorogo, sedangkan PT FirKaizen Digital Solutions berperan sebagai mitra pemasaran. Pilihan model, dokumentasi pekerjaan, dan cakupan layanan dapat Anda lihat di [halaman layanan gapura](https://gapuramajapahit.web.id/), dan panduan umum sebelum memesan ada di [panduan lengkap gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/).
 
 Kirimkan ukuran bersih dan peruntukan gapura Anda lebih dulu, lalu biaya per tipe di atas bisa dipersempit menjadi penawaran yang sesuai lokasi. Semua artikel lain seputar material dan pemesanan ada di [daftar artikel](/artikel/).

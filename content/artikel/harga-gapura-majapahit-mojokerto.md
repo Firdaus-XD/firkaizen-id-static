@@ -89,7 +89,7 @@ Foto berikut adalah dokumentasi gapura bata expose dari tim mitra, diambil di be
 
 <a href="/" style="display:block;text-align:center"><img src="/images/gapura/drive-gapura-3m-2.webp" alt="Pilar gapura bata expose 3 meter dengan detail bata" style="width:100%;max-width:640px;max-height:560px;object-fit:contain;border-radius:8px"></a>
 
-Untuk melihat tipe pilar dan contoh penempatan di jalan masuk, batas desa, dan komplek perumahan, buka [halaman gapura Majapahit](/gapura/).
+Untuk melihat tipe pilar dan contoh penempatan di jalan masuk, batas desa, dan komplek perumahan, buka [halaman gapura Majapahit](https://gapuramajapahit.web.id/).
 
 ## Yang perlu disiapkan sebelum survei
 

@@ -18,10 +18,10 @@ Gapura bata ekspos dihitung per unit, dengan lebar bersih sebagai acuan utama. H
 
 | Lebar bersih | Harga mulai | Peruntukan umum | Detail |
 |---|---|---|---|
-| 2,5 meter | Rp 30 juta | gang warga, gerbang perumahan | [Halaman gapura](/gapura/) |
-| 3 meter | Rp 35 juta | ukuran yang paling sering dipilih | [Halaman gapura](/gapura/) |
-| 4 meter | Rp 60 juta | gerbang balai desa | [Halaman gapura](/gapura/) |
-| 5 meter | Rp 75 juta | landmark kawasan, batas antar desa | [Halaman gapura](/gapura/) |
+| 2,5 meter | Rp 30 juta | gang warga, gerbang perumahan | [Halaman gapura](https://gapuramajapahit.web.id/) |
+| 3 meter | Rp 35 juta | ukuran yang paling sering dipilih | [Halaman gapura](https://gapuramajapahit.web.id/) |
+| 4 meter | Rp 60 juta | gerbang balai desa | [Halaman gapura](https://gapuramajapahit.web.id/) |
+| 5 meter | Rp 75 juta | landmark kawasan, batas antar desa | [Halaman gapura](https://gapuramajapahit.web.id/) |
 
 Dari empat pilihan ini, lebar 3 meter paling sering dipilih karena proporsinya enak dilihat dari jalan dan kendaraan masih leluasa lewat.
 

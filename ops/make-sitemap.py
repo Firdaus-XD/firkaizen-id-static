@@ -9,11 +9,11 @@ import os, re, datetime, glob
 
 ROOT = os.path.expanduser("~/.hermes/cache/scratch/fk-static-repo")
 BASE = "https://firkaizen.id"
-EXCLUDE = {"admin", "api", "links", ".git", "ops", "images", "fonts", "paving"}
+EXCLUDE = {"admin", "api", "links", ".git", "ops", "images", "fonts", "paving", "gapura"}
 
 # prioritas per halaman
-PRIO = {"/": "1.0", "/batako/": "0.9", "/gapura/": "0.9", "/porto/": "0.7"}
-FREQ = {"/": "weekly", "/batako/": "weekly", "/gapura/": "weekly", "/porto/": "monthly"}
+PRIO = {"/": "1.0", "/batako/": "0.9", "/porto/": "0.7"}
+FREQ = {"/": "weekly", "/batako/": "weekly", "/porto/": "monthly"}
 
 
 def pages():

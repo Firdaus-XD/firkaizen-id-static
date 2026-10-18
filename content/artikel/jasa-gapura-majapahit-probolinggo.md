@@ -9,7 +9,7 @@ og_image: /images/og/gapura.webp
 
 Gerbang sekolah di Probolinggo yang lebar bersihnya hanya 2,2 meter menyulitkan kendaraan besar saat masuk halaman. Truk pengangkut meja, mobil pemadam kebakaran, atau ambulans harus berhenti, memutar, dan mundur lagi ke jalan. Masalahnya biasanya baru terasa setelah gapura berdiri, ketika memperlebar berarti membongkar pilar, memesan bata expose tambahan, dan menutup akses selama pengerjaan. Ukuran serta posisi gerbang karena itu sebaiknya diputuskan sebelum bata pertama dipasang.
 
-Tiga hal paling sering menjadi ganjalan pada proyek gapura desa dan sekolah di Probolinggo: lebar bersih untuk akses kendaraan, penempatan gerbang pada lahan terbatas, dan data yang perlu disiapkan sebelum tim mitra mulai menghitung. Rincian jenis pekerjaan ada di halaman [layanan gapura Majapahit](/gapura/), sedangkan urutan dari pondasi sampai pemasangan bata expose dibahas di [panduan gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/).
+Tiga hal paling sering menjadi ganjalan pada proyek gapura desa dan sekolah di Probolinggo: lebar bersih untuk akses kendaraan, penempatan gerbang pada lahan terbatas, dan data yang perlu disiapkan sebelum tim mitra mulai menghitung. Rincian jenis pekerjaan ada di halaman [layanan gapura Majapahit](https://gapuramajapahit.web.id/), sedangkan urutan dari pondasi sampai pemasangan bata expose dibahas di [panduan gapura Majapahit](/artikel/gapura-majapahit-panduan-lengkap/).
 
 ## Lebar bersih, bukan lebar total
 

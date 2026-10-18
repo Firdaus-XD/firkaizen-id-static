@@ -75,5 +75,5 @@ Kirim ke kami: ukuran denah dalam meter, jumlah lantai, dan lokasi proyek. Tim P
 
 - [Bata ringan dan batako terima beres](/batako/) — isi paket dan cara pemesanan
 - [Paving block untuk halaman dan carport](https://pavingblockjatim.my.id/) — sering dipesan bersama material dinding
-- [Gapura Majapahit bata expose](/gapura/) — ukuran lebar bersih dan biaya
+- [Gapura Majapahit bata expose](https://gapuramajapahit.web.id/) — ukuran lebar bersih dan biaya
 - [Lihat semua artikel](/artikel/) — panduan lain seputar material konstruksi

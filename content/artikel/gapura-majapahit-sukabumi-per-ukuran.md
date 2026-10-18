@@ -40,7 +40,7 @@ Biaya dihitung dari lebar bersih dan merupakan biaya mulai, mencakup pekerjaan u
 | 4 meter | Rp 60 juta | gerbang balai desa |
 | 5 meter | Rp 75 juta | penanda kawasan, batas antar desa |
 
-Foto dokumentasi tiap ukuran tersedia pada [halaman layanan gapura](/gapura/).
+Foto dokumentasi tiap ukuran tersedia pada [halaman layanan gapura](https://gapuramajapahit.web.id/).
 
 ## Hal yang mengubah biaya final
 

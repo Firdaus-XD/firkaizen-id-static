@@ -44,7 +44,7 @@ Gapura dikerjakan oleh tim mitra pengrajin di Ponorogo, dengan jangkauan pemasan
 
 FirKaizen berperan sebagai mitra pemasaran. Artinya, FirKaizen menangani komunikasi, perencanaan awal bersama calon pemilik, serta penghubungan ke tim mitra yang mengerjakan. Pekerjaan konstruksi di lapangan dilakukan oleh tim mitra. Anda didampingi dari perhitungan ukuran sampai penjadwalan, sementara pelaksanaan berada di tangan tim yang mengerjakan gapura tersebut.
 
-Halaman layanan [gapura](/gapura/) memuat dokumentasi proyek yang bisa dilihat sebelum memutuskan, sehingga bentuk gapura bata ekspos yang dimaksud bisa dibandingkan dengan contoh nyata, bukan hanya dengan gambar ilustrasi.
+Halaman layanan [gapura](https://gapuramajapahit.web.id/) memuat dokumentasi proyek yang bisa dilihat sebelum memutuskan, sehingga bentuk gapura bata ekspos yang dimaksud bisa dibandingkan dengan contoh nyata, bukan hanya dengan gambar ilustrasi.
 
 ## Yang perlu disiapkan pemilik lahan
 

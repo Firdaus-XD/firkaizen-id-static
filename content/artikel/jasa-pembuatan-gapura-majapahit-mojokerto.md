@@ -79,4 +79,6 @@ Layanan pembuatan gapura ini melayani **seluruh Pulau Jawa** , termasuk Mojokert
 
 PT FirKaizen Digital Solutions. Pengerjaan gapura bersama tim mitra pengrajin di Ponorogo, melayani seluruh Pulau Jawa.
 
-Dokumentasi portofolio dan pilihan model dapat dilihat pada [halaman layanan gapura](/gapura/). Untuk kebutuhan material lain seperti paving atau batako, cek selengkapnya di [halaman utama firkaizen.id](/).
+Dokumentasi portofolio dan pilihan model dapat dilihat pada [halaman layanan gapura](https://gapuramajapahit.web.id/). Untuk kebutuhan material lain seperti paving atau batako, cek selengkapnya di [halaman utama firkaizen.id](/).
+
+Rincian biaya tiap ukuran lebar bersih ada di [harga gapura Majapahit per ukuran](/artikel/harga-gapura-majapahit-per-ukuran/).

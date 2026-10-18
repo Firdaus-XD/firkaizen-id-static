@@ -73,6 +73,6 @@ Survei dijadwalkan setelah data ukuran dan lokasi dikirim, dan ketentuan biaya s
 
 Kirimkan lebar bersih, tinggi, lokasi, dan peruntukan gapura. Dari angka-angka itu, tim mitra dapat menyiapkan perhitungan biaya dan penjadwalan yang sesuai kondisi lapangan. Kalau belum yakin ukuran mana yang tepat, sebutkan saja lebar jalan dan jenis kendaraan yang akan lewat, lalu ukurannya bisa ditentukan bersama.
 
-Hubungi WhatsApp 0851-9613-5691 atau surel halo@firkaizen.com pada jam layanan 07.00-20.00 WIB. Contoh pekerjaan dan halaman layanan ada di [/gapura/](/gapura/), dan artikel lain mengenai biaya, ukuran, serta material tersedia di [/artikel/](/artikel/).
+Hubungi WhatsApp 0851-9613-5691 atau surel halo@firkaizen.com pada jam layanan 07.00-20.00 WIB. Contoh pekerjaan dan halaman layanan ada di [/gapura/](https://gapuramajapahit.web.id/), dan artikel lain mengenai biaya, ukuran, serta material tersedia di [/artikel/](/artikel/).
 
 PT FirKaizen Digital Solutions.
