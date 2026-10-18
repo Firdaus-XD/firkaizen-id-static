@@ -75,6 +75,6 @@ Dua dokumentasi dari tim mitra berikut memperlihatkan proporsi pilar dan bagian 
 
 ## Penutup
 
-Blitar termasuk wilayah layanan tim mitra pengrajin Ponorogo, seluruh Pulau Jawa, dengan material bata expose MRH Mojokerto. Untuk kebutuhan selain gapura, tersedia [paving block dan kanstin](/paving/) maupun [batako dan bata ringan](/batako/) — lihat [halaman utama](/) untuk daftar lengkapnya.
+Blitar termasuk wilayah layanan tim mitra pengrajin Ponorogo, seluruh Pulau Jawa, dengan material bata expose MRH Mojokerto. Untuk kebutuhan selain gapura, tersedia [paving block dan kanstin](https://pavingblockjatim.my.id/) maupun [batako dan bata ringan](/batako/) — lihat [halaman utama](/) untuk daftar lengkapnya.
 
 PT FirKaizen Digital Solutions.

@@ -83,6 +83,6 @@ Dua contoh di bawah adalah dokumentasi gapura bata expose dari tim mitra. Ukuran
 
 ## Pilihan lain di firkaizen.id
 
-Kalau lokasi juga membutuhkan perkerasan jalan masuk, [paving block dan kanstin](/paving/) bisa dikerjakan dalam satu rencana. Kalau yang dibutuhkan adalah dinding atau material bata ringan, lihat [batako dan bata ringan](/batako/). Semua layanan ada di [halaman utama firkaizen.id](/).
+Kalau lokasi juga membutuhkan perkerasan jalan masuk, [paving block dan kanstin](https://pavingblockjatim.my.id/) bisa dikerjakan dalam satu rencana. Kalau yang dibutuhkan adalah dinding atau material bata ringan, lihat [batako dan bata ringan](/batako/). Semua layanan ada di [halaman utama firkaizen.id](/).
 
 PT FirKaizen Digital Solutions.

@@ -102,7 +102,7 @@ Tapi kalau yang salah ketebalan atau tidak ada kanstin, perbaikan tambal hanya m
 
 Kirimkan ke kami: **ukuran area** (panjang dan lebar tiap sisi), **peruntukan** (halaman rumah, carport, jalan lingkungan), dan **lokasi pengiriman**. Tim kami hitungkan kebutuhan paving, kanstin, pasir alas, dan ongkos angkat sekaligus, supaya tujuh kesalahan di atas tidak terjadi di proyek Anda. Survei awal tidak dikenakan biaya untuk area Solo Raya dan sekitarnya.
 
-- [Katalog paving block dan harga](/paving/) — jenis, pola, paket material, dan paket all-in termasuk pemasangan
+- [Katalog paving block dan harga](https://pavingblockjatim.my.id/) — jenis, pola, paket material, dan paket all-in termasuk pemasangan
 - [Cara menghitung kebutuhan paving block](/artikel/cara-menghitung-kebutuhan-paving-block/) — rumus lengkap dengan contoh
 - [Gapura Majapahit bata expose](/gapura/) — untuk gerbang masuk komplek atau perumahan
 - [Bata ringan dan batako](/batako/) — material dinding dengan pengiriman yang sama

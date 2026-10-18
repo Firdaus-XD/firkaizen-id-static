@@ -81,6 +81,6 @@ Data ini dikirim lewat WhatsApp 0851-9613-5691, layanan setiap hari pukul 07.00 
 
 ## Layanan lain dari firkaizen.id
 
-Kalau yang dibutuhkan bukan gapura, cek juga [paving block dan kanstin](/paving/) atau [batako dan bata ringan](/batako/). Semua pilihan ada di [halaman utama firkaizen.id](/).
+Kalau yang dibutuhkan bukan gapura, cek juga [paving block dan kanstin](https://pavingblockjatim.my.id/) atau [batako dan bata ringan](/batako/). Semua pilihan ada di [halaman utama firkaizen.id](/).
 
 PT FirKaizen Digital Solutions.

@@ -82,6 +82,6 @@ Kalau dua dari tiga jawabannya mengarah ke paving, pilih paving.
 
 Kirim foto dan ukuran halaman Anda ke kami. Tim FirKaizen akan hitungkan kebutuhan paving, kanstin, pasir alas, dan ongkos pemasangan — tanpa biaya survei awal untuk area Solo Raya dan sekitarnya.
 
-- [Katalog paving block dan harga per m2](/paving/) — lihat pilihan pola dan paket borongan
+- [Katalog paving block dan harga per m2](https://pavingblockjatim.my.id/) — lihat pilihan pola dan paket borongan
 - [Cara menghitung kebutuhan paving block](/artikel/cara-menghitung-kebutuhan-paving-block/) — rumusnya, lengkap dengan contoh
 - [Bata ringan dan batako](/batako/) — material dinding dengan pengiriman yang sama

@@ -75,4 +75,4 @@ Jangkauan layanan mencakup seluruh Pulau Jawa, termasuk Probolinggo. Di luar Pul
 
 Bila bentuk terbelah sudah pasti dipilih, bandingkan dulu dengan bentuk serupa yang sudah dikerjakan di kota lain: [gapura Wringin Lawang Sidoarjo](/artikel/gapura-wringin-lawang-sidoarjo/). Untuk melihat opsi bentuk dan ukuran secara menyeluruh, buka halaman [layanan gapura](/gapura/), lalu tentukan ukuran dan kirim data lokasi.
 
-Kontak: WhatsApp 0851-9613-5691 (setiap hari 07.00-20.00 WIB) atau surel halo@firkaizen.com. Artikel lain soal biaya dan pemasangan ada di [daftar artikel](/artikel/). Bila di lokasi yang sama sedang disiapkan pekerjaan lain, halaman [paving block](/paving/) dan [batako](/batako/) memuat ukuran serta ketebalannya masing-masing.
+Kontak: WhatsApp 0851-9613-5691 (setiap hari 07.00-20.00 WIB) atau surel halo@firkaizen.com. Artikel lain soal biaya dan pemasangan ada di [daftar artikel](/artikel/). Bila di lokasi yang sama sedang disiapkan pekerjaan lain, halaman [paving block](https://pavingblockjatim.my.id/) dan [batako](/batako/) memuat ukuran serta ketebalannya masing-masing.

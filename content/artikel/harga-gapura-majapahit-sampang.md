@@ -79,7 +79,7 @@ Beberapa hal ini mempercepat proses dan menghindari penawaran yang harus direvis
 
 ## Menggabungkan dengan pekerjaan lain
 
-Gapura jarang berdiri sendiri. Halaman di depan gapura biasanya dipaving supaya tidak becek saat musim hujan, dan sisi pagar bisa dikerjakan dengan batako. Dua pekerjaan itu ada di lini layanan yang berbeda dari gapura, jadi sebaiknya dibahas bersamaan supaya urutan pengerjaan tidak saling menunggu. Lihat halaman [paving block](/paving/) dan [batako](/batako/) untuk membandingkannya.
+Gapura jarang berdiri sendiri. Halaman di depan gapura biasanya dipaving supaya tidak becek saat musim hujan, dan sisi pagar bisa dikerjakan dengan batako. Dua pekerjaan itu ada di lini layanan yang berbeda dari gapura, jadi sebaiknya dibahas bersamaan supaya urutan pengerjaan tidak saling menunggu. Lihat halaman [paving block](https://pavingblockjatim.my.id/) dan [batako](/batako/) untuk membandingkannya.
 
 ## Kesalahan yang membuat biaya membengkak
 

@@ -74,6 +74,6 @@ Paket contoh terima beres kami untuk bata ringan berisi ± 747 pcs hebel plus ±
 Kirim ke kami: ukuran denah dalam meter, jumlah lantai, dan lokasi proyek. Tim PT FirKaizen Digital Solutions akan menghitungkan kebutuhan bata, mortar, dan perkiraan hari kerja tukang, lalu mengirimkan rinciannya sebelum Anda memutuskan. Survei awal di wilayah Solo Raya dan Jawa Tengah tidak dikenakan biaya, dan layanan kami buka setiap hari 07.00-20.00 WIB.
 
 - [Bata ringan dan batako terima beres](/batako/) — isi paket dan cara pemesanan
-- [Paving block untuk halaman dan carport](/paving/) — sering dipesan bersama material dinding
+- [Paving block untuk halaman dan carport](https://pavingblockjatim.my.id/) — sering dipesan bersama material dinding
 - [Gapura Majapahit bata expose](/gapura/) — ukuran lebar bersih dan biaya
 - [Lihat semua artikel](/artikel/) — panduan lain seputar material konstruksi

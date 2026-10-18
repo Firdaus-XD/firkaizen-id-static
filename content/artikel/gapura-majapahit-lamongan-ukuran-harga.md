@@ -81,6 +81,6 @@ Datanya dikirim lewat WhatsApp 0851-9613-5691, layanan setiap hari pukul 07.00 s
 
 ## Penutup
 
-Angka mulai ada untuk satu tujuan: memberi titik awal sejak tahap konsultasi, bukan menggantikan penawaran. Setelah pengukuran dan survei, barulah biaya final terbentuk. Kalau selain gapura juga dibutuhkan material halaman, lihat [paving block dan kanstin](/paving/) atau [batako dan bata ringan](/batako/); selengkapnya pada [halaman utama firkaizen.id](/).
+Angka mulai ada untuk satu tujuan: memberi titik awal sejak tahap konsultasi, bukan menggantikan penawaran. Setelah pengukuran dan survei, barulah biaya final terbentuk. Kalau selain gapura juga dibutuhkan material halaman, lihat [paving block dan kanstin](https://pavingblockjatim.my.id/) atau [batako dan bata ringan](/batako/); selengkapnya pada [halaman utama firkaizen.id](/).
 
 PT FirKaizen Digital Solutions.

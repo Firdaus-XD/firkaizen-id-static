@@ -104,6 +104,6 @@ Kirim lewat WhatsApp 0851-9613-5691, layanan setiap hari pukul 07.00 sampai 20.0
 
 ## Pilihan lain di firkaizen.id
 
-Kalau area yang dibangun juga membutuhkan perkerasan halaman atau dinding pagar, konsultasikan sekaligus: [paving block dan kanstin](/paving/) maupun [batako dan bata ringan](/batako/). Semua pilihan ada di [halaman utama firkaizen.id](/).
+Kalau area yang dibangun juga membutuhkan perkerasan halaman atau dinding pagar, konsultasikan sekaligus: [paving block dan kanstin](https://pavingblockjatim.my.id/) maupun [batako dan bata ringan](/batako/). Semua pilihan ada di [halaman utama firkaizen.id](/).
 
 PT FirKaizen Digital Solutions.

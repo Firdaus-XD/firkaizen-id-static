@@ -78,6 +78,6 @@ Perbandingan bentuk secara menyeluruh, termasuk hal yang perlu diperhatikan pada
 
 ## Penutup
 
-Kalau bentuknya sudah dipilih dan ukurannya sudah dipegang, langkah berikutnya adalah mengirim data di atas lewat WhatsApp 0851-9613-5691 atau surel halo@firkaizen.com. Layanan dijawab setiap hari 07.00-20.00 WIB. Untuk kebutuhan lain, tersedia [paving block](/paving/) dan [batako](/batako/) dari [halaman utama](/).
+Kalau bentuknya sudah dipilih dan ukurannya sudah dipegang, langkah berikutnya adalah mengirim data di atas lewat WhatsApp 0851-9613-5691 atau surel halo@firkaizen.com. Layanan dijawab setiap hari 07.00-20.00 WIB. Untuk kebutuhan lain, tersedia [paving block](https://pavingblockjatim.my.id/) dan [batako](/batako/) dari [halaman utama](/).
 
 PT FirKaizen Digital Solutions.

@@ -80,6 +80,6 @@ Dua dokumentasi di bawah berasal dari tim mitra. Lebar gapura pada foto tidak ha
 
 ## Penutup
 
-Pengerjaan di Ngawi ditangani tim mitra pengrajin Ponorogo dengan bata expose MRH Mojokerto, untuk seluruh Pulau Jawa. Kebutuhan halaman selain gapura tersedia di [paving block dan kanstin](/paving/) serta [batako dan bata ringan](/batako/); daftar selengkapnya pada [halaman utama firkaizen.id](/).
+Pengerjaan di Ngawi ditangani tim mitra pengrajin Ponorogo dengan bata expose MRH Mojokerto, untuk seluruh Pulau Jawa. Kebutuhan halaman selain gapura tersedia di [paving block dan kanstin](https://pavingblockjatim.my.id/) serta [batako dan bata ringan](/batako/); daftar selengkapnya pada [halaman utama firkaizen.id](/).
 
 PT FirKaizen Digital Solutions.

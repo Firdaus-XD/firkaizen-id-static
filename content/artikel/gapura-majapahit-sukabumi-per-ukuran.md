@@ -77,6 +77,6 @@ Datanya dikirim lewat WhatsApp 0851-9613-5691, layanan setiap hari pukul 07.00 s
 
 ## Penutup
 
-Ukuran yang tepat mengunci biaya utama; sekali pilar berdiri, mengubahnya mahal. Patokan pemilihan lebar sudah tertera di atas, dan tim mitra pengrajin Ponorogo siap membantu pengerjaan di Sukabumi maupun seluruh Pulau Jawa. Kebutuhan halaman selain gapura dapat dilihat pada [paving block dan kanstin](/paving/) atau [batako dan bata ringan](/batako/); selengkapnya pada [halaman utama firkaizen.id](/).
+Ukuran yang tepat mengunci biaya utama; sekali pilar berdiri, mengubahnya mahal. Patokan pemilihan lebar sudah tertera di atas, dan tim mitra pengrajin Ponorogo siap membantu pengerjaan di Sukabumi maupun seluruh Pulau Jawa. Kebutuhan halaman selain gapura dapat dilihat pada [paving block dan kanstin](https://pavingblockjatim.my.id/) atau [batako dan bata ringan](/batako/); selengkapnya pada [halaman utama firkaizen.id](/).
 
 PT FirKaizen Digital Solutions.

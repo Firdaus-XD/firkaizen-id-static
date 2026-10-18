@@ -75,4 +75,4 @@ Material yang dipakai adalah bata expose MRH Mojokerto. Area layanan gapura menc
 
 Sebelum menghubungi, siapkan empat data: lokasi lengkap, ukuran lahan pada titik gerbang, lebar bersih yang diinginkan, dan foto lahan. Data itu cukup untuk membuat hitungan awal dan menyusun jadwal survei.
 
-Kontak yang bisa dipakai: WhatsApp 0851-9613-5691, surel halo@firkaizen.com, dengan jam layanan 07.00-20.00 WIB setiap hari. Daftar artikel lain soal gapura dan konstruksi ada di [halaman artikel](/artikel/), dan halaman [paving block](/paving/) maupun [batako](/batako/) bisa dilihat kalau halaman desa atau sekolah juga memerlukan pekerjaan material.
+Kontak yang bisa dipakai: WhatsApp 0851-9613-5691, surel halo@firkaizen.com, dengan jam layanan 07.00-20.00 WIB setiap hari. Daftar artikel lain soal gapura dan konstruksi ada di [halaman artikel](/artikel/), dan halaman [paving block](https://pavingblockjatim.my.id/) maupun [batako](/batako/) bisa dilihat kalau halaman desa atau sekolah juga memerlukan pekerjaan material.

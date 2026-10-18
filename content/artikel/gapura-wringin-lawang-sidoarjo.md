@@ -78,6 +78,6 @@ Kirimannya melalui WhatsApp 0851-9613-5691, dibuka setiap hari pukul 07.00 sampa
 
 ## Penutup
 
-Dua kesalahan di awal — angka lebar yang salah dan tinggi yang ditiru — berakhir di tiap hari pemakaian. Solusinya hanya pengukuran ulang yang sabar, dan tim mitra pengrajin Ponorogo siap membantu untuk seluruh Pulau Jawa. Kebutuhan material halaman dapat dilihat pada [paving block dan kanstin](/paving/) atau [batako dan bata ringan](/batako/); selengkapnya pada [halaman utama firkaizen.id](/).
+Dua kesalahan di awal — angka lebar yang salah dan tinggi yang ditiru — berakhir di tiap hari pemakaian. Solusinya hanya pengukuran ulang yang sabar, dan tim mitra pengrajin Ponorogo siap membantu untuk seluruh Pulau Jawa. Kebutuhan material halaman dapat dilihat pada [paving block dan kanstin](https://pavingblockjatim.my.id/) atau [batako dan bata ringan](/batako/); selengkapnya pada [halaman utama firkaizen.id](/).
 
 PT FirKaizen Digital Solutions.

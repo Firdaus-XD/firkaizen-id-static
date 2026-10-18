@@ -117,6 +117,8 @@ Kirimkan ukuran area, peruntukan, dan lokasi proyek melalui WhatsApp ke 0851-961
 setiap hari pukul 07.00-20.00 WIB. Tim akan menyiapkan estimasi volume dan biaya.
 
 Lihat spesifikasi lengkap paving block mutu K-300 press hidrolik di
-[halaman layanan paving kami](/paving/). Untuk proyek yang juga membutuhkan material
+[halaman layanan paving kami](https://pavingblockjatim.my.id/). Untuk proyek yang juga membutuhkan material
 dinding, tersedia pula [bata ringan AAC dan batako](/batako/) dengan paket material
-hingga borongan tukang.
+hingga borongan tukang. Sesudah ketebalan ditentukan, hitung volumenya dengan
+[panduan menghitung kebutuhan paving block](/artikel/cara-menghitung-kebutuhan-paving-block/)
+supaya jumlah keping dan pasirnya tidak kelebihan.

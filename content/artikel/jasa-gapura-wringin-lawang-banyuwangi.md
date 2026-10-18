@@ -66,6 +66,6 @@ Data lebar bersih yang keliru dari satu sisi saja biasanya cukup untuk membatalk
 
 Bandingkan dulu dua atau tiga ukuran bersih pada tabel di atas dengan lebar jalan yang Anda ukur, lalu tentukan mana yang memberi ruang manuver lebih. Setelah itu kirimkan daftar data di atas lewat WhatsApp 0851-9613-5691 atau surel halo@firkaizen.com, setiap hari pukul 07.00-20.00 WIB. Ketentuan biaya survei dijelaskan saat konsultasi, termasuk bila lokasi memerlukan penjadwalan khusus.
 
-Rincian biaya per ukuran dibahas di [harga gapura Majapahit per ukuran](/artikel/harga-gapura-majapahit-per-ukuran/), sedangkan contoh pekerjaan ada di halaman [gapura](/gapura/). Kalau yang dibutuhkan justru halaman depan kawasan, bukan gapura, lihat juga layanan [paving](/paving/) dan [batako](/batako/). Daftar artikel lain ada di [artikel](/artikel/).
+Rincian biaya per ukuran dibahas di [harga gapura Majapahit per ukuran](/artikel/harga-gapura-majapahit-per-ukuran/), sedangkan contoh pekerjaan ada di halaman [gapura](/gapura/). Kalau yang dibutuhkan justru halaman depan kawasan, bukan gapura, lihat juga layanan [paving](https://pavingblockjatim.my.id/) dan [batako](/batako/). Daftar artikel lain ada di [artikel](/artikel/).
 
 Halaman ini disiapkan oleh PT FirKaizen Digital Solutions.

@@ -107,6 +107,6 @@ Paving block K-300 press hidrolik dari pabrik kami mulai dari **Rp 65.000 per m2
 
 Angka itu berubah mengikuti harga semen dan jangkauan kirim, jadi konfirmasi dulu sebelum mengunci anggaran.
 
-- [Katalog paving block dan harga](/paving/) — jenis, pola, dan paket pemasangan
+- [Katalog paving block dan harga](https://pavingblockjatim.my.id/) — jenis, pola, dan paket pemasangan
 - [Gapura Majapahit bata expose](/gapura/) — untuk gerbang masuk komplek atau perumahan
 - [Bata ringan dan batako](/batako/) — kalau proyeknya sekalian membangun dinding

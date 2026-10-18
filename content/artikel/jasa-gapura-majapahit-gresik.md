@@ -77,6 +77,6 @@ Dua contoh di bawah adalah dokumentasi gapura bata expose dari tim mitra. Ukuran
 
 ## Pilihan lain di firkaizen.id
 
-Kalau yang dibutuhkan bukan gapura, cek juga [paving block dan kanstin](/paving/) atau [batako dan bata ringan](/batako/). Semua pilihan ada di [halaman utama firkaizen.id](/).
+Kalau yang dibutuhkan bukan gapura, cek juga [paving block dan kanstin](https://pavingblockjatim.my.id/) atau [batako dan bata ringan](/batako/). Semua pilihan ada di [halaman utama firkaizen.id](/).
 
 PT FirKaizen Digital Solutions.
