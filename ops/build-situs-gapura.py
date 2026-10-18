@@ -20,6 +20,18 @@ OUT = os.path.expanduser("~/.hermes/cache/scratch/gapura-situs")
 BARU = "https://gapuramajapahit.web.id"
 INDUK = "https://firkaizen.id"
 
+# Berkas verifikasi Google (dan sejenisnya) disimpan di situs/gapuramajapahit.web.id/
+# dan disalin ke output tiap build — kalau tidak, `rmtree` di bawah menghapusnya.
+EKSTRA_DIR = os.path.join("situs", "gapuramajapahit.web.id")
+DIBUAT_SENDIRI = {"index.html", "robots.txt", "sitemap.xml", "README.md"}
+
+# Token milik akun Google pemilik situs. Google menerima lebih dari satu meta
+# verifikasi; token lama di gapura/index.html SENGAJA tidak dihapus supaya
+# verifikasi akun yang sudah ada tidak putus.
+VERIF = [
+    '<meta name="google-site-verification" content="9UJ-FZG4q2DCjINsbJDMPuZtJZMLmjy9GQL6gSZYFU4" />',
+]
+
 # urutan penting: link spesifik dulu, `href="/"` terakhir
 REPLACEMENTS = [
     ('href="../css/tw-9c68816f.css"', 'href="/css/tw-9c68816f.css"'),
@@ -61,6 +73,12 @@ def main():
         html = html.replace(old, new)
         print(f"  {n:>2}x  {old[:52]}")
 
+    # meta verifikasi Google: sisipkan tepat setelah <head>
+    assert "<head>\n" in html, "tag <head> tidak ketemu"
+    html = html.replace(
+        "<head>\n", "<head>\n" + "".join(f"  {m}\n" for m in VERIF), 1)
+    print(f"  {len(VERIF):>2}x  meta verifikasi Google disisipkan")
+
     # aset: path absolut -> berkas di repo; path relatif -> relatif ke gapura/
     aset = {"images/og/gapura.webp"}
     for m in re.finditer(r'(?:src|href)="((?!https?:|#|data:|mailto:|tel:)[^"]+)"', html):
@@ -86,6 +104,15 @@ def main():
         shutil.copy2(src, dst)
         n += 1
     print(f"  {n} aset + index.html + robots.txt + sitemap.xml -> {OUT}")
+
+    # berkas tambahan (verifikasi Google dll) ikut ke output
+    ekstra = os.path.join(ROOT, EKSTRA_DIR)
+    if os.path.isdir(ekstra):
+        for f in sorted(os.listdir(ekstra)):
+            if f in DIBUAT_SENDIRI:
+                continue
+            shutil.copy2(os.path.join(ekstra, f), os.path.join(OUT, f))
+            print(f"   +  {f}")
 
 
 if __name__ == "__main__":
